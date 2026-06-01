@@ -829,7 +829,7 @@
           <div>Earrings — <strong>$15</strong></div>
           <div>Full Set — <strong>$55</strong></div>
         </div>
-        <a href="mailto:picswelove2024@gmail.com?subject=Order: Kelly Green Black Set" class="btn-buy">Order via PayPal</a>
+        <button class="btn-buy" onclick="openOrder('Kelly Green Black Set', this)">Order via PayPal</button>
       </div>
     </div>
 
@@ -846,7 +846,7 @@
           <div>Earrings — <strong>$15</strong></div>
           <div>Full Set — <strong>$55</strong></div>
         </div>
-        <a href="mailto:picswelove2024@gmail.com?subject=Order: Wood Orange Set" class="btn-buy">Order via PayPal</a>
+        <button class="btn-buy" onclick="openOrder('Wood Orange Set', this)">Order via PayPal</button>
       </div>
     </div>
 
@@ -863,7 +863,7 @@
           <div>Earrings — <strong>$15</strong></div>
           <div>Full Set — <strong>$55</strong></div>
         </div>
-        <a href="mailto:picswelove2024@gmail.com?subject=Order: Fuchsia Black Set" class="btn-buy">Order via PayPal</a>
+        <button class="btn-buy" onclick="openOrder('Fuchsia Black Set', this)">Order via PayPal</button>
       </div>
     </div>
 
@@ -880,7 +880,7 @@
           <div>Earrings — <strong>$15</strong></div>
           <div>Full Set — <strong>$55</strong></div>
         </div>
-        <a href="mailto:picswelove2024@gmail.com?subject=Order: Green Orange Set" class="btn-buy">Order via PayPal</a>
+        <button class="btn-buy" onclick="openOrder('Green Orange Set', this)">Order via PayPal</button>
       </div>
     </div>
 
@@ -897,7 +897,7 @@
           <div>Earrings — <strong>$15</strong></div>
           <div>Full Set — <strong>$55</strong></div>
         </div>
-        <a href="mailto:picswelove2024@gmail.com?subject=Order: Fun Bead Mix Set" class="btn-buy">Order via PayPal</a>
+        <button class="btn-buy" onclick="openOrder('Fun Bead Mix Set', this)">Order via PayPal</button>
       </div>
     </div>
 
@@ -911,7 +911,7 @@
           <div>15–16 inches — <strong>$16</strong></div>
           <div>17–21 inches — <strong>$19</strong></div>
         </div>
-        <a href="mailto:picswelove2024@gmail.com?subject=Order: Green Choker" class="btn-buy">Order via PayPal</a>
+        <button class="btn-buy" onclick="openOrder('Green Choker', this)">Order via PayPal</button>
       </div>
     </div>
 
@@ -926,7 +926,7 @@
           <div>17–21 inches — <strong>$32</strong></div>
           <div style="color:#c9714a; font-size:0.75rem;">🎃 $42 in Sept & Oct</div>
         </div>
-        <a href="mailto:picswelove2024@gmail.com?subject=Order: Multi Color Choker" class="btn-buy">Order via PayPal</a>
+        <button class="btn-buy" onclick="openOrder('Multi Color Choker', this)">Order via PayPal</button>
       </div>
     </div>
 
@@ -939,7 +939,7 @@
         <div class="product-pricing">
           <div>15–18 inches — <strong>$18</strong></div>
         </div>
-        <a href="mailto:picswelove2024@gmail.com?subject=Order: Seed Bead Necklace" class="btn-buy">Order via PayPal</a>
+        <button class="btn-buy" onclick="openOrder('Seed Bead Necklace', this)">Order via PayPal</button>
       </div>
     </div>
 
@@ -953,7 +953,7 @@
           <div>15–17 inches — <strong>$20</strong></div>
           <div>18–21 inches — <strong>$25</strong></div>
         </div>
-        <a href="mailto:picswelove2024@gmail.com?subject=Order: Mixed Seed Bead Necklace" class="btn-buy">Order via PayPal</a>
+        <button class="btn-buy" onclick="openOrder('Mixed Seed Bead Necklace', this)">Order via PayPal</button>
       </div>
     </div>
 
@@ -982,7 +982,7 @@
           <div class="color-dot" style="background:#1565c0;" title="Navy"></div>
         </div>
         <div class="pillow-price">$24 <small>+ $9.99 shipping</small></div>
-        <a href="mailto:picswelove2024@gmail.com?subject=Order: Neck Pillow" class="btn-buy-light">Order via PayPal</a>
+        <button class="btn-buy-light" onclick="openOrder('Neck Pillow', this)">Order via PayPal</button>
       </div>
     </div>
 
@@ -1000,7 +1000,7 @@
           <div class="color-dot" style="background:#1a237e;" title="Navy"></div>
         </div>
         <div class="pillow-price">$24 <small>+ $9.99 shipping</small></div>
-        <a href="mailto:picswelove2024@gmail.com?subject=Order: Polka Dot Pillow" class="btn-buy-light">Order via PayPal</a>
+        <button class="btn-buy-light" onclick="openOrder('Polka Dot Pillow', this)">Order via PayPal</button>
       </div>
     </div>
 
@@ -1348,6 +1348,356 @@ function startCanvasAnimation(canvasId) {
 document.getElementById('lightbox').addEventListener('click', function(e) {
   if (e.target === this) closeLightbox();
 });
+</script>
+
+
+<!-- ORDER PANEL -->
+<div id="order-panel" style="display:none; position:fixed; inset:0; z-index:9997; background:rgba(10,10,8,0.97); overflow-y:auto;">
+  <canvas id="order-canvas" style="position:fixed; inset:0; width:100%; height:100%; opacity:0.2; pointer-events:none;"></canvas>
+
+  <div style="position:relative; z-index:10; max-width:680px; margin:0 auto; padding:3rem 2rem 5rem;">
+
+    <!-- Header -->
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:2.5rem;">
+      <div>
+        <p style="font-size:0.7rem; letter-spacing:0.2em; text-transform:uppercase; color:#c9a84c; margin-bottom:0.3rem;">Fun Travel</p>
+        <h2 style="font-family:'Playfair Display',serif; font-size:1.8rem; color:white;">Your Order</h2>
+      </div>
+      <button onclick="closeOrder()" style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); color:white; padding:0.5rem 1.2rem; border-radius:2px; cursor:pointer; font-family:'Jost',sans-serif; font-size:0.8rem; letter-spacing:0.1em;">✕ Close</button>
+    </div>
+
+    <!-- Product image + name -->
+    <div id="order-product-header" style="display:flex; gap:1.2rem; align-items:center; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:4px; padding:1.2rem; margin-bottom:2rem;">
+      <img id="order-img" src="" alt="" style="width:90px; height:90px; object-fit:cover; border-radius:3px; flex-shrink:0;">
+      <div>
+        <p style="font-size:0.7rem; letter-spacing:0.15em; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:0.3rem;">Selected Item</p>
+        <h3 id="order-product-name" style="font-family:'Playfair Display',serif; color:white; font-size:1.1rem;"></h3>
+        <button onclick="openLightbox(document.getElementById('order-img').src, '')" style="background:none; border:none; color:#c9a84c; font-size:0.75rem; cursor:pointer; padding:0; margin-top:0.4rem; letter-spacing:0.05em;">🔍 View full image</button>
+      </div>
+    </div>
+
+    <!-- Item selection checkboxes -->
+    <div style="margin-bottom:2rem;">
+      <p style="font-size:0.75rem; letter-spacing:0.15em; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-bottom:1rem;">Select Items</p>
+      <div id="order-items" style="display:flex; flex-direction:column; gap:0.6rem;"></div>
+    </div>
+
+    <!-- Contact info -->
+    <div style="margin-bottom:2rem;">
+      <p style="font-size:0.75rem; letter-spacing:0.15em; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-bottom:1rem;">Your Contact Info</p>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.8rem;">
+        <div>
+          <label style="font-size:0.75rem; color:rgba(255,255,255,0.4); display:block; margin-bottom:0.3rem;">First Name *</label>
+          <input id="cf-fname" type="text" placeholder="Jane" style="width:100%; padding:0.7rem 0.9rem; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.15); color:white; border-radius:2px; font-family:'Jost',sans-serif; font-size:0.85rem;">
+        </div>
+        <div>
+          <label style="font-size:0.75rem; color:rgba(255,255,255,0.4); display:block; margin-bottom:0.3rem;">Last Name *</label>
+          <input id="cf-lname" type="text" placeholder="Smith" style="width:100%; padding:0.7rem 0.9rem; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.15); color:white; border-radius:2px; font-family:'Jost',sans-serif; font-size:0.85rem;">
+        </div>
+        <div style="grid-column:1/-1;">
+          <label style="font-size:0.75rem; color:rgba(255,255,255,0.4); display:block; margin-bottom:0.3rem;">Email Address *</label>
+          <input id="cf-email" type="email" placeholder="jane@example.com" style="width:100%; padding:0.7rem 0.9rem; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.15); color:white; border-radius:2px; font-family:'Jost',sans-serif; font-size:0.85rem;">
+        </div>
+        <div style="grid-column:1/-1;">
+          <label style="font-size:0.75rem; color:rgba(255,255,255,0.4); display:block; margin-bottom:0.3rem;">Phone Number</label>
+          <input id="cf-phone" type="tel" placeholder="(555) 000-0000" style="width:100%; padding:0.7rem 0.9rem; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.15); color:white; border-radius:2px; font-family:'Jost',sans-serif; font-size:0.85rem;">
+        </div>
+        <div style="grid-column:1/-1;">
+          <label style="font-size:0.75rem; color:rgba(255,255,255,0.4); display:block; margin-bottom:0.3rem;">Shipping Address *</label>
+          <input id="cf-address" type="text" placeholder="123 Main St, City, State, ZIP" style="width:100%; padding:0.7rem 0.9rem; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.15); color:white; border-radius:2px; font-family:'Jost',sans-serif; font-size:0.85rem;">
+        </div>
+        <div style="grid-column:1/-1;">
+          <label style="font-size:0.75rem; color:rgba(255,255,255,0.4); display:block; margin-bottom:0.3rem;">Notes / Color Preference</label>
+          <textarea id="cf-notes" placeholder="e.g. I want the Orange neck pillow, size 18 inches..." rows="3" style="width:100%; padding:0.7rem 0.9rem; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.15); color:white; border-radius:2px; font-family:'Jost',sans-serif; font-size:0.85rem; resize:vertical;"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- Order summary -->
+    <div id="order-summary-box" style="background:rgba(201,168,76,0.08); border:1px solid rgba(201,168,76,0.25); border-radius:4px; padding:1.2rem; margin-bottom:1.5rem; display:none;">
+      <p style="font-size:0.75rem; letter-spacing:0.15em; text-transform:uppercase; color:#c9a84c; margin-bottom:0.8rem;">Order Summary</p>
+      <div id="order-summary-list" style="font-size:0.82rem; color:rgba(255,255,255,0.7); line-height:1.8;"></div>
+      <div style="border-top:1px solid rgba(201,168,76,0.2); margin-top:0.8rem; padding-top:0.8rem; display:flex; justify-content:space-between;">
+        <span style="color:rgba(255,255,255,0.5); font-size:0.8rem;">Estimated Total</span>
+        <span id="order-total" style="color:#c9a84c; font-weight:500; font-size:1rem;"></span>
+      </div>
+    </div>
+
+    <!-- Send button -->
+    <button onclick="sendOrder()" style="width:100%; padding:1rem; background:#c9714a; color:white; border:none; border-radius:2px; font-family:'Jost',sans-serif; font-size:0.9rem; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; cursor:pointer; transition:background 0.2s;" onmouseover="this.style.background='#b85e38'" onmouseout="this.style.background='#c9714a'">
+      Send Order via Email →
+    </button>
+    <p style="text-align:center; font-size:0.75rem; color:rgba(255,255,255,0.3); margin-top:0.8rem;">This will open your email app with your order pre-filled. Elena will reply with a PayPal invoice within 24 hours.</p>
+
+  </div>
+</div>
+
+<script>
+// ── PRODUCT CATALOG ──
+const catalog = {
+  'Kelly Green Black Set': {
+    img: 'images/Resized_20260531_100438.jpeg',
+    items: [
+      { label: 'Necklace (15.5 in.)', price: 29 },
+      { label: 'Bracelet (8 in.)', price: 16 },
+      { label: 'Earrings', price: 15 },
+    ],
+    setPrice: 55, setLabel: 'Full Set (Necklace + Bracelet + Earrings)'
+  },
+  'Earth & Fire Bead Set': {
+    img: 'images/Resized_20260531_100359.jpeg',
+    items: [
+      { label: 'Necklace (16 in.)', price: 29 },
+      { label: 'Bracelet (8 in.)', price: 16 },
+      { label: 'Earrings', price: 15 },
+    ],
+    setPrice: 55, setLabel: 'Full Set (Necklace + Bracelet + Earrings)'
+  },
+  'Twilight Zebra Set': {
+    img: 'images/Resized_20260531_100501.jpeg',
+    items: [
+      { label: 'Necklace (16 in.)', price: 29 },
+      { label: 'Bracelet (8 in.)', price: 16 },
+      { label: 'Earrings — Magenta/Black', price: 15 },
+      { label: 'Earrings — Black/Zebra drop', price: 15 },
+    ],
+    setPrice: 55, setLabel: 'Full Set (Necklace + Bracelet + Earrings)'
+  },
+  'Tropical Bloom Set': {
+    img: 'images/Resized_20260531_100506.jpeg',
+    items: [
+      { label: 'Necklace (16 in.)', price: 29 },
+      { label: 'Bracelet (8 in.)', price: 16 },
+      { label: 'Earrings', price: 15 },
+    ],
+    setPrice: 55, setLabel: 'Full Set (Necklace + Bracelet + Earrings)'
+  },
+  'Carnival Fiesta Set': {
+    img: 'images/Resized_20260531_102515.jpeg',
+    items: [
+      { label: 'Necklace (16 in.)', price: 29 },
+      { label: 'Bracelet (8 in.)', price: 16 },
+      { label: 'Earrings', price: 15 },
+    ],
+    setPrice: 55, setLabel: 'Full Set (Necklace + Bracelet + Earrings)'
+  },
+  'Summer Orchard Necklace': {
+    img: 'images/Resized_20260531_102540.jpeg',
+    items: [
+      { label: 'Choker 15 inches', price: 16 },
+      { label: 'Choker 16 inches', price: 16 },
+      { label: 'Choker 17 inches', price: 19 },
+      { label: 'Choker 18 inches', price: 19 },
+      { label: 'Choker 19 inches', price: 19 },
+      { label: 'Choker 20 inches', price: 19 },
+      { label: 'Choker 21 inches', price: 19 },
+    ]
+  },
+  'Midnight Carnival Beaded Necklace': {
+    img: 'images/Resized_20260531_102550.jpeg',
+    items: [
+      { label: 'Choker 15 inches', price: 32 },
+      { label: 'Choker 16 inches', price: 32 },
+      { label: 'Choker 17 inches', price: 32 },
+      { label: 'Choker 18 inches', price: 32 },
+      { label: 'Choker 19 inches', price: 32 },
+      { label: 'Choker 20 inches', price: 32 },
+      { label: 'Choker 21 inches', price: 32 },
+    ]
+  },
+  'Rainbow Cascade Strands': {
+    img: 'images/Resized_20260531_102628.jpeg',
+    items: [
+      { label: 'Single strand 15 in.', price: 18 },
+      { label: 'Single strand 16 in.', price: 18 },
+      { label: 'Single strand 17 in.', price: 18 },
+      { label: 'Single strand 18 in.', price: 18 },
+    ]
+  },
+  'Mixed Seed Bead Necklace': {
+    img: 'images/Resized_20260529_091718.jpeg',
+    items: [
+      { label: 'Necklace 15 in.', price: 20 },
+      { label: 'Necklace 16 in.', price: 20 },
+      { label: 'Necklace 17 in.', price: 20 },
+      { label: 'Necklace 18 in.', price: 25 },
+      { label: 'Necklace 19 in.', price: 25 },
+      { label: 'Necklace 20 in.', price: 25 },
+      { label: 'Necklace 21 in.', price: 25 },
+    ]
+  },
+  'Color Splash Neck Pillow': {
+    img: 'images/Resized_20260529_085416.jpeg',
+    items: [
+      { label: 'Lime Green', price: 24 },
+      { label: 'Orange', price: 24 },
+      { label: 'Red', price: 24 },
+      { label: 'Yellow', price: 24 },
+      { label: 'Navy', price: 24 },
+    ]
+  },
+  'Polka Dot Travel Buddy': {
+    img: 'images/Resized_20260301_063640_1_.jpeg',
+    items: [
+      { label: 'Fuchsia with black dots', price: 24 },
+      { label: 'Turquoise with black dots', price: 24 },
+      { label: 'White with black dots', price: 24 },
+      { label: 'Orange with black dots', price: 24 },
+      { label: 'Navy with white dots', price: 24 },
+    ]
+  },
+};
+
+let currentProduct = null;
+
+function openOrder(productName, btn) {
+  // Find product — fuzzy match
+  let key = Object.keys(catalog).find(k => k === productName || productName.includes(k) || k.includes(productName));
+  if (!key) key = Object.keys(catalog)[0];
+  currentProduct = key;
+  const product = catalog[key];
+
+  document.getElementById('order-img').src = product.img;
+  document.getElementById('order-product-name').textContent = key;
+
+  // Build checkboxes
+  const itemsDiv = document.getElementById('order-items');
+  itemsDiv.innerHTML = '';
+
+  // Full set option if available
+  if (product.setPrice) {
+    const setRow = createCheckRow('full-set', product.setLabel, product.setPrice, true);
+    itemsDiv.appendChild(setRow);
+    const divider = document.createElement('p');
+    divider.style.cssText = 'font-size:0.72rem; color:rgba(255,255,255,0.3); letter-spacing:0.1em; text-transform:uppercase; margin:0.5rem 0;';
+    divider.textContent = '— or pick individually —';
+    itemsDiv.appendChild(divider);
+  }
+
+  product.items.forEach((item, i) => {
+    itemsDiv.appendChild(createCheckRow('item-' + i, item.label, item.price, false));
+  });
+
+  updateSummary();
+  document.getElementById('order-panel').style.display = 'block';
+  document.body.style.overflow = 'hidden';
+  startCanvasAnimation('order-canvas');
+  window.scrollTo(0,0);
+}
+
+function createCheckRow(id, label, price, checked) {
+  const row = document.createElement('label');
+  row.style.cssText = 'display:flex; align-items:center; gap:0.8rem; padding:0.7rem 1rem; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:3px; cursor:pointer; transition:background 0.2s;';
+  row.onmouseover = () => row.style.background = 'rgba(255,255,255,0.08)';
+  row.onmouseout = () => row.style.background = 'rgba(255,255,255,0.04)';
+  row.innerHTML = `
+    <input type="checkbox" id="${id}" ${checked ? 'checked' : ''} onchange="updateSummary()" 
+      style="width:18px; height:18px; accent-color:#c9a84c; flex-shrink:0; cursor:pointer;">
+    <span style="flex:1; color:rgba(255,255,255,0.85); font-size:0.85rem;">${label}</span>
+    <span style="color:#c9a84c; font-weight:500; font-size:0.9rem;">$${price}</span>
+  `;
+  return row;
+}
+
+function updateSummary() {
+  const product = catalog[currentProduct];
+  const checks = document.querySelectorAll('#order-items input[type=checkbox]:checked');
+  const summaryBox = document.getElementById('order-summary-box');
+  const summaryList = document.getElementById('order-summary-list');
+  const totalEl = document.getElementById('order-total');
+
+  if (checks.length === 0) { summaryBox.style.display = 'none'; return; }
+
+  summaryBox.style.display = 'block';
+  let total = 0;
+  let lines = [];
+
+  checks.forEach(cb => {
+    const label = cb.parentElement.querySelector('span:nth-child(2)').textContent;
+    const price = parseInt(cb.parentElement.querySelector('span:nth-child(3)').textContent.replace('$',''));
+    total += price;
+    lines.push(`✦ ${label} — $${price}`);
+  });
+
+  // Shipping estimate
+  const isPillow = currentProduct.includes('Pillow') || currentProduct.includes('Buddy');
+  const shipping = isPillow ? 9.99 : (checks.length > 1 ? 7.99 : 5.99);
+  lines.push(`Shipping — $${shipping.toFixed(2)}`);
+  total += shipping;
+
+  summaryList.innerHTML = lines.join('<br>');
+  totalEl.textContent = '$' + total.toFixed(2);
+}
+
+function sendOrder() {
+  const fname = document.getElementById('cf-fname').value.trim();
+  const lname = document.getElementById('cf-lname').value.trim();
+  const email = document.getElementById('cf-email').value.trim();
+  const phone = document.getElementById('cf-phone').value.trim();
+  const address = document.getElementById('cf-address').value.trim();
+  const notes = document.getElementById('cf-notes').value.trim();
+
+  if (!fname || !email || !address) {
+    alert('Please fill in your name, email, and shipping address before sending.');
+    return;
+  }
+
+  const checks = document.querySelectorAll('#order-items input[type=checkbox]:checked');
+  if (checks.length === 0) {
+    alert('Please select at least one item.');
+    return;
+  }
+
+  let selectedItems = [];
+  checks.forEach(cb => {
+    const label = cb.parentElement.querySelector('span:nth-child(2)').textContent;
+    const price = cb.parentElement.querySelector('span:nth-child(3)').textContent;
+    selectedItems.push(`  • ${label} — ${price}`);
+  });
+
+  const isPillow = currentProduct.includes('Pillow') || currentProduct.includes('Buddy');
+  const shipping = isPillow ? 9.99 : (checks.length > 1 ? 7.99 : 5.99);
+  const subtotal = Array.from(checks).reduce((sum, cb) => {
+    return sum + parseInt(cb.parentElement.querySelector('span:nth-child(3)').textContent.replace('$',''));
+  }, 0);
+
+  const subject = encodeURIComponent(`Order Request: ${currentProduct} — Fun Travel`);
+  const body = encodeURIComponent(
+`Hi Elena,
+
+I would like to place an order from Fun Travel. Here are my details:
+
+NAME: ${fname} ${lname}
+EMAIL: ${email}
+PHONE: ${phone || 'Not provided'}
+SHIPPING ADDRESS: ${address}
+
+PRODUCT: ${currentProduct}
+
+SELECTED ITEMS:
+${selectedItems.join('
+')}
+
+SUBTOTAL: $${subtotal.toFixed(2)}
+SHIPPING: $${shipping.toFixed(2)}
+ESTIMATED TOTAL: $${(subtotal + shipping).toFixed(2)}
+
+NOTES / COLOR PREFERENCE:
+${notes || 'None'}
+
+Please send me a PayPal invoice to complete my purchase.
+
+Thank you,
+${fname} ${lname}`
+  );
+
+  window.location.href = `mailto:picswelove2024@gmail.com?subject=${subject}&body=${body}`;
+}
+
+function closeOrder() {
+  document.getElementById('order-panel').style.display = 'none';
+  document.body.style.overflow = '';
+}
 </script>
 
 </body>
