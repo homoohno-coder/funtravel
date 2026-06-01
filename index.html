@@ -1454,177 +1454,295 @@ function closeLightbox() {
 // Product options for lightbox buy panel
 const lbCatalog = {
   'Kelly Green & Black Beads with African Tube Beads': {
-    options: [
-      {label:'Necklace (15.5 in.)', price:29},
-      {label:'Bracelet (8 in.)', price:16},
-      {label:'Earrings', price:15},
-      {label:'Full Set', price:55},
-    ], shipping: 7.99
+    options: [{label:'Choose Piece', id:'piece', type:'pills', values:[
+      {label:'Full Set',  price:55,  ship:7.99},
+      {label:'Necklace',  price:29,  ship:5.99},
+      {label:'Bracelet',  price:16,  ship:5.99},
+      {label:'Earrings',  price:15,  ship:5.99}
+    ]}],
+    details:{materials:'Glass beads, African tube beads', length:'Necklace 15.5 in. incl. clasp'},
+    isPillow:false
   },
   'Wood & Orange Synthetic Beads': {
-    options: [
-      {label:'Necklace (16 in.)', price:29},
-      {label:'Bracelet (8 in.)', price:16},
-      {label:'Earrings', price:15},
-      {label:'Full Set', price:55},
-    ], shipping: 7.99
+    options: [{label:'Choose Piece', id:'piece', type:'pills', values:[
+      {label:'Full Set',  price:55,  ship:7.99},
+      {label:'Necklace',  price:29,  ship:5.99},
+      {label:'Bracelet',  price:16,  ship:5.99},
+      {label:'Earrings',  price:15,  ship:5.99}
+    ]}],
+    details:{materials:'Wood beads, orange synthetic beads', length:'Necklace 16 in. incl. clasp'},
+    isPillow:false
   },
   'Fuchsia & Black Beads with African Tube Beads': {
-    options: [
-      {label:'Necklace (16 in.)', price:29},
-      {label:'Bracelet (8 in.)', price:16},
-      {label:'Earrings', price:15},
-      {label:'Full Set', price:55},
-    ], shipping: 7.99
+    options: [{label:'Choose Piece', id:'piece', type:'pills', values:[
+      {label:'Full Set',  price:55,  ship:7.99},
+      {label:'Necklace',  price:29,  ship:5.99},
+      {label:'Bracelet',  price:16,  ship:5.99},
+      {label:'Earrings',  price:15,  ship:5.99}
+    ]}],
+    details:{materials:'Glass beads, African tube beads', length:'Necklace 16 in. incl. clasp'},
+    isPillow:false
   },
   'Kelly Green Glass & Orange Synthetic Beads with African Tube Beads': {
-    options: [
-      {label:'Necklace (16 in.)', price:29},
-      {label:'Bracelet (8 in.)', price:16},
-      {label:'Earrings', price:15},
-      {label:'Full Set', price:55},
-    ], shipping: 7.99
+    options: [{label:'Choose Piece', id:'piece', type:'pills', values:[
+      {label:'Full Set',  price:55,  ship:7.99},
+      {label:'Necklace',  price:29,  ship:5.99},
+      {label:'Bracelet',  price:16,  ship:5.99},
+      {label:'Earrings',  price:15,  ship:5.99}
+    ]}],
+    details:{materials:'Kelly green glass, orange synthetic, African tube beads', length:'Necklace 16 in. incl. clasp'},
+    isPillow:false
   },
   'Fun Bead Mix — Glass & Synthetic': {
-    options: [
-      {label:'Necklace (16 in.)', price:29},
-      {label:'Bracelet (8 in.)', price:16},
-      {label:'Earrings', price:15},
-      {label:'Full Set', price:55},
-    ], shipping: 7.99
+    options: [{label:'Choose Piece', id:'piece', type:'pills', values:[
+      {label:'Full Set',  price:55,  ship:7.99},
+      {label:'Necklace',  price:29,  ship:5.99},
+      {label:'Bracelet',  price:16,  ship:5.99},
+      {label:'Earrings',  price:15,  ship:5.99}
+    ]}],
+    details:{materials:'Mixed glass & synthetic beads', length:'Necklace 16 in. incl. clasp'},
+    isPillow:false
   },
   'Glass Bead Chokers — Green': {
-    options: [
-      {label:'15 inches', price:16},
-      {label:'16 inches', price:16},
-      {label:'17 inches', price:19},
-      {label:'18 inches', price:19},
-      {label:'19 inches', price:19},
-      {label:'20 inches', price:19},
-      {label:'21 inches', price:19},
-    ], shipping: 5.99
+    options: [{label:'Choose Length', id:'len', type:'pills', values:[
+      {label:'15–16 in.', price:16, ship:5.99},
+      {label:'17–21 in.', price:19, ship:5.99}
+    ]}],
+    details:{materials:'Green glass beads', note:'Specify preferred length in order notes.'},
+    isPillow:false
   },
   'Multi-Color Glass Bead Chokers': {
-    options: [
-      {label:'15 inches', price:16},
-      {label:'16 inches', price:16},
-      {label:'17 inches', price:19},
-      {label:'18 inches', price:19},
-      {label:'19 inches', price:19},
-      {label:'20 inches', price:19},
-      {label:'21 inches', price:19},
-    ], shipping: 5.99
+    options: [{label:'Choose Length', id:'len', type:'pills', values:[
+      {label:'15–16 in.', price:16, ship:5.99},
+      {label:'17–21 in.', price:19, ship:5.99}
+    ]}],
+    details:{materials:'Multi-color glass beads', note:'Specify preferred length in order notes.'},
+    isPillow:false
   },
   'Glass Seed Beads — Any Color': {
-    options: [
-      {label:'15 inches', price:15},
-      {label:'16 inches', price:15},
-      {label:'17 inches', price:15},
-      {label:'18 inches', price:15},
-    ], shipping: 5.99
+    options: [{label:'Length', id:'len', type:'pills', values:[
+      {label:'15–18 in.', price:15, ship:5.99}
+    ]}],
+    details:{materials:'Glass seed beads', note:'Many colors available — specify in order notes.'},
+    isPillow:false
   },
   'Glass Seed Bead Mix with 4mm Glass Beads': {
-    options: [
-      {label:'15 inches', price:17},
-      {label:'16 inches', price:17},
-      {label:'17 inches', price:17},
-      {label:'18 inches', price:19.50},
-      {label:'19 inches', price:19.50},
-      {label:'20 inches', price:19.50},
-      {label:'21 inches', price:19.50},
-    ], shipping: 5.99
+    options: [{label:'Choose Length', id:'len', type:'pills', values:[
+      {label:'15–17 in.', price:17,   ship:5.99},
+      {label:'18–21 in.', price:19.50, ship:5.99}
+    ]}],
+    details:{materials:'Glass seed beads, 4mm glass beads'},
+    isPillow:false
   },
-  'Bracelet Variety': {
-    options: [
-      {label:'Bracelet #1 — $16 each', price:16},
-      {label:'Bracelet #2 — $16 each', price:16},
-      {label:'Bracelet #3 — $16 each', price:16},
-      {label:'Bracelet #4 — $16 each', price:16},
-      {label:'Bracelet #5 — $16 each', price:16},
-      {label:'Bracelet #6 — $16 each', price:16},
-      {label:'Bracelet #7 — $16 each', price:16},
-      {label:'Bracelet #8 — $16 each', price:16},
-    ], shipping: 5.99
-  },
-  'Round Neck Pillow': {
-    options: [
-      {label:'Lime Green', price:24},
-      {label:'Orange', price:24},
-      {label:'Red', price:24},
-      {label:'Yellow', price:24},
-      {label:'Navy', price:24},
-    ], shipping: 9.99
+  'Color Splash Neck Pillow': {
+    options: [{label:'Choose Color', id:'color', type:'swatches', values:[
+      {label:'Lime Green', price:24, ship:9.99, color:'#b5d44a'},
+      {label:'Orange',     price:24, ship:9.99, color:'#f07030'},
+      {label:'Red',        price:24, ship:9.99, color:'#c0302a'},
+      {label:'Yellow',     price:24, ship:9.99, color:'#f0c030'},
+      {label:'Navy',       price:24, ship:9.99, color:'#1a2a5a'}
+    ]}],
+    details:{size:'Approx. 12×12 in.', materials:'Soft fabric travel pillow'},
+    isPillow:true
   },
   'Polka Dot Travel Pillow': {
-    options: [
-      {label:'Fuchsia with black dots', price:24},
-      {label:'Turquoise with black dots', price:24},
-      {label:'White with black dots', price:24},
-      {label:'Orange with black dots', price:24},
-      {label:'Navy with white dots', price:24},
-    ], shipping: 9.99
-  },
+    options: [{label:'Choose Color', id:'color', type:'swatches', values:[
+      {label:'Fuchsia',    price:24, ship:9.99, color:'#c0306a'},
+      {label:'Turquoise',  price:24, ship:9.99, color:'#30a8a0'},
+      {label:'White',      price:24, ship:9.99, color:'#e8e8e8'},
+      {label:'Orange',     price:24, ship:9.99, color:'#e86820'},
+      {label:'Navy',       price:24, ship:9.99, color:'#1a2a5a'}
+    ]}],
+    details:{size:'Approx. 12×16 in.', materials:'Soft fabric travel pillow, polka dot pattern'},
+    isPillow:true
+  }
 };
 
 let lbSelected = null;
 let lbQty = 1;
 
-function renderLightboxBuyPanel(caption) {
-  const panel = document.getElementById('lb-options');
-  const selBox = document.getElementById('lb-selected-box');
-  panel.innerHTML = '';
-  selBox.style.display = 'none';
-  lbSelected = null;
-  lbQty = 1;
-  const qtyRow = document.getElementById('lb-qty-row');
-  if (qtyRow) qtyRow.style.display = 'none';
-  const qtyDisp = document.getElementById('lb-qty-display');
-  if (qtyDisp) qtyDisp.textContent = '1';
+function renderLightboxBuyPanel(productName) {
+  var cat = lbCatalog[productName] || {};
+  var opts = cat.options || [];
+  var details = cat.details || {};
+  var isPillow = cat.isPillow || false;
 
-  // Find matching product
-  const key = Object.keys(lbCatalog).find(k => caption.includes(k) || k.includes(caption) || caption === k);
-  if (!key) {
-    panel.innerHTML = '<p style="font-size:0.75rem;color:rgba(255,255,255,0.3);font-style:italic;">Browse gallery item</p>';
-    return;
-  }
+  // ── Option pills/swatches ──
+  var optHtml = '';
+  opts.forEach(function(grp) {
+    optHtml += '<div style="margin-bottom:0.8rem;">';
+    optHtml += '<div style="font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#888;margin-bottom:0.45rem;">' + grp.label + '</div>';
 
-  const product = lbCatalog[key];
-  const isSet = key.includes('Beads') && product.options.some(o => o.label === 'Full Set');
-  
-  const label = document.createElement('p');
-  label.style.cssText = 'font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:0.3rem;';
-  label.textContent = isSet ? 'Select Item or Full Set:' : 'Select Size / Color:';
-  panel.appendChild(label);
-
-  product.options.forEach((opt, i) => {
-    const row = document.createElement('label');
-    row.style.cssText = 'display:flex;align-items:center;gap:0.7rem;padding:0.7rem 0.9rem;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.09);border-radius:3px;cursor:pointer;transition:background 0.2s;-webkit-tap-highlight-color:transparent;';
-    row.onmouseover = () => row.style.background = 'rgba(255,255,255,0.09)';
-    row.onmouseout = () => row.style.background = 'rgba(255,255,255,0.04)';
-    row.innerHTML = `
-      <input type="radio" name="lb-opt" value="${i}" onchange="lbSelectOption('${key}',${i})"
-        style="accent-color:#c9a84c;width:18px;height:18px;flex-shrink:0;cursor:pointer;">
-      <span style="flex:1;font-size:0.88rem;color:rgba(255,255,255,0.88);">${opt.label}</span>
-      <span style="color:#c9a84c;font-size:0.9rem;font-weight:500;">$${opt.price.toFixed(2)}</span>
-    `;
-    panel.appendChild(row);
+    if (grp.type === 'pills') {
+      optHtml += '<div style="display:flex;gap:0.4rem;flex-wrap:wrap;">';
+      grp.values.forEach(function(v, idx) {
+        var sel = idx === 0 ? 'background:#213b48;color:white;border:1px solid #213b48;' : 'background:#f2f7fa;color:#333;border:1px solid rgba(0,0,0,0.15);';
+        optHtml += '<button onclick="lbSelectPill(this,'' + grp.id + '',' + v.price + ',' + v.ship + ')" data-grp="' + grp.id + '" data-price="' + v.price + '" data-ship="' + v.ship + '" style="padding:0.3rem 0.8rem;border-radius:4px;font-size:0.78rem;cursor:pointer;transition:all 0.15s;' + sel + '">' + v.label + '</button>';
+      });
+      optHtml += '</div>';
+    } else if (grp.type === 'swatches') {
+      optHtml += '<div style="display:flex;gap:0.5rem;flex-wrap:wrap;align-items:center;">';
+      grp.values.forEach(function(v, idx) {
+        var border = idx === 0 ? '3px solid #213b48' : '2px solid rgba(0,0,0,0.2)';
+        optHtml += '<button onclick="lbSelectSwatch(this,'' + grp.id + '',' + v.price + ',' + v.ship + ','' + v.label + '')" data-grp="' + grp.id + '" data-price="' + v.price + '" data-ship="' + v.ship + '" title="' + v.label + '" style="width:28px;height:28px;border-radius:50%;background:' + v.color + ';cursor:pointer;border:' + border + ';transition:all 0.15s;"></button>';
+      });
+      optHtml += '</div>';
+      var firstLabel = grp.values.length ? grp.values[0].label : '';
+      optHtml += '<div id="lb-swatch-label-' + grp.id + '" style="font-size:0.72rem;color:#666;margin-top:0.35rem;">' + firstLabel + '</div>';
+    }
+    optHtml += '</div>';
   });
+
+  // ── Product details ──
+  var detHtml = '';
+  if (details.materials) detHtml += '<div><strong>Materials:</strong> ' + details.materials + '</div>';
+  if (details.length)    detHtml += '<div><strong>Length:</strong> ' + details.length + '</div>';
+  if (details.size)      detHtml += '<div><strong>Size:</strong> ' + details.size + '</div>';
+  if (details.note)      detHtml += '<div style="margin-top:0.3rem;font-style:italic;color:#888;">' + details.note + '</div>';
+
+  // ── Shipping label ──
+  var shipText = isPillow
+    ? 'Ships within 3–5 business days · Pillow packaging'
+    : 'Ships within 2–4 business days via USPS First Class';
+
+  // ── Initial price from first option ──
+  var initPrice = (opts.length && opts[0].values.length) ? opts[0].values[0].price : 0;
+  var initShip  = (opts.length && opts[0].values.length) ? opts[0].values[0].ship  : 0;
+  var initTotal = initPrice + initShip;
+  var fmt = function(n) { return '$' + parseFloat(n).toFixed(2); };
+
+  var panel = document.getElementById('lb-buy-panel');
+  if (!panel) return;
+
+  panel.innerHTML =
+    // HEADER
+    '<div style="padding:1.25rem 1.25rem 0.85rem;border-bottom:1px solid rgba(0,0,0,0.07);">' +
+      '<div style="font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#999;margin-bottom:0.3rem;">Handmade by Elena Barmet</div>' +
+      '<div style="font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;color:#1a1a1a;line-height:1.3;margin-bottom:0.55rem;">' + productName + '</div>' +
+      '<div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;">' +
+        '<span id="lb-price-big" style="font-size:1.45rem;font-weight:700;color:#1a1a1a;font-family:'Playfair Display',serif;">' + fmt(initPrice) + '</span>' +
+        '<span id="lb-freeship" style="display:' + (initPrice >= 50 && !isPillow ? 'inline-flex' : 'none') + ';font-size:0.65rem;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;color:#c07000;background:#fff3e0;border:1px solid rgba(192,112,0,0.2);padding:0.2rem 0.6rem;border-radius:100px;">Free Shipping</span>' +
+      '</div>' +
+    '</div>' +
+
+    // OPTIONS
+    '<div style="padding:1rem 1.25rem;border-bottom:1px solid rgba(0,0,0,0.07);">' + optHtml + '</div>' +
+
+    // QUANTITY
+    '<div style="padding:0.85rem 1.25rem;border-bottom:1px solid rgba(0,0,0,0.07);display:flex;align-items:center;justify-content:space-between;">' +
+      '<span style="font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#555;">Quantity</span>' +
+      '<div style="display:flex;align-items:center;border:1px solid rgba(0,0,0,0.15);border-radius:6px;overflow:hidden;">' +
+        '<button onclick="lbQtyChange(-1)" style="width:36px;height:34px;background:#f5f5f5;border:none;font-size:1.1rem;cursor:pointer;color:#333;" onmouseover="this.style.background='#e8e8e8'" onmouseout="this.style.background='#f5f5f5'">−</button>' +
+        '<span id="lb-qty" style="min-width:36px;text-align:center;font-size:0.9rem;font-weight:600;color:#1a1a1a;border-left:1px solid rgba(0,0,0,0.1);border-right:1px solid rgba(0,0,0,0.1);padding:0 4px;line-height:34px;">1</span>' +
+        '<button onclick="lbQtyChange(1)"  style="width:36px;height:34px;background:#f5f5f5;border:none;font-size:1.1rem;cursor:pointer;color:#333;" onmouseover="this.style.background='#e8e8e8'" onmouseout="this.style.background='#f5f5f5'">+</button>' +
+      '</div>' +
+    '</div>' +
+
+    // PRICE SUMMARY
+    '<div style="padding:0.85rem 1.25rem;border-bottom:1px solid rgba(0,0,0,0.07);background:#fff;font-size:0.8rem;">' +
+      '<div style="display:flex;justify-content:space-between;color:#666;margin-bottom:0.3rem;"><span id="lb-sum-item-lbl">Item</span><span id="lb-sum-item" style="font-weight:500;color:#333;">' + fmt(initPrice) + '</span></div>' +
+      '<div style="display:flex;justify-content:space-between;color:#666;margin-bottom:0.3rem;"><span>Shipping</span><span id="lb-sum-ship" style="font-weight:500;color:#333;">' + fmt(initShip) + '</span></div>' +
+      '<div style="display:flex;justify-content:space-between;border-top:1px solid rgba(0,0,0,0.08);padding-top:0.35rem;"><strong style="color:#1a1a1a;">Total</strong><strong id="lb-sum-total" style="color:#1a1a1a;">' + fmt(initTotal) + '</strong></div>' +
+    '</div>' +
+
+    // BUY BUTTON
+    '<div style="padding:1rem 1.25rem;border-bottom:1px solid rgba(0,0,0,0.07);">' +
+      '<button onclick="lbBuyNow()" style="width:100%;height:50px;background:#0070ba;color:white;border:none;border-radius:6px;font-size:0.95rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:0.5rem;letter-spacing:0.02em;" onmouseover="this.style.background='#005ea6'" onmouseout="this.style.background='#0070ba'">' +
+        '<svg width="18" height="18" viewBox="0 0 30 30" fill="none"><circle cx="15" cy="15" r="14" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/><path d="M8 15l5 5 9-9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
+        'Buy Now via PayPal' +
+      '</button>' +
+      '<div style="text-align:center;margin-top:0.45rem;font-size:0.67rem;color:#aaa;">Secure checkout · PayPal buyer protection</div>' +
+    '</div>' +
+
+    // PRODUCT DETAILS
+    '<div style="padding:0.85rem 1.25rem;border-bottom:1px solid rgba(0,0,0,0.07);">' +
+      '<div style="font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#999;margin-bottom:0.5rem;">Product Details</div>' +
+      '<div style="font-size:0.77rem;color:#555;line-height:1.75;">' + (detHtml || '<span style="color:#bbb;">—</span>') + '</div>' +
+    '</div>' +
+
+    // SHIPPING & RETURNS
+    '<div style="padding:0.85rem 1.25rem;border-bottom:1px solid rgba(0,0,0,0.07);">' +
+      '<div style="font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#999;margin-bottom:0.6rem;">Shipping & Returns</div>' +
+      '<div style="display:flex;flex-direction:column;gap:0.5rem;font-size:0.77rem;color:#555;">' +
+        '<div style="display:flex;align-items:center;gap:0.6rem;"><div style="width:26px;height:26px;background:#f2f7fa;border:1px solid rgba(0,0,0,0.09);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.85rem;">📦</div><span>' + shipText + '</span></div>' +
+        '<div style="display:flex;align-items:center;gap:0.6rem;"><div style="width:26px;height:26px;background:#f2f7fa;border:1px solid rgba(0,0,0,0.09);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.85rem;">↩</div><span>15-day returns · 15% restocking fee</span></div>' +
+        '<div style="display:flex;align-items:center;gap:0.6rem;"><div style="width:26px;height:26px;background:#f2f7fa;border:1px solid rgba(0,0,0,0.09);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.85rem;">🔒</div><span>Secure PayPal checkout</span></div>' +
+      '</div>' +
+    '</div>' +
+
+    // TRUST BAR
+    '<div style="padding:0.85rem 1.25rem;border-bottom:1px solid rgba(0,0,0,0.07);background:#fff;">' +
+      '<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.4rem;text-align:center;font-size:0.67rem;color:#666;line-height:1.4;">' +
+        '<div style="display:flex;flex-direction:column;align-items:center;gap:0.25rem;"><span style="font-size:1.2rem;">🤲</span><span>Handmade<br>Palm Desert CA</span></div>' +
+        '<div style="display:flex;flex-direction:column;align-items:center;gap:0.25rem;"><span style="font-size:1.2rem;">✦</span><span>One-of-a-kind<br>Designs</span></div>' +
+        '<div style="display:flex;flex-direction:column;align-items:center;gap:0.25rem;"><span style="font-size:1.2rem;">💬</span><span>Contact Elena<br>Directly</span></div>' +
+      '</div>' +
+    '</div>' +
+
+    // ARTISAN SNAPSHOT
+    '<div style="padding:0.85rem 1.25rem;">' +
+      '<div style="font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#999;margin-bottom:0.6rem;">About the Maker</div>' +
+      '<div style="display:grid;grid-template-columns:48px 1fr;gap:0.7rem;align-items:start;">' +
+        '<div style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#c8f060,#8aaa28);border:2px solid rgba(0,0,0,0.09);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;">👩</div>' +
+        '<div>' +
+          '<div style="font-weight:700;font-size:0.83rem;color:#1a1a1a;margin-bottom:0.15rem;">Elena Barmet</div>' +
+          '<div style="font-size:0.7rem;color:#888;margin-bottom:0.35rem;">Palm Desert, CA · 44 years of artisan work</div>' +
+          '<div style="font-size:0.72rem;color:#555;line-height:1.55;">Handcrafted beaded jewelry and travel pillows, made with care and decades of creative experience.</div>' +
+          '<a href="mailto:picswelove2024@gmail.com" style="font-size:0.71rem;color:#0070ba;text-decoration:underline;display:inline-block;margin-top:0.4rem;">Contact Elena →</a>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+
+  // Store current state
+  window.lbCurrentPrice = initPrice;
+  window.lbCurrentShip  = initShip;
+  window.lbCurrentQty   = 1;
+  window.lbCurrentProduct = productName;
+  window.lbIsPillow = isPillow;
 }
 
-function lbSelectOption(key, idx) {
-  const product = lbCatalog[key];
-  const opt = product.options[idx];
-  lbSelected = { key, opt, shipping: product.shipping, total: opt.price + product.shipping, subtotal: opt.price };
-  lbQty = 1;
-  document.getElementById('lb-qty-display').textContent = '1';
-  document.getElementById('lb-qty-row').style.display = 'flex';
-  updateLbSummary();
+function lbSelectOption(btn, grpId, price, ship) {
+  lbSelectPill(btn, grpId, price, ship);
+}
+function lbSelectPill(btn, grpId, price, ship) {
+  document.querySelectorAll('[data-grp="' + grpId + '"]').forEach(function(b) {
+    b.style.background = '#f2f7fa'; b.style.color = '#333'; b.style.border = '1px solid rgba(0,0,0,0.15)';
+  });
+  btn.style.background = '#213b48'; btn.style.color = 'white'; btn.style.border = '1px solid #213b48';
+  lbApplyPrice(price, ship);
+}
+function lbSelectSwatch(btn, grpId, price, ship, label) {
+  document.querySelectorAll('[data-grp="' + grpId + '"]').forEach(function(b) {
+    b.style.border = '2px solid rgba(0,0,0,0.2)';
+  });
+  btn.style.border = '3px solid #213b48';
+  var lbl = document.getElementById('lb-swatch-label-' + grpId);
+  if (lbl) lbl.textContent = label;
+  lbApplyPrice(price, ship);
+}
+function lbApplyPrice(price, ship) {
+  var qty = window.lbCurrentQty || 1;
+  var isPillow = window.lbIsPillow || false;
+  if (price >= 50 && !isPillow) ship = 0;
+  window.lbCurrentPrice = price;
+  window.lbCurrentShip  = ship;
+  var fmt = function(n) { return '$' + parseFloat(n).toFixed(2); };
+  var pb = document.getElementById('lb-price-big');      if (pb) pb.textContent = fmt(price);
+  var fs = document.getElementById('lb-freeship');       if (fs) fs.style.display = (ship === 0 && price > 0) ? 'inline-flex' : 'none';
+  var si = document.getElementById('lb-sum-item');       if (si) si.textContent = fmt(price * qty);
+  var sl = document.getElementById('lb-sum-item-lbl');   if (sl) sl.textContent = qty > 1 ? 'Item ×' + qty : 'Item';
+  var ss = document.getElementById('lb-sum-ship');       if (ss) ss.textContent = ship === 0 ? 'FREE' : fmt(ship);
+  var st = document.getElementById('lb-sum-total');      if (st) st.textContent = fmt(price * qty + ship);
 }
 
 function lbQtyChange(delta) {
-  lbQty = Math.max(1, Math.min(10, lbQty + delta));
-  document.getElementById('lb-qty-display').textContent = lbQty;
-  if (lbSelected) updateLbSummary();
+  var qty = (window.lbCurrentQty || 1) + delta;
+  if (qty < 1) qty = 1;
+  if (qty > 10) qty = 10;
+  window.lbCurrentQty = qty;
+  var el = document.getElementById('lb-qty');
+  if (el) el.textContent = qty;
+  lbApplyPrice(window.lbCurrentPrice || 0, window.lbCurrentShip || 0);
 }
 
 function updateLbSummary() {
@@ -1652,40 +1770,27 @@ function updateLbSummary() {
 }
 
 function lbBuyNow() {
-  if (!lbSelected) {
-    alert('Please select an option above.');
-    return;
-  }
-  const { key, opt, shipping, total } = lbSelected;
-  const desc = encodeURIComponent(`${key}: ${opt.label}`);
-  const paypalURL = `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick` +
-    `&business=${encodeURIComponent('picswelove2024@gmail.com')}` +
-    `&item_name=${desc}` +
-    `&amount=${total.toFixed(2)}` +
-    `&currency_code=USD` +
-    `&shipping=0` +
-    `&no_shipping=2` +
-    `&return=${encodeURIComponent('https://homoohno-coder.github.io/funtravel/')}` +
-    `&cancel_return=${encodeURIComponent('https://homoohno-coder.github.io/funtravel/')}`;
-
-  // Notify Elena
-  const subject = encodeURIComponent(`Order: ${key} — ${opt.label}`);
-  const body = encodeURIComponent(`Hi Elena,
-
-I just purchased via PayPal:
-
-Item: ${key}
-Option: ${opt.label}
-Price: $${opt.price.toFixed(2)}
-Shipping: $${shipping.toFixed(2)}
-Total: $${total.toFixed(2)}
-
-Please confirm my order.
-
-Thank you`);
-  window.open(`mailto:picswelove2024@gmail.com?subject=${subject}&body=${body}`, '_blank');
-  
-  setTimeout(() => { window.location.href = paypalURL; }, 600);
+  var product = window.lbCurrentProduct || '';
+  var price   = window.lbCurrentPrice   || 0;
+  var ship    = window.lbCurrentShip    || 0;
+  var qty     = window.lbCurrentQty     || 1;
+  if (!price) { alert('Please select an option first.'); return; }
+  var total   = (price * qty + ship).toFixed(2);
+  var desc    = product + (qty > 1 ? ' x' + qty : '');
+  var paypalUrl = 'https://www.paypal.com/cgi-bin/webscr' +
+    '?cmd=_xclick' +
+    '&business=picswelove2024%40gmail.com' +
+    '&item_name=' + encodeURIComponent(desc) +
+    '&amount=' + encodeURIComponent(total) +
+    '&currency_code=USD' +
+    '&shipping=0' +
+    '&no_shipping=2' +
+    '&return=https://homoohno-coder.github.io/funtravel/' +
+    '&cancel_return=https://homoohno-coder.github.io/funtravel/';
+  window.open(paypalUrl, '_blank');
+  var notifyUrl = 'mailto:picswelove2024@gmail.com?subject=' + encodeURIComponent('New Order: ' + desc) +
+    '&body=' + encodeURIComponent('Order received for: ' + desc + '\nTotal: $' + total + '\n\nPlease confirm with customer.');
+  setTimeout(function() { window.open(notifyUrl); }, 800);
 }
 
 function renderLightbox() {
