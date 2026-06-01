@@ -929,6 +929,63 @@
       </div>
     </div>
 
+    <!-- 10: Bracelet Variety -->
+    <div class="product-card">
+      <div onclick="openLightbox('images/Resized_20260528_081218.jpeg?v=2','Bracelet Variety')" style="cursor:zoom-in;-webkit-tap-highlight-color:transparent;touch-action:manipulation;">
+        <img class="product-img" src="images/Resized_20260528_081218.jpeg?v=2" alt="Bracelet Variety">
+      </div>
+      <div class="product-info">
+        <h3 class="product-name">Beaded Bracelets — Select Style</h3>
+        <p class="product-desc">Handmade beaded bracelets, 8 inches including clasp. Select one or more styles below.</p>
+        <div class="product-pricing" id="bracelet-checks">
+          <label style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.3rem;cursor:pointer;">
+            <input type="checkbox" value="1" data-price="16" onchange="updateBraceletTotal()" style="accent-color:#c9714a;width:15px;height:15px;">
+            <span style="flex:1;font-size:0.82rem;">Bracelet #1</span>
+            <strong style="color:var(--terra);">$16</strong>
+          </label>
+          <label style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.3rem;cursor:pointer;">
+            <input type="checkbox" value="2" data-price="16" onchange="updateBraceletTotal()" style="accent-color:#c9714a;width:15px;height:15px;">
+            <span style="flex:1;font-size:0.82rem;">Bracelet #2</span>
+            <strong style="color:var(--terra);">$16</strong>
+          </label>
+          <label style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.3rem;cursor:pointer;">
+            <input type="checkbox" value="3" data-price="16" onchange="updateBraceletTotal()" style="accent-color:#c9714a;width:15px;height:15px;">
+            <span style="flex:1;font-size:0.82rem;">Bracelet #3</span>
+            <strong style="color:var(--terra);">$16</strong>
+          </label>
+          <label style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.3rem;cursor:pointer;">
+            <input type="checkbox" value="4" data-price="16" onchange="updateBraceletTotal()" style="accent-color:#c9714a;width:15px;height:15px;">
+            <span style="flex:1;font-size:0.82rem;">Bracelet #4</span>
+            <strong style="color:var(--terra);">$16</strong>
+          </label>
+          <label style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.3rem;cursor:pointer;">
+            <input type="checkbox" value="5" data-price="16" onchange="updateBraceletTotal()" style="accent-color:#c9714a;width:15px;height:15px;">
+            <span style="flex:1;font-size:0.82rem;">Bracelet #5</span>
+            <strong style="color:var(--terra);">$16</strong>
+          </label>
+          <label style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.3rem;cursor:pointer;">
+            <input type="checkbox" value="6" data-price="16" onchange="updateBraceletTotal()" style="accent-color:#c9714a;width:15px;height:15px;">
+            <span style="flex:1;font-size:0.82rem;">Bracelet #6</span>
+            <strong style="color:var(--terra);">$16</strong>
+          </label>
+          <label style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.3rem;cursor:pointer;">
+            <input type="checkbox" value="7" data-price="16" onchange="updateBraceletTotal()" style="accent-color:#c9714a;width:15px;height:15px;">
+            <span style="flex:1;font-size:0.82rem;">Bracelet #7</span>
+            <strong style="color:var(--terra);">$16</strong>
+          </label>
+          <label style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.3rem;cursor:pointer;">
+            <input type="checkbox" value="8" data-price="16" onchange="updateBraceletTotal()" style="accent-color:#c9714a;width:15px;height:15px;">
+            <span style="flex:1;font-size:0.82rem;">Bracelet #8</span>
+            <strong style="color:var(--terra);">$16</strong>
+          </label>
+          <div id="bracelet-total" style="display:none;margin-top:0.5rem;padding-top:0.5rem;border-top:1px solid #eee;font-size:0.82rem;color:var(--mid);">
+            Selected: <strong id="bracelet-total-val" style="color:var(--terra);"></strong>
+          </div>
+        </div>
+        <button class="btn-buy" onclick="buyBracelets()">Buy Now → PayPal</button>
+      </div>
+    </div>
+
   </div></section>
 
 <!-- PILLOWS -->
