@@ -3,113 +3,133 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fun Travel — Palette C: Boho Sunshine</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Nunito:wght@300;400;600&display=swap" rel="stylesheet">
+<title>Fun Travel — Option C</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
-* { margin:0; padding:0; box-sizing:border-box; }
-body { overflow:hidden; font-family:'Nunito',sans-serif; }
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{height:100%;overflow:hidden;font-family:'Nunito',sans-serif;}
 
-/* Warm gradient background */
-.bg { position:fixed; inset:0; background:linear-gradient(135deg,#F5E6D3 0%,#EDD5B5 30%,#D4B896 60%,#C4956A 100%); z-index:0; }
+/* WARM ANIMATED GRADIENT BG */
+.bg{position:fixed;inset:0;z-0;background:linear-gradient(135deg,#FDF6ED,#F5E8D4,#EDD9B8,#E8C99A);background-size:300% 300%;animation:bgShift 8s ease infinite;}
 
-/* Spinning mandala rings */
-.mandala { position:fixed; left:50%; top:50%; transform:translate(-50%,-50%); z-index:1; pointer-events:none; }
-.ring { position:absolute; border-radius:50%; border:1px solid; left:50%; top:50%; transform:translate(-50%,-50%); animation:spinRing linear infinite; }
+/* FLOATING POLAROIDS */
+.polaroids{position:fixed;inset:0;z-index:2;pointer-events:none;}
+.pol{position:absolute;background:white;padding:7px 7px 24px;border-radius:2px;box-shadow:0 6px 24px rgba(0,0,0,0.12);animation:polFloat ease-in-out infinite;}
+.pol img{width:100%;height:100%;object-fit:cover;display:block;}
+.pol-label{position:absolute;bottom:5px;left:0;right:0;text-align:center;font-size:0.6rem;color:#999;font-family:'Nunito',sans-serif;}
 
-/* Photo polaroids scattered and floating */
-.polaroids { position:fixed; inset:0; z-index:5; pointer-events:none; }
-.polaroid { position:absolute; background:white; padding:8px 8px 28px; border-radius:2px; box-shadow:0 4px 20px rgba(0,0,0,0.15); animation:sway ease-in-out infinite; transform-origin:top center; }
-.polaroid img { width:100%; height:100%; object-fit:cover; display:block; border-radius:1px; }
+/* CONFETTI STREAM */
+.confetti{position:fixed;inset:0;z-index:1;overflow:hidden;pointer-events:none;}
+.conf-dot{position:absolute;border-radius:50%;animation:confFall linear infinite;}
 
-/* Confetti dots */
-.confetti { position:fixed; inset:0; z-index:3; pointer-events:none; overflow:hidden; }
-.dot { position:absolute; border-radius:50%; animation:fall linear infinite; }
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:1.3rem 3rem;background:rgba(253,246,237,0.88);backdrop-filter:blur(10px);border-bottom:1px solid rgba(196,116,74,0.15);}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.4rem;color:#3D2B1F;}
+.nav-logo em{font-style:italic;color:#C4744A;}
+.nav-tag{font-size:0.68rem;color:#9B7A5E;letter-spacing:0.1em;font-weight:300;}
+.nav-btn{display:inline-flex;gap:0.5rem;align-items:center;padding:0.6rem 1.6rem;background:#C4744A;color:white;text-decoration:none;font-size:0.75rem;font-weight:600;letter-spacing:0.08em;border-radius:100px;transition:all 0.2s;box-shadow:0 3px 12px rgba(196,116,74,0.3);}
+.nav-btn:hover{background:#a85e38;transform:scale(1.03);}
 
-/* Center */
-.center { position:fixed; inset:0; z-index:20; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:2rem; }
-.badge { display:inline-flex; align-items:center; gap:0.5rem; background:white; border-radius:100px; padding:0.4rem 1rem; font-size:0.72rem; letter-spacing:0.1em; color:#8B5E3C; margin-bottom:1.5rem; animation:popIn 0.6s cubic-bezier(0.34,1.56,0.64,1) both; box-shadow:0 2px 12px rgba(0,0,0,0.1); }
-h1 { font-family:'Playfair Display',serif; font-size:clamp(3.5rem,9vw,8rem); line-height:1; color:#3D2B1F; animation:popIn 0.6s cubic-bezier(0.34,1.56,0.64,1) 0.15s both; }
-h1 em { font-style:italic; color:#C4744A; display:block; }
-.tagline { font-size:1rem; font-weight:300; color:#6B4C35; margin:1.2rem 0 2rem; max-width:380px; line-height:1.7; animation:popIn 0.6s cubic-bezier(0.34,1.56,0.64,1) 0.3s both; }
-.enter-btn { display:inline-flex; align-items:center; gap:0.6rem; padding:0.9rem 2.5rem; background:#C4744A; color:white; text-decoration:none; font-size:0.85rem; font-weight:600; letter-spacing:0.08em; border-radius:100px; animation:popIn 0.6s cubic-bezier(0.34,1.56,0.64,1) 0.45s both; transition:transform 0.2s, box-shadow 0.2s; box-shadow:0 4px 20px rgba(196,116,74,0.45); }
-.enter-btn:hover { transform:translateY(-2px) scale(1.03); box-shadow:0 8px 28px rgba(196,116,74,0.55); }
+/* HERO */
+.hero{position:fixed;inset:0;z-index:20;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:5rem 4rem 3rem;gap:3rem;}
+.hero-left{}
+.stamp{display:inline-flex;align-items:center;gap:0.4rem;background:white;border-radius:100px;padding:0.4rem 1rem;font-size:0.7rem;color:#8B5E3C;margin-bottom:1.5rem;box-shadow:0 2px 10px rgba(0,0,0,0.08);animation:popUp 0.7s cubic-bezier(.34,1.56,.64,1) both;}
+h1{font-family:'Playfair Display',serif;font-size:clamp(3rem,7vw,6rem);color:#3D2B1F;line-height:1;animation:popUp 0.7s cubic-bezier(.34,1.56,.64,1) 0.1s both;}
+h1 em{font-style:italic;color:#C4744A;display:block;}
+.tagline{font-size:0.95rem;font-weight:300;color:#6B4C35;line-height:1.75;margin:1.3rem 0 2rem;max-width:380px;animation:popUp 0.7s cubic-bezier(.34,1.56,.64,1) 0.2s both;}
+.btns{display:flex;gap:0.8rem;flex-wrap:wrap;animation:popUp 0.7s cubic-bezier(.34,1.56,.64,1) 0.3s both;}
+.btn-a{display:inline-block;padding:0.85rem 2.2rem;background:#C4744A;color:white;text-decoration:none;font-size:0.8rem;font-weight:700;letter-spacing:0.06em;border-radius:100px;box-shadow:0 4px 18px rgba(196,116,74,0.35);transition:all 0.2s;}
+.btn-a:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(196,116,74,0.45);}
+.btn-b{display:inline-block;padding:0.85rem 2.2rem;background:white;color:#C4744A;text-decoration:none;font-size:0.8rem;font-weight:600;letter-spacing:0.06em;border-radius:100px;border:1.5px solid rgba(196,116,74,0.3);transition:all 0.2s;}
+.btn-b:hover{border-color:#C4744A;background:#FFF5EF;}
 
-.palette-label { position:fixed; top:1.5rem; left:50%; transform:translateX(-50%); background:#3D2B1F; color:#EDD5B5; font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; padding:0.4rem 1rem; border-radius:100px; z-index:30; }
+/* RIGHT — grid mosaic */
+.hero-right{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:0.75rem;height:60vh;animation:popUp 0.8s ease 0.2s both;}
+.grid-img{border-radius:10px;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,0.12);}
+.grid-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s;}
+.grid-img:hover img{transform:scale(1.04);}
+.grid-img:nth-child(1){grid-row:span 2;}
+.grid-img:nth-child(3){border-radius:50%;box-shadow:0 6px 24px rgba(196,116,74,0.25);}
 
-@keyframes popIn { from{opacity:0;transform:scale(0.8) translateY(20px)} to{opacity:1;transform:scale(1) translateY(0)} }
-@keyframes spinRing { from{transform:translate(-50%,-50%) rotate(0deg)} to{transform:translate(-50%,-50%) rotate(360deg)} }
-@keyframes sway { 0%,100%{transform:rotate(var(--tilt)) translateY(0)} 50%{transform:rotate(calc(var(--tilt)*-0.6)) translateY(-8px)} }
-@keyframes fall { 0%{transform:translateY(-20px) rotate(0deg);opacity:1} 100%{transform:translateY(110vh) rotate(360deg);opacity:0} }
+/* TRUST BAR */
+.trust{position:fixed;bottom:0;left:0;right:0;z-index:50;background:white;border-top:1px solid rgba(196,116,74,0.12);display:flex;justify-content:center;gap:4rem;padding:0.7rem;}
+.trust-item{display:flex;align-items:center;gap:0.4rem;font-size:0.72rem;color:#9B7A5E;font-weight:400;}
+
+.palette-badge{position:fixed;top:1.4rem;left:50%;transform:translateX(-50%);background:#3D2B1F;color:#EDD5B5;font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.35rem 1rem;border-radius:100px;z-index:100;}
+
+@keyframes bgShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+@keyframes popUp{from{opacity:0;transform:scale(0.9) translateY(16px)}to{opacity:1;transform:scale(1) translateY(0)}}
+@keyframes polFloat{0%,100%{transform:rotate(var(--r)) translateY(0)}50%{transform:rotate(calc(var(--r)*-.7)) translateY(-10px)}}
+@keyframes confFall{0%{transform:translateY(-20px) rotate(0);opacity:1}100%{transform:translateY(105vh) rotate(360deg);opacity:0}}
 </style>
 </head>
 <body>
 <div class="bg"></div>
-
-<!-- Mandala rings -->
-<div class="mandala">
-  <div class="ring" style="width:300px;height:300px;border-color:rgba(196,116,74,0.15);animation-duration:30s;"></div>
-  <div class="ring" style="width:500px;height:500px;border-color:rgba(196,116,74,0.1);animation-duration:45s;animation-direction:reverse;"></div>
-  <div class="ring" style="width:700px;height:700px;border-color:rgba(196,116,74,0.07);animation-duration:60s;"></div>
-  <div class="ring" style="width:900px;height:900px;border-color:rgba(139,94,60,0.05);animation-duration:80s;animation-direction:reverse;"></div>
-  <div class="ring" style="width:1100px;height:1100px;border-color:rgba(139,94,60,0.04);animation-duration:100s;"></div>
-</div>
-
-<!-- Confetti -->
 <div class="confetti" id="confetti"></div>
-
-<!-- Polaroid photos -->
 <div class="polaroids" id="polaroids"></div>
 
-<div class="palette-label">Option C — Boho Sunshine</div>
+<div class="palette-badge">Option C — Boho Sunshine</div>
 
-<div class="center">
-  <div class="badge">🌸 Handmade in the USA</div>
-  <h1>Fun<em>Travel</em></h1>
-  <p class="tagline">Jewelry & travel pillows made with heart. Affordable, colorful, and built for adventure.</p>
-  <a href="index.html" class="enter-btn">Shop the Collection →</a>
+<nav>
+  <div>
+    <div class="nav-logo">Fun <em>Travel</em></div>
+    <div class="nav-tag">Handmade Jewelry & Travel Pillows</div>
+  </div>
+  <a href="index.html" class="nav-btn">Shop Now →</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-left">
+    <div class="stamp">🌸 Handmade in the USA</div>
+    <h1>Color.<br>Joy.<em>Travel.</em></h1>
+    <p class="tagline">Beaded jewelry & travel pillows made with love. Affordable pieces that are happy to go wherever you go.</p>
+    <div class="btns">
+      <a href="index.html#jewelry" class="btn-a">Shop Jewelry</a>
+      <a href="index.html#pillows" class="btn-b">Shop Pillows</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="grid-img"><img src="images/Resized_20260531_100501.jpeg" alt=""></div>
+    <div class="grid-img"><img src="images/Resized_20260301_063640_1_.jpeg" alt=""></div>
+    <div class="grid-img"><img src="images/IMG_3530.jpeg" alt=""></div>
+    <div class="grid-img"><img src="images/Resized_20260531_100359.jpeg" alt=""></div>
+  </div>
+</div>
+
+<!-- Trust bar -->
+<div class="trust">
+  <div class="trust-item">✦ <span>Handmade in the USA</span></div>
+  <div class="trust-item">📦 <span>Ships Nationwide</span></div>
+  <div class="trust-item">💳 <span>Secure PayPal Checkout</span></div>
+  <div class="trust-item">↩ <span>15-Day Returns</span></div>
 </div>
 
 <script>
-const photos = [
-  {src:'images/Resized_20260531_102550.jpeg', w:130, h:130},
-  {src:'images/Resized_20260531_100359.jpeg', w:110, h:140},
-  {src:'images/Resized_20260301_063640_1_.jpeg', w:150, h:120},
-  {src:'images/Resized_20260531_100501.jpeg', w:120, h:130},
-  {src:'images/Resized_20260529_085416.jpeg', w:140, h:110},
-  {src:'images/Resized_20260531_100506.jpeg', w:115, h:135},
-  {src:'images/IMG_3530.jpeg', w:125, h:125},
-  {src:'images/Resized_20260531_102515.jpeg', w:135, h:115},
+// Scattered polaroids — edges only
+const pols = document.getElementById('polaroids');
+const polSrcs = [
+  {src:'images/Resized_20260531_102550.jpeg',pos:'left:2%;top:15%',r:-8},
+  {src:'images/Resized_20260529_085416.jpeg',pos:'right:2%;top:20%',r:6},
+  {src:'images/Resized_20260531_102515.jpeg',pos:'left:1%;bottom:15%',r:5},
+  {src:'images/Resized_20260531_102628.jpeg',pos:'right:1%;bottom:20%',r:-7},
 ];
-
-// Scatter polaroids around edges
-const positions = [
-  {left:'2%',top:'5%'},{left:'78%',top:'3%'},{left:'85%',top:'55%'},
-  {left:'75%',top:'78%'},{left:'3%',top:'68%'},{left:'1%',top:'35%'},
-  {left:'65%',top:'20%'},{left:'15%',top:'80%'},
-];
-
-const polaroidEl = document.getElementById('polaroids');
-photos.forEach((p, i) => {
-  const pos = positions[i % positions.length];
-  const tilt = (Math.random()-0.5)*18;
-  const dur = 3 + Math.random()*3;
-  const delay = Math.random()*-6;
-  const el = document.createElement('div');
-  el.className = 'polaroid';
-  el.style.cssText = `width:${p.w}px;height:${p.h}px;left:${pos.left};top:${pos.top};--tilt:${tilt}deg;animation-duration:${dur}s;animation-delay:${delay}s;`;
-  el.innerHTML = `<img src="${p.src}" alt="">`;
-  polaroidEl.appendChild(el);
+polSrcs.forEach(p=>{
+  const el=document.createElement('div');
+  el.className='pol';
+  el.style.cssText=`${p.pos};width:100px;height:100px;--r:${p.r}deg;animation-duration:${3+Math.random()*2}s;animation-delay:${Math.random()*-4}s;`;
+  el.innerHTML=`<img src="${p.src}" alt=""><div class="pol-label">Fun Travel</div>`;
+  pols.appendChild(el);
 });
 
-// Confetti dots
-const confetti = document.getElementById('confetti');
-const dotColors = ['#C4744A','#8B9E72','#E8C4A0','#D4965A','#7A8F5F','#EDD5B5'];
-for(let i=0; i<35; i++) {
-  const d = document.createElement('div');
-  d.className = 'dot';
-  const size = 4 + Math.random()*8;
-  d.style.cssText = `width:${size}px;height:${size}px;background:${dotColors[Math.floor(Math.random()*dotColors.length)]};left:${Math.random()*100}%;top:${-size}px;animation-duration:${8+Math.random()*12}s;animation-delay:${Math.random()*-15}s;opacity:${0.4+Math.random()*0.5};`;
-  confetti.appendChild(d);
+// Confetti
+const conf=document.getElementById('confetti');
+const colors=['#C4744A','#8B9E72','#E8C4A0','#D4965A','#F5C8A0','#A8C090'];
+for(let i=0;i<25;i++){
+  const d=document.createElement('div');
+  d.className='conf-dot';
+  const s=3+Math.random()*7;
+  d.style.cssText=`width:${s}px;height:${s}px;background:${colors[Math.floor(Math.random()*colors.length)]};left:${Math.random()*100}%;animation-duration:${10+Math.random()*15}s;animation-delay:${Math.random()*-20}s;opacity:${0.3+Math.random()*0.5};`;
+  conf.appendChild(d);
 }
 </script>
 </body>
