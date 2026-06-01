@@ -1249,6 +1249,16 @@
           <div id="lb-options" style="display:flex; flex-direction:column; gap:0.35rem;"></div>
         </div>
 
+        <!-- Quantity selector -->
+        <div id="lb-qty-row" style="display:none; align-items:center; gap:0.8rem;">
+          <p style="font-size:0.67rem; letter-spacing:0.15em; text-transform:uppercase; color:rgba(255,255,255,0.38); flex-shrink:0;">Quantity:</p>
+          <div style="display:flex; align-items:center; gap:0; border:1px solid rgba(255,255,255,0.15); border-radius:3px; overflow:hidden;">
+            <button onclick="lbQtyChange(-1)" style="background:rgba(255,255,255,0.08); border:none; color:white; width:36px; height:36px; font-size:1.2rem; cursor:pointer; display:flex; align-items:center; justify-content:center; -webkit-tap-highlight-color:transparent; line-height:1;">−</button>
+            <span id="lb-qty-display" style="min-width:36px; text-align:center; color:white; font-size:0.95rem; font-weight:500; background:rgba(255,255,255,0.04);">1</span>
+            <button onclick="lbQtyChange(1)" style="background:rgba(255,255,255,0.08); border:none; color:white; width:36px; height:36px; font-size:1.2rem; cursor:pointer; display:flex; align-items:center; justify-content:center; -webkit-tap-highlight-color:transparent; line-height:1;">+</button>
+          </div>
+        </div>
+
         <div id="lb-selected-box" style="display:none; background:rgba(201,168,76,0.08); border:1px solid rgba(201,168,76,0.2); border-radius:3px; padding:0.9rem; font-size:0.78rem; color:rgba(255,255,255,0.75); line-height:1.8;"></div>
 
         <div style="flex:1;"></div>
@@ -1446,6 +1456,7 @@ const lbCatalog = {
 };
 
 let lbSelected = null;
+let lbQty = 1;
 
 function renderLightboxBuyPanel(caption) {
   const panel = document.getElementById('lb-options');
@@ -1453,6 +1464,11 @@ function renderLightboxBuyPanel(caption) {
   panel.innerHTML = '';
   selBox.style.display = 'none';
   lbSelected = null;
+  lbQty = 1;
+  const qtyRow = document.getElementById('lb-qty-row');
+  if (qtyRow) qtyRow.style.display = 'none';
+  const qtyDisp = document.getElementById('lb-qty-display');
+  if (qtyDisp) qtyDisp.textContent = '1';
 
   // Find matching product
   const key = Object.keys(lbCatalog).find(k => caption.includes(k) || k.includes(caption) || caption === k);
@@ -1487,25 +1503,41 @@ function renderLightboxBuyPanel(caption) {
 function lbSelectOption(key, idx) {
   const product = lbCatalog[key];
   const opt = product.options[idx];
-  const total = opt.price + product.shipping;
-  lbSelected = { key, opt, shipping: product.shipping, total };
+  lbSelected = { key, opt, shipping: product.shipping, total: opt.price + product.shipping, subtotal: opt.price };
+  lbQty = 1;
+  document.getElementById('lb-qty-display').textContent = '1';
+  document.getElementById('lb-qty-row').style.display = 'flex';
+  updateLbSummary();
+}
 
+function lbQtyChange(delta) {
+  lbQty = Math.max(1, Math.min(10, lbQty + delta));
+  document.getElementById('lb-qty-display').textContent = lbQty;
+  if (lbSelected) updateLbSummary();
+}
+
+function updateLbSummary() {
+  const { key, opt, shipping } = lbSelected;
+  const subtotal = opt.price * lbQty;
+  const total = subtotal + shipping;
   const box = document.getElementById('lb-selected-box');
   box.style.display = 'block';
   box.innerHTML = `
     <div style="display:flex;justify-content:space-between;margin-bottom:0.3rem;">
-      <span style="color:rgba(255,255,255,0.5);">${opt.label}</span>
-      <span>$${opt.price.toFixed(2)}</span>
+      <span style="color:rgba(255,255,255,0.5);">${opt.label} × ${lbQty}</span>
+      <span>$${subtotal.toFixed(2)}</span>
     </div>
     <div style="display:flex;justify-content:space-between;margin-bottom:0.5rem;">
       <span style="color:rgba(255,255,255,0.5);">Shipping</span>
-      <span>$${product.shipping.toFixed(2)}</span>
+      <span>$${shipping.toFixed(2)}</span>
     </div>
-    <div style="display:flex;justify-content:space-between;border-top:1px solid rgba(201,168,76,0.2);padding-top:0.4rem;">
+    <div style="display:flex;justify-content:space-between;border-top:1px solid rgba(201,168,76,0.2);padding-top:0.5rem;">
       <span style="color:#c9a84c;font-weight:500;">Total</span>
       <span style="color:#c9a84c;font-weight:500;">$${total.toFixed(2)}</span>
     </div>
   `;
+  lbSelected.total = total;
+  lbSelected.subtotal = subtotal;
 }
 
 function lbBuyNow() {
