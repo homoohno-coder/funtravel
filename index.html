@@ -49,6 +49,7 @@
     font-weight: 700;
     color: var(--terra);
     letter-spacing: 0.02em;
+    white-space: nowrap;
   }
 
   .nav-logo span {
@@ -287,7 +288,7 @@
 
   .product-img {
     width: 100%;
-    height: 300px;
+    height: 280px;
     object-fit: cover;
     object-position: top center;
     display: block;
@@ -703,8 +704,10 @@
 
   /* RESPONSIVE */
   @media (max-width: 768px) {
-    nav { padding: 1rem 1.5rem; }
-    nav ul { gap: 1.2rem; }
+    nav { padding: 0.8rem 1rem; }
+    nav ul { gap: 0.8rem; }
+    nav ul a { font-size: 0.72rem; letter-spacing: 0.06em; }
+    .nav-logo { font-size: 1.1rem; }
     .hero { grid-template-columns: 1fr; }
     .hero-image { height: 50vw; }
     .hero-text { padding: 3rem 1.5rem; }
@@ -781,7 +784,7 @@
     <!-- Best Seller 1 -->
     <div style="background:white; border-radius:4px; overflow:hidden; border:2px solid #c9a84c; position:relative;">
       <div style="position:absolute; top:1rem; left:1rem; background:#c9a84c; color:white; font-size:0.7rem; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; padding:0.3rem 0.8rem; border-radius:2px;">⭐ Best Seller</div>
-      <img src="images/Resized_20260531_100359.jpeg" alt="Earth and Fire Bead Set" style="width:100%; height:220px; object-fit:cover; display:block;">
+      <img src="images/Resized_20260528_081417.jpeg" alt="Earth and Fire Bead Set" style="width:100%; height:220px; object-fit:cover; display:block;">
       <div style="padding:1.2rem 1.4rem 1.6rem;">
         <h3 style="font-family:'Playfair Display',serif; font-size:1.05rem; color:#1a1a18; margin-bottom:0.4rem;">Earth & Fire Bead Set</h3>
         <p style="font-size:0.8rem; font-weight:300; color:#4a4540; line-height:1.5; margin-bottom:0.8rem;">Coral-orange and earthy wooden beads with a natural tribal warmth. Necklace, bracelet & earrings.</p>
@@ -1446,7 +1449,7 @@ const catalog = {
     setPrice: 55, setLabel: 'Full Set (Necklace + Bracelet + Earrings)'
   },
   'Earth & Fire Bead Set': {
-    img: 'images/Resized_20260531_100359.jpeg',
+    img: 'images/Resized_20260528_081417.jpeg',
     items: [
       { label: 'Necklace (16 in.)', price: 29 },
       { label: 'Bracelet (8 in.)', price: 16 },
