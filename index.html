@@ -665,6 +665,15 @@
 </head>
 <body>
 
+<!-- TRUST BAR -->
+<div style="background:#213b48; color:rgba(255,255,255,0.85); font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; text-align:center; padding:0.5rem 1rem; display:flex; align-items:center; justify-content:center; gap:2rem; flex-wrap:wrap;">
+  <span>✦ Handmade in the USA</span>
+  <span>✦ Ships Nationwide</span>
+  <span>✦ Secure PayPal Checkout</span>
+  <span>✦ 15-Day Returns</span>
+  <span>✦ Made by Elena</span>
+</div>
+
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo" style="text-decoration:none;">Fun <span>Travel</span></a>
@@ -759,6 +768,13 @@
 
 <!-- JEWELRY -->
 <section id="jewelry">
+    <!-- BREADCRUMB -->
+  <div style="font-size:0.75rem; color:var(--mid); margin-bottom:1rem; display:flex; align-items:center; gap:0.4rem;">
+    <a href="#" style="color:var(--mid); text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='var(--terra)'" onmouseout="this.style.color='var(--mid)'">Home</a>
+    <span>›</span>
+    <span style="color:var(--terra);">Handmade Jewelry</span>
+  </div>
+
   <div class="jewelry-header">
     <div>
       <p class="section-label">Handcrafted Collection</p>
@@ -767,7 +783,22 @@
     </div>
   </div>
 
-    <div class="product-grid">
+    
+  <!-- SORT BAR -->
+  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem; padding-bottom:1rem; border-bottom:1px solid rgba(0,0,0,0.08);">
+    <p style="font-size:0.8rem; color:var(--mid);">Showing <strong>9</strong> handmade jewelry items</p>
+    <div style="display:flex; align-items:center; gap:0.5rem;">
+      <label style="font-size:0.78rem; color:var(--mid);">Sort by:</label>
+      <select onchange="sortProducts(this.value)" style="font-size:0.78rem; padding:0.4rem 0.8rem; border:1px solid rgba(0,0,0,0.15); border-radius:3px; background:white; color:var(--deep); cursor:pointer;">
+        <option value="default">Featured</option>
+        <option value="price-low">Price: Low to High</option>
+        <option value="price-high">Price: High to Low</option>
+        <option value="name">Name A–Z</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="product-grid" id="main-product-grid">
 
     <!-- 1: Kelly Green & Black -->
     <div class="product-card">
@@ -777,12 +808,14 @@
       </div>
       <div class="product-info">
         <h3 class="product-name">Kelly Green &amp; Black Beads with African Tube Beads</h3>
+        <div style="display:flex; align-items:center; gap:0.3rem; margin:-0.3rem 0 0.2rem;"><span style="color:#f0b000; font-size:0.8rem;">☆☆☆☆☆</span><span style="font-size:0.7rem; color:#999;">New</span></div>
         <p class="product-desc">Necklace 15.5 inches including clasp.</p>
         <div class="product-pricing">
           <div>Necklace — <strong>$29</strong></div>
           <div>Bracelet (8 in.) — <strong>$16</strong></div>
           <div>Earrings — <strong>$15</strong></div>
           <div>Full Set — <strong>$55</strong></div>
+          <div style="margin-top:0.4rem;"><span style="background:#fff3e0; color:#e07000; font-size:0.68rem; font-weight:500; letter-spacing:0.05em; padding:0.2rem 0.6rem; border-radius:100px; border:1px solid rgba(224,112,0,0.2);">Free shipping on full set orders $50+</span></div>
         </div>
         <button class="btn-buy" onclick="openOrder('Kelly Green & Black Beads with African Tube Beads', this)">Buy Now → PayPal</button>
       </div>
@@ -802,6 +835,7 @@
           <div>Bracelet (8 in.) — <strong>$16</strong></div>
           <div>Earrings — <strong>$15</strong></div>
           <div>Full Set — <strong>$55</strong></div>
+          <div style="margin-top:0.4rem;"><span style="background:#fff3e0; color:#e07000; font-size:0.68rem; font-weight:500; letter-spacing:0.05em; padding:0.2rem 0.6rem; border-radius:100px; border:1px solid rgba(224,112,0,0.2);">Free shipping on full set orders $50+</span></div>
         </div>
         <button class="btn-buy" onclick="openOrder('Wood & Orange Synthetic Beads', this)">Buy Now → PayPal</button>
       </div>
@@ -821,6 +855,7 @@
           <div>Bracelet (8 in.) — <strong>$16</strong></div>
           <div>Earrings — <strong>$15</strong></div>
           <div>Full Set — <strong>$55</strong></div>
+          <div style="margin-top:0.4rem;"><span style="background:#fff3e0; color:#e07000; font-size:0.68rem; font-weight:500; letter-spacing:0.05em; padding:0.2rem 0.6rem; border-radius:100px; border:1px solid rgba(224,112,0,0.2);">Free shipping on full set orders $50+</span></div>
         </div>
         <button class="btn-buy" onclick="openOrder('Fuchsia & Black Beads with African Tube Beads', this)">Buy Now → PayPal</button>
       </div>
@@ -840,6 +875,7 @@
           <div>Bracelet (8 in.) — <strong>$16</strong></div>
           <div>Earrings — <strong>$15</strong></div>
           <div>Full Set — <strong>$55</strong></div>
+          <div style="margin-top:0.4rem;"><span style="background:#fff3e0; color:#e07000; font-size:0.68rem; font-weight:500; letter-spacing:0.05em; padding:0.2rem 0.6rem; border-radius:100px; border:1px solid rgba(224,112,0,0.2);">Free shipping on full set orders $50+</span></div>
         </div>
         <button class="btn-buy" onclick="openOrder('Kelly Green Glass & Orange Synthetic Beads', this)">Buy Now → PayPal</button>
       </div>
@@ -859,6 +895,7 @@
           <div>Bracelet (8 in.) — <strong>$16</strong></div>
           <div>Earrings — <strong>$15</strong></div>
           <div>Full Set — <strong>$55</strong></div>
+          <div style="margin-top:0.4rem;"><span style="background:#fff3e0; color:#e07000; font-size:0.68rem; font-weight:500; letter-spacing:0.05em; padding:0.2rem 0.6rem; border-radius:100px; border:1px solid rgba(224,112,0,0.2);">Free shipping on full set orders $50+</span></div>
         </div>
         <button class="btn-buy" onclick="openOrder('Fun Bead Mix', this)">Buy Now → PayPal</button>
       </div>
@@ -2016,5 +2053,28 @@ function closeOrder() {
 
 <a href="#" style="position:fixed; bottom:5rem; right:1.2rem; z-index:500; background:var(--terra); color:white; width:42px; height:42px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.1rem; text-decoration:none; box-shadow:0 4px 16px rgba(201,113,74,0.4); -webkit-tap-highlight-color:transparent; opacity:0.85;" title="Back to top">↑</a>
 
+<script>
+function sortProducts(val) {
+  const grid = document.getElementById('main-product-grid');
+  if (!grid) return;
+  const cards = Array.from(grid.querySelectorAll('.product-card'));
+  cards.sort((a, b) => {
+    if (val === 'price-low' || val === 'price-high') {
+      const getPrice = el => {
+        const prices = el.querySelectorAll('.product-pricing strong');
+        if (!prices.length) return 0;
+        return parseFloat(prices[0].textContent.replace('$',''));
+      };
+      return val === 'price-low' ? getPrice(a) - getPrice(b) : getPrice(b) - getPrice(a);
+    }
+    if (val === 'name') {
+      const getName = el => el.querySelector('.product-name')?.textContent || '';
+      return getName(a).localeCompare(getName(b));
+    }
+    return 0;
+  });
+  cards.forEach(c => grid.appendChild(c));
+}
+</script>
 </body>
 </html>
