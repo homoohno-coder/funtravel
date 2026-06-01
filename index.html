@@ -1439,6 +1439,7 @@ function openLightbox(src, caption) {
     currentIdx = allImages.length - 1;
   }
   renderLightbox();
+  renderLightboxBuyPanel(caption);
   const lb = document.getElementById('lightbox');
   lb.style.display = 'block';
   document.body.style.overflow = 'hidden';
@@ -1774,7 +1775,7 @@ function lbBuyNow() {
   var price   = window.lbCurrentPrice   || 0;
   var ship    = window.lbCurrentShip    || 0;
   var qty     = window.lbCurrentQty     || 1;
-  if (!price) { alert('Please select an option first.'); return; }
+  if (!price) { alert('Please select an option above, then tap Buy Now.'); return; }
   var total   = (price * qty + ship).toFixed(2);
   var desc    = product + (qty > 1 ? ' x' + qty : '');
   var paypalUrl = 'https://www.paypal.com/cgi-bin/webscr' +
