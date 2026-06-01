@@ -667,7 +667,7 @@
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">Fun <span>Travel</span></div>
+  <a href="#" class="nav-logo" style="text-decoration:none;">Fun <span>Travel</span></a>
   <ul>
     <li><a href="#bestsellers">Favorites</a></li>
     <li><a href="#jewelry">Jewelry</a></li>
@@ -1215,58 +1215,80 @@
 
 
 <!-- ───── LIGHTBOX ───── -->
-<div id="lightbox" style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.96); flex-direction:column; align-items:stretch;">
+<div id="lightbox" style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.97);">
 
-  <canvas id="lb-canvas" style="position:absolute; inset:0; width:100%; height:100%; opacity:0.2; pointer-events:none;"></canvas>
+  <canvas id="lb-canvas" style="position:absolute; inset:0; width:100%; height:100%; opacity:0.15; pointer-events:none;"></canvas>
 
-  <!-- Top bar -->
-  <div style="position:relative; z-index:30; display:flex; justify-content:space-between; align-items:center; padding:0.8rem 1.2rem; border-bottom:1px solid rgba(255,255,255,0.08); flex-shrink:0;">
-    <div style="font-family:'Playfair Display',serif; font-size:1rem; color:white;">Fun <span style="color:#c9a84c;">Travel</span></div>
-    <p id="lb-counter" style="color:rgba(255,255,255,0.35); font-size:0.75rem; letter-spacing:0.08em;"></p>
-    <button onclick="closeLightbox()" style="background:rgba(255,255,255,0.1); border:none; color:white; font-size:1.3rem; cursor:pointer; width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; -webkit-tap-highlight-color:transparent;">✕</button>
-  </div>
+  <!-- CLOSE -->
+  <button onclick="closeLightbox()" style="position:absolute; top:0.8rem; right:0.8rem; z-index:100; background:rgba(255,255,255,0.12); border:none; color:white; font-size:1.2rem; width:42px; height:42px; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; -webkit-tap-highlight-color:transparent;">✕</button>
 
-  <!-- Main body: image + buy panel -->
-  <div id="lb-body" style="display:flex; flex:1; overflow:hidden; min-height:0;">
+  <!-- COUNTER -->
+  <p id="lb-counter" style="position:absolute; top:1rem; left:50%; transform:translateX(-50%); z-index:100; color:rgba(255,255,255,0.3); font-size:0.72rem; letter-spacing:0.1em; pointer-events:none;"></p>
 
-    <!-- Image pane -->
-    <div style="position:relative; flex:1; display:flex; align-items:center; justify-content:center; min-width:0; padding:1rem 3.5rem;">
-      <button onclick="prevImage()" style="position:absolute; left:0.4rem; top:50%; transform:translateY(-50%); background:rgba(255,255,255,0.12); border:none; color:white; font-size:1.8rem; width:48px; height:48px; border-radius:50%; cursor:pointer; z-index:20; display:flex; align-items:center; justify-content:center; -webkit-tap-highlight-color:transparent; flex-shrink:0;">‹</button>
-      <img id="lb-img" src="" alt="" style="max-width:100%; max-height:100%; object-fit:contain; border-radius:4px; box-shadow:0 12px 48px rgba(0,0,0,0.6); transition:opacity 0.25s;">
-      <button onclick="nextImage()" style="position:absolute; right:0.4rem; top:50%; transform:translateY(-50%); background:rgba(255,255,255,0.12); border:none; color:white; font-size:1.8rem; width:48px; height:48px; border-radius:50%; cursor:pointer; z-index:20; display:flex; align-items:center; justify-content:center; -webkit-tap-highlight-color:transparent; flex-shrink:0;">›</button>
+  <!-- WRAPPER: image left, panel right -->
+  <div style="position:absolute; inset:0; top:0; bottom:70px; display:flex; flex-direction:row;">
+
+    <!-- IMAGE SIDE -->
+    <div style="position:relative; flex:1; display:flex; align-items:center; justify-content:center; padding:3rem 3.5rem; min-width:0;">
+      <button onclick="prevImage()" style="position:absolute; left:0.5rem; top:50%; transform:translateY(-50%); background:rgba(255,255,255,0.1); border:none; color:white; font-size:2rem; width:50px; height:50px; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; -webkit-tap-highlight-color:transparent;">‹</button>
+      <img id="lb-img" src="" alt="" style="max-width:100%; max-height:100%; object-fit:contain; border-radius:4px; box-shadow:0 16px 60px rgba(0,0,0,0.7); transition:opacity 0.25s;">
+      <button onclick="nextImage()" style="position:absolute; right:0.5rem; top:50%; transform:translateY(-50%); background:rgba(255,255,255,0.1); border:none; color:white; font-size:2rem; width:50px; height:50px; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; -webkit-tap-highlight-color:transparent;">›</button>
     </div>
 
-    <!-- Buy panel -->
-    <div id="lb-buy-panel" style="width:300px; flex-shrink:0; background:rgba(20,18,14,0.95); border-left:1px solid rgba(255,255,255,0.08); display:flex; flex-direction:column; overflow-y:auto;">
+    <!-- BUY PANEL -->
+    <div id="lb-buy-panel" style="width:290px; flex-shrink:0; background:rgba(15,12,8,0.98); border-left:1px solid rgba(255,255,255,0.08); display:flex; flex-direction:column; overflow-y:auto;">
+      <div style="padding:1.5rem; display:flex; flex-direction:column; gap:1rem; min-height:100%;">
 
-      <div style="padding:1.4rem; flex:1; display:flex; flex-direction:column; gap:0.8rem;">
-        <p style="font-size:0.62rem; letter-spacing:0.22em; text-transform:uppercase; color:#c9a84c;">Select &amp; Buy</p>
-        <h3 id="lb-caption" style="font-family:'Playfair Display',serif; font-size:0.95rem; color:white; line-height:1.35; margin:0;"></h3>
-
-        <!-- Options -->
         <div>
-          <p id="lb-opt-label" style="font-size:0.67rem; letter-spacing:0.15em; text-transform:uppercase; color:rgba(255,255,255,0.38); margin-bottom:0.5rem;"></p>
+          <p style="font-size:0.6rem; letter-spacing:0.25em; text-transform:uppercase; color:#c9a84c; margin-bottom:0.4rem;">Fun Travel</p>
+          <h3 id="lb-caption" style="font-family:'Playfair Display',serif; font-size:0.95rem; color:white; line-height:1.4; margin:0;"></h3>
+        </div>
+
+        <div>
+          <p id="lb-opt-label" style="font-size:0.65rem; letter-spacing:0.15em; text-transform:uppercase; color:rgba(255,255,255,0.35); margin-bottom:0.6rem;">Select Option:</p>
           <div id="lb-options" style="display:flex; flex-direction:column; gap:0.35rem;"></div>
         </div>
 
-        <!-- Price summary -->
-        <div id="lb-selected-box" style="display:none; background:rgba(201,168,76,0.08); border:1px solid rgba(201,168,76,0.2); border-radius:3px; padding:0.8rem; font-size:0.78rem; color:rgba(255,255,255,0.7); line-height:1.7;"></div>
+        <div id="lb-selected-box" style="display:none; background:rgba(201,168,76,0.08); border:1px solid rgba(201,168,76,0.2); border-radius:3px; padding:0.9rem; font-size:0.78rem; color:rgba(255,255,255,0.75); line-height:1.8;"></div>
 
-        <!-- Spacer -->
         <div style="flex:1;"></div>
 
-        <!-- Buy button -->
-        <button id="lb-buy-btn" onclick="lbBuyNow()" style="width:100%; padding:0.9rem; background:#c9714a; color:white; border:none; border-radius:3px; font-family:'Jost',sans-serif; font-size:0.8rem; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; cursor:pointer; -webkit-tap-highlight-color:transparent; transition:background 0.2s;">
-          Buy Now → PayPal
-        </button>
-        <p style="font-size:0.62rem; color:rgba(255,255,255,0.22); text-align:center; line-height:1.5; margin-top:-0.2rem;">Secure PayPal · Ships within 3–5 days</p>
+        <div>
+          <button onclick="lbBuyNow()" style="width:100%; padding:1rem; background:#c9714a; color:white; border:none; border-radius:3px; font-family:'Jost',sans-serif; font-size:0.82rem; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; cursor:pointer; -webkit-tap-highlight-color:transparent; transition:background 0.2s; margin-bottom:0.6rem;">
+            Buy Now → PayPal
+          </button>
+          <p style="font-size:0.62rem; color:rgba(255,255,255,0.2); text-align:center; line-height:1.5;">Secure PayPal checkout · Ships 3–5 days</p>
+        </div>
+
       </div>
     </div>
+
   </div>
 
-  <!-- Thumbnail strip -->
-  <div id="lb-thumbs" style="flex-shrink:0; display:flex; gap:0.4rem; padding:0.6rem 1rem; background:rgba(0,0,0,0.4); overflow-x:auto; border-top:1px solid rgba(255,255,255,0.06); z-index:30;"></div>
+  <!-- THUMBNAIL STRIP -->
+  <div id="lb-thumbs" style="position:absolute; bottom:0; left:0; right:0; height:70px; display:flex; align-items:center; gap:0.4rem; padding:0 1rem; background:rgba(0,0,0,0.6); overflow-x:auto; z-index:50; border-top:1px solid rgba(255,255,255,0.06);"></div>
+
 </div>
+
+<style>
+/* Mobile lightbox stacks vertically */
+@media (max-width:680px) {
+  #lb-buy-panel {
+    position:fixed !important;
+    bottom:70px !important;
+    left:0 !important;
+    right:0 !important;
+    width:100% !important;
+    height:auto !important;
+    max-height:45vh !important;
+    border-left:none !important;
+    border-top:1px solid rgba(255,255,255,0.1) !important;
+  }
+  #lightbox > div:not(canvas):not(button):not(p):not(#lb-thumbs) {
+    bottom:calc(45vh + 70px) !important;
+  }
+}
+</style>
 <script>
 // ── ALL IMAGES ──
 const allImages = [
@@ -1298,7 +1320,7 @@ function openLightbox(src, caption) {
   }
   renderLightbox();
   const lb = document.getElementById('lightbox');
-  lb.style.display = 'flex';
+  lb.style.display = 'block';
   document.body.style.overflow = 'hidden';
   startCanvasAnimation('lb-canvas');
   buildThumbs();
@@ -1959,6 +1981,9 @@ function closeOrder() {
   document.body.style.overflow = '';
 }
 </script>
+
+
+<a href="#" style="position:fixed; bottom:5rem; right:1.2rem; z-index:500; background:var(--terra); color:white; width:42px; height:42px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.1rem; text-decoration:none; box-shadow:0 4px 16px rgba(201,113,74,0.4); -webkit-tap-highlight-color:transparent; opacity:0.85;" title="Back to top">↑</a>
 
 </body>
 </html>
