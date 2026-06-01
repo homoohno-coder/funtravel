@@ -649,17 +649,15 @@
   }
 
   @media (max-width: 700px) {
-    #lightbox > div:nth-child(4) {
+    #lb-body {
       flex-direction: column !important;
     }
     #lb-buy-panel {
       width: 100% !important;
       border-left: none !important;
-      border-top: 1px solid rgba(255,255,255,0.08);
-      max-height: 40vh !important;
-    }
-    #lb-thumbs {
-      right: 0 !important;
+      border-top: 1px solid rgba(255,255,255,0.08) !important;
+      max-height: 45vh !important;
+      flex-shrink: 0 !important;
     }
   }
 
@@ -1217,120 +1215,58 @@
 
 
 <!-- ───── LIGHTBOX ───── -->
-<div id="lightbox" style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.95); align-items:center; justify-content:center; flex-direction:column;">
-  <canvas id="lb-canvas" style="position:absolute; inset:0; width:100%; height:100%; opacity:0.3;"></canvas>
+<div id="lightbox" style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.96); flex-direction:column; align-items:stretch;">
 
-  <button onclick="closeLightbox()" style="position:absolute; top:1rem; right:1rem; background:rgba(255,255,255,0.15); border:none; color:white; font-size:1.8rem; cursor:pointer; z-index:10; line-height:1; width:48px; height:48px; border-radius:50%; display:flex; align-items:center; justify-content:center; -webkit-tap-highlight-color:transparent;">✕</button>
+  <canvas id="lb-canvas" style="position:absolute; inset:0; width:100%; height:100%; opacity:0.2; pointer-events:none;"></canvas>
 
-  <button onclick="prevImage()" style="position:absolute; left:0.5rem; top:50%; transform:translateY(-50%); background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.2); color:white; font-size:1.8rem; width:52px; height:52px; border-radius:50%; cursor:pointer; z-index:10; display:flex; align-items:center; justify-content:center; -webkit-tap-highlight-color:transparent;">‹</button>
-  <button onclick="nextImage()" style="position:absolute; right:0.5rem; top:50%; transform:translateY(-50%); background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.2); color:white; font-size:1.8rem; width:52px; height:52px; border-radius:50%; cursor:pointer; z-index:10; display:flex; align-items:center; justify-content:center; -webkit-tap-highlight-color:transparent;">›</button>
-
-  <div style="position:relative; z-index:10; display:flex; flex-direction:column; align-items:center; max-width:90vw; max-height:85vh;">
-    <img id="lb-img" src="" alt="" style="max-width:100%; max-height:75vh; object-fit:contain; border-radius:4px; box-shadow:0 20px 80px rgba(0,0,0,0.8); transition:opacity 0.3s;">
-    <p id="lb-caption" style="color:rgba(255,255,255,0.7); margin-top:1.2rem; font-family:'Jost',sans-serif; font-size:0.85rem; letter-spacing:0.1em; text-align:center;"></p>
-    <p id="lb-counter" style="color:rgba(255,255,255,0.35); margin-top:0.3rem; font-size:0.75rem; letter-spacing:0.08em;"></p>
+  <!-- Top bar -->
+  <div style="position:relative; z-index:30; display:flex; justify-content:space-between; align-items:center; padding:0.8rem 1.2rem; border-bottom:1px solid rgba(255,255,255,0.08); flex-shrink:0;">
+    <div style="font-family:'Playfair Display',serif; font-size:1rem; color:white;">Fun <span style="color:#c9a84c;">Travel</span></div>
+    <p id="lb-counter" style="color:rgba(255,255,255,0.35); font-size:0.75rem; letter-spacing:0.08em;"></p>
+    <button onclick="closeLightbox()" style="background:rgba(255,255,255,0.1); border:none; color:white; font-size:1.3rem; cursor:pointer; width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; -webkit-tap-highlight-color:transparent;">✕</button>
   </div>
 
-  <div id="lb-thumbs" style="position:absolute; bottom:1.5rem; left:50%; transform:translateX(-50%); display:flex; gap:0.5rem; z-index:10; max-width:90vw; overflow-x:auto; padding:0.5rem;"></div>
-</div>
+  <!-- Main body: image + buy panel -->
+  <div id="lb-body" style="display:flex; flex:1; overflow:hidden; min-height:0;">
 
-
-<!-- ───── GALLERY PAGE ───── -->
-<div id="gallery-page" style="display:none; position:fixed; inset:0; z-index:9998; overflow-y:auto; background:#0d0d0b;">
-  <canvas id="gallery-canvas" style="position:fixed; inset:0; width:100%; height:100%; opacity:0.25; pointer-events:none;"></canvas>
-
-  <div style="position:relative; z-index:10; padding:4rem 3rem;">
-    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:3rem;">
-      <div style="font-family:'Playfair Display',serif; font-size:1.8rem; color:white;">Fun <span style="color:#c9a84c;">Travel</span> <span style="font-size:1rem; font-weight:300; color:rgba(255,255,255,0.4); font-family:'Jost',sans-serif;">Gallery</span></div>
-      <button onclick="closeGallery()" style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); color:white; padding:0.5rem 1.2rem; border-radius:2px; cursor:pointer; font-family:'Jost',sans-serif; font-size:0.8rem; letter-spacing:0.1em;">← Back to Shop</button>
-    </div>
-    <div id="gallery-grid" style="columns:3; column-gap:1rem; gap:1rem;"></div>
-  </div>
-</div>
-
-
-<!-- ───── ORDER PANEL ───── -->
-<div id="order-panel" style="display:none; position:fixed; inset:0; z-index:9997; background:rgba(10,10,8,0.97); overflow-y:auto;">
-  <canvas id="order-canvas" style="position:fixed; inset:0; width:100%; height:100%; opacity:0.2; pointer-events:none;"></canvas>
-
-  <div style="position:relative; z-index:10; max-width:680px; margin:0 auto; padding:3rem 2rem 5rem;">
-
-    <!-- Header -->
-    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:2.5rem;">
-      <div>
-        <p style="font-size:0.7rem; letter-spacing:0.2em; text-transform:uppercase; color:#c9a84c; margin-bottom:0.3rem;">Fun Travel</p>
-        <h2 style="font-family:'Playfair Display',serif; font-size:1.8rem; color:white;">Your Order</h2>
-      </div>
-      <button onclick="closeOrder()" style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); color:white; padding:0.5rem 1.2rem; border-radius:2px; cursor:pointer; font-family:'Jost',sans-serif; font-size:0.8rem; letter-spacing:0.1em;">✕ Close</button>
+    <!-- Image pane -->
+    <div style="position:relative; flex:1; display:flex; align-items:center; justify-content:center; min-width:0; padding:1rem 3.5rem;">
+      <button onclick="prevImage()" style="position:absolute; left:0.4rem; top:50%; transform:translateY(-50%); background:rgba(255,255,255,0.12); border:none; color:white; font-size:1.8rem; width:48px; height:48px; border-radius:50%; cursor:pointer; z-index:20; display:flex; align-items:center; justify-content:center; -webkit-tap-highlight-color:transparent; flex-shrink:0;">‹</button>
+      <img id="lb-img" src="" alt="" style="max-width:100%; max-height:100%; object-fit:contain; border-radius:4px; box-shadow:0 12px 48px rgba(0,0,0,0.6); transition:opacity 0.25s;">
+      <button onclick="nextImage()" style="position:absolute; right:0.4rem; top:50%; transform:translateY(-50%); background:rgba(255,255,255,0.12); border:none; color:white; font-size:1.8rem; width:48px; height:48px; border-radius:50%; cursor:pointer; z-index:20; display:flex; align-items:center; justify-content:center; -webkit-tap-highlight-color:transparent; flex-shrink:0;">›</button>
     </div>
 
-    <!-- Product image + name -->
-    <div id="order-product-header" style="display:flex; gap:1.2rem; align-items:center; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:4px; padding:1.2rem; margin-bottom:2rem;">
-      <img id="order-img" src="" alt="" style="width:90px; height:90px; object-fit:cover; border-radius:3px; flex-shrink:0; cursor:zoom-in;" onclick="openLightbox(this.src, '')">
-      <div>
-        <p style="font-size:0.7rem; letter-spacing:0.15em; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:0.3rem;">Selected Item</p>
-        <h3 id="order-product-name" style="font-family:'Playfair Display',serif; color:white; font-size:1.1rem;"></h3>
-        <button onclick="openLightbox(document.getElementById('order-img').src, '')" style="background:none; border:none; color:#c9a84c; font-size:0.75rem; cursor:pointer; padding:0; margin-top:0.4rem; letter-spacing:0.05em;">🔍 View full image</button>
-      </div>
-    </div>
+    <!-- Buy panel -->
+    <div id="lb-buy-panel" style="width:300px; flex-shrink:0; background:rgba(20,18,14,0.95); border-left:1px solid rgba(255,255,255,0.08); display:flex; flex-direction:column; overflow-y:auto;">
 
-    <!-- Item selection checkboxes -->
-    <div style="margin-bottom:2rem;">
-      <p style="font-size:0.75rem; letter-spacing:0.15em; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-bottom:1rem;">Select Items</p>
-      <div id="order-items" style="display:flex; flex-direction:column; gap:0.6rem;"></div>
-    </div>
+      <div style="padding:1.4rem; flex:1; display:flex; flex-direction:column; gap:0.8rem;">
+        <p style="font-size:0.62rem; letter-spacing:0.22em; text-transform:uppercase; color:#c9a84c;">Select &amp; Buy</p>
+        <h3 id="lb-caption" style="font-family:'Playfair Display',serif; font-size:0.95rem; color:white; line-height:1.35; margin:0;"></h3>
 
-    <!-- Contact info -->
-    <div style="margin-bottom:2rem;">
-      <p style="font-size:0.75rem; letter-spacing:0.15em; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-bottom:1rem;">Your Contact Info</p>
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.8rem;">
+        <!-- Options -->
         <div>
-          <label style="font-size:0.75rem; color:rgba(255,255,255,0.4); display:block; margin-bottom:0.3rem;">First Name *</label>
-          <input id="cf-fname" type="text" placeholder="Jane" style="width:100%; padding:0.7rem 0.9rem; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.15); color:white; border-radius:2px; font-family:'Jost',sans-serif; font-size:0.85rem;">
+          <p id="lb-opt-label" style="font-size:0.67rem; letter-spacing:0.15em; text-transform:uppercase; color:rgba(255,255,255,0.38); margin-bottom:0.5rem;"></p>
+          <div id="lb-options" style="display:flex; flex-direction:column; gap:0.35rem;"></div>
         </div>
-        <div>
-          <label style="font-size:0.75rem; color:rgba(255,255,255,0.4); display:block; margin-bottom:0.3rem;">Last Name *</label>
-          <input id="cf-lname" type="text" placeholder="Smith" style="width:100%; padding:0.7rem 0.9rem; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.15); color:white; border-radius:2px; font-family:'Jost',sans-serif; font-size:0.85rem;">
-        </div>
-        <div style="grid-column:1/-1;">
-          <label style="font-size:0.75rem; color:rgba(255,255,255,0.4); display:block; margin-bottom:0.3rem;">Email Address *</label>
-          <input id="cf-email" type="email" placeholder="jane@example.com" style="width:100%; padding:0.7rem 0.9rem; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.15); color:white; border-radius:2px; font-family:'Jost',sans-serif; font-size:0.85rem;">
-        </div>
-        <div style="grid-column:1/-1;">
-          <label style="font-size:0.75rem; color:rgba(255,255,255,0.4); display:block; margin-bottom:0.3rem;">Phone Number</label>
-          <input id="cf-phone" type="tel" placeholder="(555) 000-0000" style="width:100%; padding:0.7rem 0.9rem; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.15); color:white; border-radius:2px; font-family:'Jost',sans-serif; font-size:0.85rem;">
-        </div>
-        <div style="grid-column:1/-1;">
-          <label style="font-size:0.75rem; color:rgba(255,255,255,0.4); display:block; margin-bottom:0.3rem;">Shipping Address *</label>
-          <input id="cf-address" type="text" placeholder="123 Main St, City, State, ZIP" style="width:100%; padding:0.7rem 0.9rem; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.15); color:white; border-radius:2px; font-family:'Jost',sans-serif; font-size:0.85rem;">
-        </div>
-        <div style="grid-column:1/-1;">
-          <label style="font-size:0.75rem; color:rgba(255,255,255,0.4); display:block; margin-bottom:0.3rem;">Notes / Additional Info</label>
-          <textarea id="cf-notes" placeholder="Any special requests, gift messages, etc." rows="3" style="width:100%; padding:0.7rem 0.9rem; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.15); color:white; border-radius:2px; font-family:'Jost',sans-serif; font-size:0.85rem; resize:vertical;"></textarea>
-        </div>
+
+        <!-- Price summary -->
+        <div id="lb-selected-box" style="display:none; background:rgba(201,168,76,0.08); border:1px solid rgba(201,168,76,0.2); border-radius:3px; padding:0.8rem; font-size:0.78rem; color:rgba(255,255,255,0.7); line-height:1.7;"></div>
+
+        <!-- Spacer -->
+        <div style="flex:1;"></div>
+
+        <!-- Buy button -->
+        <button id="lb-buy-btn" onclick="lbBuyNow()" style="width:100%; padding:0.9rem; background:#c9714a; color:white; border:none; border-radius:3px; font-family:'Jost',sans-serif; font-size:0.8rem; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; cursor:pointer; -webkit-tap-highlight-color:transparent; transition:background 0.2s;">
+          Buy Now → PayPal
+        </button>
+        <p style="font-size:0.62rem; color:rgba(255,255,255,0.22); text-align:center; line-height:1.5; margin-top:-0.2rem;">Secure PayPal · Ships within 3–5 days</p>
       </div>
     </div>
-
-    <!-- Order summary -->
-    <div id="order-summary-box" style="background:rgba(201,168,76,0.08); border:1px solid rgba(201,168,76,0.25); border-radius:4px; padding:1.2rem; margin-bottom:1.5rem; display:none;">
-      <p style="font-size:0.75rem; letter-spacing:0.15em; text-transform:uppercase; color:#c9a84c; margin-bottom:0.8rem;">Order Summary</p>
-      <div id="order-summary-list" style="font-size:0.82rem; color:rgba(255,255,255,0.7); line-height:1.8;"></div>
-      <div style="border-top:1px solid rgba(201,168,76,0.2); margin-top:0.8rem; padding-top:0.8rem; display:flex; justify-content:space-between;">
-        <span style="color:rgba(255,255,255,0.5); font-size:0.8rem;">Estimated Total</span>
-        <span id="order-total" style="color:#c9a84c; font-weight:500; font-size:1rem;"></span>
-      </div>
-    </div>
-
-    <!-- Pay button -->
-    <button onclick="sendOrder()" style="width:100%; padding:1rem; background:#c9714a; color:white; border:none; border-radius:2px; font-family:'Jost',sans-serif; font-size:0.9rem; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; cursor:pointer; transition:background 0.2s;" onmouseover="this.style.background='#b85e38'" onmouseout="this.style.background='#c9714a'">
-      Pay with PayPal →
-    </button>
-    <p style="text-align:center; font-size:0.75rem; color:rgba(255,255,255,0.3); margin-top:0.8rem;">PayPal opens in a new tab. Your order details are also emailed to Elena so she can fulfill your order.</p>
-
   </div>
+
+  <!-- Thumbnail strip -->
+  <div id="lb-thumbs" style="flex-shrink:0; display:flex; gap:0.4rem; padding:0.6rem 1rem; background:rgba(0,0,0,0.4); overflow-x:auto; border-top:1px solid rgba(255,255,255,0.06); z-index:30;"></div>
 </div>
-
-
 <script>
 // ── ALL IMAGES ──
 const allImages = [
