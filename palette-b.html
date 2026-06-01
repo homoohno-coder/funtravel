@@ -3,115 +3,135 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fun Travel — Palette B: Midnight Luxe</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&family=Jost:wght@200;400&display=swap" rel="stylesheet">
+<title>Fun Travel — Option B</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300;1,500&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
 <style>
-* { margin:0; padding:0; box-sizing:border-box; }
-body { background:#0a0a12; overflow:hidden; font-family:'Jost',sans-serif; }
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{height:100%;overflow:hidden;font-family:'Jost',sans-serif;background:#0e0e16;}
 
-canvas#stars { position:fixed; inset:0; z-index:0; }
+/* CINEMATIC PHOTO REEL — full bleed, sliding */
+.reel{position:fixed;inset:0;z-index:0;display:flex;animation:reelScroll 30s linear infinite;}
+.reel-img{flex-shrink:0;width:40vw;height:100vh;object-fit:cover;filter:brightness(0.35) saturate(0.8);}
 
-/* Floating photo mosaic */
-.mosaic { position:fixed; inset:0; z-index:1; pointer-events:none; }
-.mosaic-img { position:absolute; border-radius:3px; overflow:hidden; animation:drift linear infinite; }
-.mosaic-img img { width:100%; height:100%; object-fit:cover; filter:brightness(0.5) sepia(0.3); transition:filter 0.5s; }
-.mosaic-img:hover img { filter:brightness(0.8) sepia(0.1); }
+/* RADIAL GOLD VIGNETTE */
+.vignette{position:fixed;inset:0;z-index:2;background:radial-gradient(ellipse at 50% 50%,rgba(14,14,22,0) 20%,rgba(14,14,22,0.92) 80%);}
 
-/* Gold shimmer overlay */
-.shimmer { position:fixed; inset:0; z-index:2; background:radial-gradient(ellipse at 50% 50%, rgba(212,175,55,0.08) 0%, transparent 70%); pointer-events:none; animation:shimmerPulse 4s ease-in-out infinite; }
+/* GOLDEN PARTICLE CANVAS */
+canvas{position:fixed;inset:0;z-index:3;pointer-events:none;}
 
-/* Center */
-.center { position:fixed; inset:0; z-index:20; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:2rem; }
-.eyebrow { font-size:0.65rem; letter-spacing:0.35em; text-transform:uppercase; color:#D4AF37; margin-bottom:2rem; animation:fadeIn 1s ease both; }
-.eyebrow::before, .eyebrow::after { content:'——'; margin:0 1rem; opacity:0.5; }
-h1 { font-family:'Cormorant Garamond',serif; font-size:clamp(4.5rem,11vw,10rem); font-weight:300; color:white; line-height:0.9; animation:fadeIn 1s ease 0.3s both; letter-spacing:-0.02em; }
-h1 em { font-style:italic; color:#D4AF37; }
-.divider { width:60px; height:1px; background:linear-gradient(90deg,transparent,#D4AF37,transparent); margin:2rem auto; animation:fadeIn 1s ease 0.5s both; }
-.sub { font-size:0.9rem; font-weight:200; color:rgba(255,255,255,0.5); line-height:1.8; max-width:360px; animation:fadeIn 1s ease 0.6s both; margin-bottom:2.5rem; letter-spacing:0.05em; }
-.enter-btn { display:inline-block; padding:1rem 3rem; border:1px solid #D4AF37; color:#D4AF37; text-decoration:none; font-size:0.75rem; font-weight:400; letter-spacing:0.25em; text-transform:uppercase; animation:fadeIn 1s ease 0.8s both; transition:all 0.3s; }
-.enter-btn:hover { background:#D4AF37; color:#0a0a12; }
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:1.8rem 3rem;border-bottom:1px solid rgba(212,175,55,0.15);}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;color:white;letter-spacing:0.15em;text-transform:uppercase;}
+.nav-logo em{font-style:italic;color:#D4AF37;}
+.nav-links{display:flex;gap:2.5rem;}
+.nav-links a{text-decoration:none;font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.45);transition:color 0.2s;}
+.nav-links a:hover{color:#D4AF37;}
+.nav-enter{padding:0.55rem 1.6rem;border:1px solid #D4AF37;color:#D4AF37;text-decoration:none;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;transition:all 0.25s;}
+.nav-enter:hover{background:#D4AF37;color:#0e0e16;}
 
-/* Bottom gallery strip */
-.gallery-strip { position:fixed; bottom:3rem; left:0; right:0; z-index:10; display:flex; gap:0.5rem; padding:0 2rem; overflow:hidden; height:80px; }
-.strip-img { flex-shrink:0; width:120px; height:80px; border-radius:2px; overflow:hidden; animation:stripScroll 20s linear infinite; opacity:0.4; }
-.strip-img img { width:100%; height:100%; object-fit:cover; }
+/* CENTER HERO */
+.center{position:fixed;inset:0;z-index:20;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem;}
+.pre{font-size:0.65rem;letter-spacing:0.4em;text-transform:uppercase;color:#D4AF37;margin-bottom:2rem;animation:riseUp 1s ease both;}
+.pre::before,.pre::after{content:'—';margin:0 0.8rem;opacity:0.4;}
+h1{font-family:'Cormorant Garamond',serif;font-size:clamp(5rem,12vw,11rem);font-weight:300;color:white;line-height:0.88;letter-spacing:-0.02em;animation:riseUp 1s ease 0.2s both;}
+h1 em{font-style:italic;color:#D4AF37;display:block;}
+.rule{width:80px;height:1px;background:linear-gradient(90deg,transparent,#D4AF37,transparent);margin:2.2rem auto;animation:riseUp 1s ease 0.4s both;}
+.sub{font-size:0.9rem;font-weight:200;color:rgba(255,255,255,0.45);letter-spacing:0.08em;line-height:1.9;max-width:420px;animation:riseUp 1s ease 0.5s both;margin-bottom:2.5rem;}
+.btn-enter{display:inline-block;padding:1rem 3.5rem;border:1px solid rgba(212,175,55,0.6);color:#D4AF37;text-decoration:none;font-size:0.72rem;letter-spacing:0.25em;text-transform:uppercase;animation:riseUp 1s ease 0.7s both;transition:all 0.3s;position:relative;overflow:hidden;}
+.btn-enter::before{content:'';position:absolute;inset:0;background:#D4AF37;transform:translateX(-101%);transition:transform 0.3s;}
+.btn-enter:hover::before{transform:translateX(0);}
+.btn-enter span{position:relative;z-index:1;transition:color 0.3s;}
+.btn-enter:hover span{color:#0e0e16;}
 
-.palette-label { position:fixed; top:1.5rem; left:50%; transform:translateX(-50%); background:rgba(212,175,55,0.15); color:#D4AF37; border:1px solid rgba(212,175,55,0.3); font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; padding:0.4rem 1rem; border-radius:2px; z-index:30; }
+/* BOTTOM PHOTO STRIP */
+.strip{position:fixed;bottom:0;left:0;right:0;height:100px;z-index:15;overflow:hidden;display:flex;gap:3px;}
+.strip-img{flex-shrink:0;width:160px;height:100px;overflow:hidden;animation:stripMove 25s linear infinite;opacity:0.35;border-top:1px solid rgba(212,175,55,0.2);}
+.strip-img img{width:100%;height:100%;object-fit:cover;}
+.strip-img:nth-child(even){animation-direction:reverse;animation-duration:18s;}
 
-@keyframes fadeIn { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
-@keyframes drift { 0%{transform:translateY(0) rotate(var(--rot))} 100%{transform:translateY(-110vh) rotate(var(--rot))} }
-@keyframes shimmerPulse { 0%,100%{opacity:0.6} 50%{opacity:1} }
-@keyframes stripScroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+/* PALETTE BADGE */
+.badge{position:fixed;top:1.5rem;left:50%;transform:translateX(-50%);z-index:100;background:rgba(212,175,55,0.12);border:1px solid rgba(212,175,55,0.3);color:#D4AF37;font-size:0.62rem;letter-spacing:0.25em;text-transform:uppercase;padding:0.35rem 1rem;}
+
+@keyframes riseUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes reelScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes stripMove{from{transform:translateX(0)}to{transform:translateX(-200%)}}
 </style>
 </head>
 <body>
-<canvas id="stars"></canvas>
-<div class="mosaic" id="mosaic"></div>
-<div class="shimmer"></div>
 
-<div class="palette-label">Option B — Midnight Luxe</div>
+<!-- Cinematic reel -->
+<div class="reel">
+  <img class="reel-img" src="images/Resized_20260531_100359.jpeg" alt="">
+  <img class="reel-img" src="images/Resized_20260531_100501.jpeg" alt="">
+  <img class="reel-img" src="images/IMG_3530.jpeg" alt="">
+  <img class="reel-img" src="images/Resized_20260301_063640_1_.jpeg" alt="">
+  <img class="reel-img" src="images/Resized_20260529_085416.jpeg" alt="">
+  <img class="reel-img" src="images/Resized_20260531_102515.jpeg" alt="">
+  <!-- Duplicate for seamless loop -->
+  <img class="reel-img" src="images/Resized_20260531_100359.jpeg" alt="">
+  <img class="reel-img" src="images/Resized_20260531_100501.jpeg" alt="">
+  <img class="reel-img" src="images/IMG_3530.jpeg" alt="">
+  <img class="reel-img" src="images/Resized_20260301_063640_1_.jpeg" alt="">
+  <img class="reel-img" src="images/Resized_20260529_085416.jpeg" alt="">
+  <img class="reel-img" src="images/Resized_20260531_102515.jpeg" alt="">
+</div>
+
+<div class="vignette"></div>
+<canvas id="c"></canvas>
+
+<div class="badge">Option B — Midnight Luxe</div>
+
+<nav>
+  <div class="nav-logo">Fun <em>Travel</em></div>
+  <div class="nav-links">
+    <a href="index.html#jewelry">Jewelry</a>
+    <a href="index.html#pillows">Pillows</a>
+    <a href="index.html#about">About</a>
+  </div>
+  <a href="index.html" class="nav-enter">Enter</a>
+</nav>
 
 <div class="center">
-  <p class="eyebrow">Est. 2026 · Palm Desert</p>
-  <h1>Fun<br><em>Travel</em></h1>
-  <div class="divider"></div>
-  <p class="sub">Handcrafted jewelry & travel pillows made with care. Every piece tells a story.</p>
-  <a href="index.html" class="enter-btn">Enter the Collection</a>
+  <p class="pre">Handmade in the USA · Est. 2026</p>
+  <h1>Fun<em>Travel</em></h1>
+  <div class="rule"></div>
+  <p class="sub">Handcrafted jewelry & travel pillows. Every piece made with care, built for the journey.</p>
+  <a href="index.html" class="btn-enter"><span>Enter the Collection</span></a>
 </div>
 
 <!-- Bottom strip -->
-<div class="gallery-strip" id="galleryStrip"></div>
+<div class="strip">
+  <div class="strip-img"><img src="images/Resized_20260531_102550.jpeg" alt=""></div>
+  <div class="strip-img"><img src="images/Resized_20260531_100506.jpeg" alt=""></div>
+  <div class="strip-img"><img src="images/Resized_20260531_102628.jpeg" alt=""></div>
+  <div class="strip-img"><img src="images/Resized_20260529_091718.jpeg" alt=""></div>
+  <div class="strip-img"><img src="images/Resized_20260528_081417.jpeg" alt=""></div>
+  <div class="strip-img"><img src="images/Resized_20260531_100359.jpeg" alt=""></div>
+  <div class="strip-img"><img src="images/Resized_20260531_100501.jpeg" alt=""></div>
+  <div class="strip-img"><img src="images/IMG_3530.jpeg" alt=""></div>
+</div>
 
 <script>
-// Starfield
-const canvas = document.getElementById('stars');
+// Gold particles
+const canvas = document.getElementById('c');
 const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-const stars = Array.from({length:120}, () => ({
-  x: Math.random()*canvas.width, y: Math.random()*canvas.height,
-  r: Math.random()*1.5, a: Math.random(), speed: 0.002+Math.random()*0.003
+const particles = Array.from({length:60},()=>({
+  x:Math.random()*canvas.width, y:Math.random()*canvas.height,
+  vx:(Math.random()-.5)*0.4, vy:-0.3-Math.random()*0.5,
+  r:Math.random()*1.8, alpha:Math.random()
 }));
-function drawStars() {
+function draw(){
   ctx.clearRect(0,0,canvas.width,canvas.height);
-  stars.forEach(s => {
-    s.a += s.speed; if(s.a>1) s.a=0;
-    ctx.beginPath(); ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
-    ctx.fillStyle = `rgba(212,175,55,${Math.sin(s.a*Math.PI)})`;
-    ctx.fill();
+  particles.forEach(p=>{
+    p.x+=p.vx; p.y+=p.vy; p.alpha-=0.003;
+    if(p.alpha<=0){p.x=Math.random()*canvas.width;p.y=canvas.height+10;p.alpha=0.8;}
+    ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fillStyle=`rgba(212,175,55,${p.alpha})`; ctx.fill();
   });
-  requestAnimationFrame(drawStars);
+  requestAnimationFrame(draw);
 }
-drawStars();
-
-// Floating mosaic photos
-const photos = [
-  'images/Resized_20260531_102550.jpeg','images/Resized_20260531_100359.jpeg',
-  'images/Resized_20260301_063640_1_.jpeg','images/Resized_20260531_100501.jpeg',
-  'images/Resized_20260529_085416.jpeg','images/Resized_20260531_100506.jpeg',
-  'images/IMG_3530.jpeg','images/Resized_20260531_102515.jpeg',
-];
-const mosaic = document.getElementById('mosaic');
-photos.forEach((src, i) => {
-  const el = document.createElement('div');
-  const size = 120 + Math.random()*120;
-  const left = Math.random()*95;
-  const delay = Math.random()*-30;
-  const dur = 20 + Math.random()*20;
-  const rot = (Math.random()-0.5)*15;
-  el.className = 'mosaic-img';
-  el.style.cssText = `width:${size}px;height:${size}px;left:${left}%;top:110vh;--rot:${rot}deg;animation-duration:${dur}s;animation-delay:${delay}s;`;
-  el.innerHTML = `<img src="${src}" alt="">`;
-  mosaic.appendChild(el);
-});
-
-// Bottom strip
-const strip = document.getElementById('galleryStrip');
-[...photos,...photos].forEach(src => {
-  const d = document.createElement('div');
-  d.className = 'strip-img';
-  d.innerHTML = `<img src="${src}" alt="">`;
-  strip.appendChild(d);
-});
+draw();
 </script>
 </body>
 </html>
