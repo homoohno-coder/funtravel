@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fun Travel — Handmade Jewelry & Travel Pillows</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #faf7f2;
+    --warm-white: #fff9f0;
+    --terra: #c9714a;
+    --terra-light: #e8997a;
+    --deep: #1a1a18;
+    --mid: #4a4540;
+    --gold: #c9a84c;
+    --gold-light: #e8cf8a;
+    --soft-green: #7a9e7e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--cream);
+    color: var(--deep);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 3rem;
+    background: rgba(250, 247, 242, 0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(201,113,74,0.15);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--terra);
+    letter-spacing: 0.02em;
+  }
+
+  .nav-logo span {
+    color: var(--gold);
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2.5rem;
+  }
+
+  nav ul a {
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--mid);
+    transition: color 0.2s;
+  }
+
+  nav ul a:hover { color: var(--terra); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 80px;
+    background: var(--warm-white);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4rem 3rem 4rem 5rem;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    line-height: 1.1;
+    color: var(--deep);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--terra);
+  }
+
+  .hero-sub {
+    font-size: 1.05rem;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--mid);
+    max-width: 420px;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    padding: 0.85rem 2rem;
+    background: var(--terra);
+    color: white;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .btn-primary:hover {
+    background: #b85e38;
+    transform: translateY(-1px);
+  }
+
+  .btn-outline {
+    display: inline-block;
+    padding: 0.85rem 2rem;
+    border: 1.5px solid var(--terra);
+    color: var(--terra);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    transition: all 0.2s;
+  }
+
+  .btn-outline:hover {
+    background: var(--terra);
+    color: white;
+  }
+
+  .hero-image {
+    position: relative;
+    overflow: hidden;
+    animation: fadeIn 1s ease 0.3s both;
+  }
+
+  .hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .hero-badge {
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem;
+    background: var(--gold);
+    color: white;
+    padding: 0.6rem 1.2rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-radius: 2px;
+  }
+
+  /* MARQUEE */
+  .marquee-bar {
+    background: var(--terra);
+    color: white;
+    padding: 0.8rem 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .marquee-track {
+    display: inline-block;
+    animation: marquee 25s linear infinite;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .marquee-track span { margin: 0 2rem; }
+  .marquee-track .dot { color: var(--gold-light); }
+
+  /* SECTION SHELLS */
+  section { padding: 6rem 5rem; }
+
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    line-height: 1.2;
+    color: var(--deep);
+    margin-bottom: 1rem;
+  }
+
+  .section-sub {
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--mid);
+    line-height: 1.7;
+    max-width: 560px;
+    margin-bottom: 3rem;
+  }
+
+  /* JEWELRY SECTION */
+  #jewelry { background: var(--cream); }
+
+  .jewelry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .product-card {
+    background: white;
+    border-radius: 4px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+  }
+
+  .product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+  }
+
+  .product-img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    background: #f0ece6;
+  }
+
+  .product-img-placeholder {
+    width: 100%;
+    height: 240px;
+    background: linear-gradient(135deg, #f0ece6, #e8e0d5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: rgba(201,113,74,0.3);
+  }
+
+  .product-info {
+    padding: 1.2rem 1.4rem 1.6rem;
+  }
+
+  .product-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    color: var(--deep);
+    margin-bottom: 0.3rem;
+  }
+
+  .product-desc {
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: var(--mid);
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
+
+  .product-pricing {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    margin-bottom: 1rem;
+    font-size: 0.82rem;
+    color: var(--mid);
+  }
+
+  .product-pricing strong {
+    color: var(--terra);
+    font-weight: 500;
+  }
+
+  .product-tag {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: var(--gold);
+    color: white;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.6rem;
+    border-radius: 2px;
+  }
+
+  .btn-buy {
+    display: block;
+    width: 100%;
+    padding: 0.7rem;
+    background: var(--deep);
+    color: white;
+    text-align: center;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: background 0.2s;
+    text-decoration: none;
+  }
+
+  .btn-buy:hover { background: var(--terra); }
+
+  /* PILLOWS SECTION */
+  #pillows {
+    background: var(--deep);
+    color: white;
+  }
+
+  #pillows .section-title { color: white; }
+  #pillows .section-label { color: var(--gold-light); }
+  #pillows .section-sub { color: rgba(255,255,255,0.6); }
+
+  .pillows-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .pillow-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+
+  .pillow-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-3px);
+  }
+
+  .pillow-img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .pillow-info {
+    padding: 1.5rem;
+  }
+
+  .pillow-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: white;
+    margin-bottom: 0.5rem;
+  }
+
+  .pillow-desc {
+    font-size: 0.82rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .pillow-colors {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.2rem;
+  }
+
+  .color-dot {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.2);
+    title: attr(data-color);
+  }
+
+  .pillow-price {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+
+  .pillow-price small {
+    font-size: 0.75rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.4);
+    margin-left: 0.4rem;
+  }
+
+  .btn-buy-light {
+    display: block;
+    width: 100%;
+    padding: 0.7rem;
+    background: var(--gold);
+    color: var(--deep);
+    text-align: center;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: background 0.2s;
+    text-decoration: none;
+  }
+
+  .btn-buy-light:hover { background: var(--gold-light); }
+
+  /* ABOUT */
+  #about {
+    background: var(--warm-white);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .about-visual {
+    position: relative;
+  }
+
+  .about-visual-box {
+    background: linear-gradient(135deg, var(--terra-light), var(--terra));
+    border-radius: 4px;
+    height: 420px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    color: rgba(255,255,255,0.3);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-visual-box::after {
+    content: 'E';
+    position: absolute;
+    font-size: 12rem;
+    color: rgba(255,255,255,0.08);
+    bottom: -1rem;
+    right: 1rem;
+  }
+
+  .about-accent {
+    position: absolute;
+    bottom: -1rem;
+    right: -1rem;
+    width: 120px;
+    height: 120px;
+    background: var(--gold);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 0.9rem;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    line-height: 1.4;
+  }
+
+  .about-text .section-sub {
+    margin-bottom: 1.5rem;
+    max-width: 100%;
+  }
+
+  .about-stats {
+    display: flex;
+    gap: 2.5rem;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(201,113,74,0.2);
+  }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    color: var(--terra);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--mid);
+  }
+
+  /* SHIPPING */
+  #shipping {
+    background: #f0ece6;
+    text-align: center;
+  }
+
+  #shipping .section-title,
+  #shipping .section-label { text-align: center; }
+  #shipping .section-sub { margin: 0 auto 3rem; text-align: center; }
+
+  .shipping-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .shipping-card {
+    background: white;
+    padding: 2rem 1.5rem;
+    border-radius: 4px;
+    border-top: 3px solid var(--terra);
+  }
+
+  .shipping-icon { font-size: 2rem; margin-bottom: 1rem; }
+
+  .shipping-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    color: var(--deep);
+    margin-bottom: 0.5rem;
+  }
+
+  .shipping-detail {
+    font-size: 0.82rem;
+    font-weight: 300;
+    color: var(--mid);
+    line-height: 1.6;
+  }
+
+  .shipping-price {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--terra);
+    margin: 0.5rem 0;
+  }
+
+  /* CONTACT */
+  #contact {
+    background: var(--deep);
+    color: white;
+    text-align: center;
+  }
+
+  #contact .section-title { color: white; }
+  #contact .section-label { color: var(--gold-light); }
+
+  .contact-sub {
+    font-size: 1rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.55);
+    margin: 1rem auto 3rem;
+    max-width: 500px;
+    line-height: 1.7;
+  }
+
+  .contact-grid {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+  }
+
+  .contact-item a {
+    color: var(--gold-light);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+  }
+
+  .contact-item a:hover { color: white; }
+
+  .contact-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 0.3rem;
+  }
+
+  .paypal-note {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 0.8rem 1.5rem;
+    border-radius: 2px;
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.6);
+  }
+
+  /* FOOTER */
+  footer {
+    background: #111110;
+    color: rgba(255,255,255,0.3);
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.05em;
+  }
+
+  footer span { color: var(--terra); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    nav ul { gap: 1.2rem; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-image { height: 50vw; }
+    .hero-text { padding: 3rem 1.5rem; }
+    section { padding: 4rem 1.5rem; }
+    .pillows-grid { grid-template-columns: 1fr; }
+    #about { grid-template-columns: 1fr; gap: 2rem; }
+    .shipping-grid { grid-template-columns: 1fr; }
+    .contact-grid { gap: 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Fun <span>Travel</span></div>
+  <ul>
+    <li><a href="#jewelry">Jewelry</a></li>
+    <li><a href="#pillows">Pillows</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#shipping">Shipping</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <p class="hero-eyebrow">Handmade in the USA · Ships Nationwide</p>
+    <h1 class="hero-title">Travel in <em>style,</em><br>wear with joy.</h1>
+    <p class="hero-sub">Handcrafted beaded jewelry and colorful travel pillows made with care. Affordable, unique, and built for the journey — not the price tag.</p>
+    <div class="hero-ctas">
+      <a href="#jewelry" class="btn-primary">Shop Jewelry</a>
+      <a href="#pillows" class="btn-outline">Shop Pillows</a>
+    </div>
+  </div>
+  <div class="hero-image">
+    <img src="Resized_20260531_102550.jpeg" alt="Fun Travel handmade jewelry" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+    <div class="product-img-placeholder" style="height:100%; display:none;">✦</div>
+    <div class="hero-badge">New Collection 2026</div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-bar">
+  <div class="marquee-track">
+    <span>Handmade Jewelry</span><span class="dot">✦</span>
+    <span>Travel Pillows</span><span class="dot">✦</span>
+    <span>Ships USA Only</span><span class="dot">✦</span>
+    <span>PayPal Accepted</span><span class="dot">✦</span>
+    <span>Made with Love</span><span class="dot">✦</span>
+    <span>Unique Every Piece</span><span class="dot">✦</span>
+    <span>Handmade Jewelry</span><span class="dot">✦</span>
+    <span>Travel Pillows</span><span class="dot">✦</span>
+    <span>Ships USA Only</span><span class="dot">✦</span>
+    <span>PayPal Accepted</span><span class="dot">✦</span>
+    <span>Made with Love</span><span class="dot">✦</span>
+    <span>Unique Every Piece</span><span class="dot">✦</span>
+  </div>
+</div>
+
+<!-- JEWELRY -->
+<section id="jewelry">
+  <div class="jewelry-header">
+    <div>
+      <p class="section-label">Handcrafted Collection</p>
+      <h2 class="section-title">Beaded Jewelry Sets</h2>
+      <p class="section-sub">Each piece is one-of-a-kind. Sold individually or as complete sets — necklace, bracelet, and earrings.</p>
+    </div>
+  </div>
+
+  <div class="product-grid">
+
+    <!-- Set 1 -->
+    <div class="product-card">
+      <div class="product-tag">Set Available</div>
+      <img class="product-img" src="Resized_20260531_100438.jpeg" alt="Kelly Green & Black Set" onerror="this.style.display='none'">
+      <div class="product-info">
+        <h3 class="product-name">Kelly Green & Black African Tube Set</h3>
+        <p class="product-desc">Kelly green & black beads with African tube beads. Necklace 15.5 inches including clasp.</p>
+        <div class="product-pricing">
+          <div>Necklace — <strong>$29</strong></div>
+          <div>Bracelet (8 in.) — <strong>$16</strong></div>
+          <div>Earrings — <strong>$15</strong></div>
+          <div>Full Set — <strong>$55</strong></div>
+        </div>
+        <a href="mailto:picswelove2024@gmail.com?subject=Order: Kelly Green Black Set" class="btn-buy">Order via PayPal</a>
+      </div>
+    </div>
+
+    <!-- Set 2 -->
+    <div class="product-card">
+      <div class="product-tag">Set Available</div>
+      <img class="product-img" src="Resized_20260531_100359.jpeg" alt="Wood & Orange Set" onerror="this.style.display='none'">
+      <div class="product-info">
+        <h3 class="product-name">Earth & Fire Bead Set</h3>
+        <p class="product-desc">Coral-orange beads paired with earthy patterned wooden beads — warmth and a natural feel. Necklace, bracelet, and earrings create a harmonious tribal aesthetic. 16 inches including clasp.</p>
+        <div class="product-pricing">
+          <div>Necklace — <strong>$29</strong></div>
+          <div>Bracelet (8 in.) — <strong>$16</strong></div>
+          <div>Earrings — <strong>$15</strong></div>
+          <div>Full Set — <strong>$55</strong></div>
+        </div>
+        <a href="mailto:picswelove2024@gmail.com?subject=Order: Wood Orange Set" class="btn-buy">Order via PayPal</a>
+      </div>
+    </div>
+
+    <!-- Set 3 -->
+    <div class="product-card">
+      <div class="product-tag">Set Available</div>
+      <img class="product-img" src="Resized_20260531_100501.jpeg" alt="Fuchsia & Black Set" onerror="this.style.display='none'">
+      <div class="product-info">
+        <h3 class="product-name">Twilight Zebra Set</h3>
+        <p class="product-desc">Striking magenta and black beads accented by zebra-pattern elements. This bold set exudes modern, edgy chic — perfect for making a statement. 16 inches including clasp.</p>
+        <div class="product-pricing">
+          <div>Necklace — <strong>$29</strong></div>
+          <div>Bracelet (8 in.) — <strong>$16</strong></div>
+          <div>Earrings — <strong>$15</strong></div>
+          <div>Full Set — <strong>$55</strong></div>
+        </div>
+        <a href="mailto:picswelove2024@gmail.com?subject=Order: Fuchsia Black Set" class="btn-buy">Order via PayPal</a>
+      </div>
+    </div>
+
+    <!-- Set 4 -->
+    <div class="product-card">
+      <div class="product-tag">Set Available</div>
+      <img class="product-img" src="Resized_20260531_100506.jpeg" alt="Kelly Green & Orange Set" onerror="this.style.display='none'">
+      <div class="product-info">
+        <h3 class="product-name">Tropical Bloom Set</h3>
+        <p class="product-desc">A lively combination of green and coral beads with zebra-striped accents. Tropical energy, bold colors, and playful patterns in necklace, bracelet, and earrings. 16 inches including clasp.</p>
+        <div class="product-pricing">
+          <div>Necklace — <strong>$29</strong></div>
+          <div>Bracelet (8 in.) — <strong>$16</strong></div>
+          <div>Earrings — <strong>$15</strong></div>
+          <div>Full Set — <strong>$55</strong></div>
+        </div>
+        <a href="mailto:picswelove2024@gmail.com?subject=Order: Green Orange Set" class="btn-buy">Order via PayPal</a>
+      </div>
+    </div>
+
+    <!-- Set 5 -->
+    <div class="product-card">
+      <div class="product-tag">Set Available</div>
+      <img class="product-img" src="Resized_20260531_102515.jpeg" alt="Fun Bead Mix Set" onerror="this.style.display='none'">
+      <div class="product-info">
+        <h3 class="product-name">Carnival Fiesta Set</h3>
+        <p class="product-desc">An eclectic, colorful set of chunky beads in a variety of shapes, sizes, and patterns. Bright floral beads with contrasting textures — bold, joyful, and impossible to miss. 16 inches including clasp.</p>
+        <div class="product-pricing">
+          <div>Necklace — <strong>$29</strong></div>
+          <div>Bracelet (8 in.) — <strong>$16</strong></div>
+          <div>Earrings — <strong>$15</strong></div>
+          <div>Full Set — <strong>$55</strong></div>
+        </div>
+        <a href="mailto:picswelove2024@gmail.com?subject=Order: Fun Bead Mix Set" class="btn-buy">Order via PayPal</a>
+      </div>
+    </div>
+
+    <!-- Chokers 6 -->
+    <div class="product-card">
+      <img class="product-img" src="Resized_20260531_102540.jpeg" alt="Green Glass Bead Chokers" onerror="this.style.display='none'">
+      <div class="product-info">
+        <h3 class="product-name">Summer Orchard Necklace</h3>
+        <p class="product-desc">Lush green tones accented by playful pops of red. This multi-layered bead necklace evokes the fresh colors of a summer orchard, giving a bright, cheerful vibe.</p>
+        <div class="product-pricing">
+          <div>15–16 inches — <strong>$16</strong></div>
+          <div>17–21 inches — <strong>$19</strong></div>
+        </div>
+        <a href="mailto:picswelove2024@gmail.com?subject=Order: Green Choker" class="btn-buy">Order via PayPal</a>
+      </div>
+    </div>
+
+    <!-- Chokers 7 -->
+    <div class="product-card">
+      <img class="product-img" src="Resized_20260531_102550.jpeg" alt="Multi-Color Seed Bead Chokers" onerror="this.style.display='none'">
+      <div class="product-info">
+        <h3 class="product-name">Midnight Carnival Beaded Necklace</h3>
+        <p class="product-desc">A vibrant multi-strand necklace featuring a dynamic mix of black, purple, orange, and lime-green seed beads. The bold contrast evokes a festive, edgy look that's perfect for statement layering.</p>
+        <div class="product-pricing">
+          <div>15–16 inches — <strong>$32</strong></div>
+          <div>17–21 inches — <strong>$32</strong></div>
+          <div style="color:#c9714a; font-size:0.75rem;">🎃 $42 in Sept & Oct</div>
+        </div>
+        <a href="mailto:picswelove2024@gmail.com?subject=Order: Multi Color Choker" class="btn-buy">Order via PayPal</a>
+      </div>
+    </div>
+
+    <!-- Seed Beads 8 -->
+    <div class="product-card">
+      <img class="product-img" src="Resized_20260531_102628.jpeg" alt="Glass Seed Bead Necklaces" onerror="this.style.display='none'">
+      <div class="product-info">
+        <h3 class="product-name">Rainbow Cascade Strands</h3>
+        <p class="product-desc">A collection of single-strand bead necklaces in a full rainbow spectrum. Each strand offers a different bold color, designed to be worn individually or layered for maximum impact.</p>
+        <div class="product-pricing">
+          <div>15–18 inches — <strong>$18</strong></div>
+        </div>
+        <a href="mailto:picswelove2024@gmail.com?subject=Order: Seed Bead Necklace" class="btn-buy">Order via PayPal</a>
+      </div>
+    </div>
+
+    <!-- Mixed Seed 9 -->
+    <div class="product-card">
+      <img class="product-img" src="Resized_20260529_091718.jpeg" alt="Mixed Seed Bead Necklaces" onerror="this.style.display='none'">
+      <div class="product-info">
+        <h3 class="product-name">Mixed Seed Bead + 4mm Glass Necklaces</h3>
+        <p class="product-desc">Glass seed bead mix with 4mm glass bead accents. Rich texture, vibrant colors. Sold individually.</p>
+        <div class="product-pricing">
+          <div>15–17 inches — <strong>$20</strong></div>
+          <div>18–21 inches — <strong>$25</strong></div>
+        </div>
+        <a href="mailto:picswelove2024@gmail.com?subject=Order: Mixed Seed Bead Necklace" class="btn-buy">Order via PayPal</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PILLOWS -->
+<section id="pillows">
+  <p class="section-label">Travel Comfort</p>
+  <h2 class="section-title">Handmade Travel Pillows</h2>
+  <p class="section-sub">Cotton fabric, machine washable, synthetic fill. Built for the journey — light enough to pack, comfortable enough to love.</p>
+
+  <div class="pillows-grid">
+
+    <!-- Neck Pillow -->
+    <div class="pillow-card">
+      <img class="pillow-img" src="Resized_20260529_085416.jpeg" alt="Round Neck Travel Pillow" onerror="this.style.background='rgba(255,255,255,0.05)'">
+      <div class="pillow-info">
+        <h3 class="pillow-name">Color Splash Neck Pillow</h3>
+        <p class="pillow-desc">A vibrant U-shaped neck pillow in bold solid colors. Equipped with ties for a snug, secure fit — makes every journey comfortable and stylish. 12 × 14 inches approx., cotton fabric, machine washable.</p>
+        <div class="pillow-colors">
+          <div class="color-dot" style="background:#8bc34a;" title="Lime Green"></div>
+          <div class="color-dot" style="background:#ff6b35;" title="Orange"></div>
+          <div class="color-dot" style="background:#c62828;" title="Red"></div>
+          <div class="color-dot" style="background:#fdd835;" title="Yellow"></div>
+          <div class="color-dot" style="background:#1565c0;" title="Navy"></div>
+        </div>
+        <div class="pillow-price">$24 <small>+ $9.99 shipping</small></div>
+        <a href="mailto:picswelove2024@gmail.com?subject=Order: Neck Pillow" class="btn-buy-light">Order via PayPal</a>
+      </div>
+    </div>
+
+    <!-- Lumbar Pillow -->
+    <div class="pillow-card">
+      <img class="pillow-img" src="Resized_20260529_085416.jpeg" alt="Polka Dot Travel Pillow" onerror="this.style.background='rgba(255,255,255,0.05)'">
+      <div class="pillow-info">
+        <h3 class="pillow-name">Polka Dot Travel Buddy</h3>
+        <p class="pillow-desc">A cheerful rectangular pillow adorned with playful polka dots. Attaches neatly over your luggage handle for a pop of color and a soft cushion on the go. 12 × 16 inches, cotton fabric, machine washable.</p>
+        <div class="pillow-colors">
+          <div class="color-dot" style="background:#e91e8c;" title="Fuchsia"></div>
+          <div class="color-dot" style="background:#00acc1;" title="Turquoise"></div>
+          <div class="color-dot" style="background:#f5f5f0; border-color:rgba(255,255,255,0.4);" title="White"></div>
+          <div class="color-dot" style="background:#f57c00;" title="Orange"></div>
+          <div class="color-dot" style="background:#1a237e;" title="Navy"></div>
+        </div>
+        <div class="pillow-price">$24 <small>+ $9.99 shipping</small></div>
+        <a href="mailto:picswelove2024@gmail.com?subject=Order: Polka Dot Pillow" class="btn-buy-light">Order via PayPal</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-visual">
+    <div class="about-visual-box">✦</div>
+    <div class="about-accent">44 years<br>in the USA</div>
+  </div>
+  <div class="about-text">
+    <p class="section-label">The Maker</p>
+    <h2 class="section-title">Swiss roots,<br>American heart.</h2>
+    <p class="section-sub">Born in Switzerland and proud of 44 years in the USA, Elena spent 24 years in real estate before following her true passion — travel and handcraft.</p>
+    <p class="section-sub">Fun Travel was born from a simple belief: your travel accessories should bring you joy, not anxiety. Every pillow and piece of jewelry is made to be affordable, beautiful, and light enough that losing a suitcase won't break your heart.</p>
+    <p class="section-sub" style="font-style:italic; color:var(--terra);">"I will produce reasonably priced travel items that you will not regret buying if a suitcase is lost, stolen or misplaced." — Elena</p>
+    <div class="about-stats">
+      <div>
+        <div class="stat-num">44</div>
+        <div class="stat-label">Years in the USA</div>
+      </div>
+      <div>
+        <div class="stat-num">24</div>
+        <div class="stat-label">Years in Real Estate</div>
+      </div>
+      <div>
+        <div class="stat-num">9+</div>
+        <div class="stat-label">Jewelry Styles</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SHIPPING -->
+<section id="shipping">
+  <p class="section-label">Delivery Info</p>
+  <h2 class="section-title">Shipping & Payment</h2>
+  <p class="section-sub">USA shipping only at this time. All orders shipped via USPS with tracking. Payment via PayPal — fast, safe, and protected.</p>
+
+  <div class="shipping-grid">
+    <div class="shipping-card">
+      <div class="shipping-icon">💍</div>
+      <div class="shipping-title">Single Jewelry Item</div>
+      <div class="shipping-price">$5.99</div>
+      <div class="shipping-detail">Earrings, bracelet, or single necklace. Shipped in padded mailer with tracking.</div>
+    </div>
+    <div class="shipping-card">
+      <div class="shipping-icon">✨</div>
+      <div class="shipping-title">Full Jewelry Set</div>
+      <div class="shipping-price">$7.99</div>
+      <div class="shipping-detail">Necklace + bracelet + earrings. Gift-packaged and shipped with care.</div>
+    </div>
+    <div class="shipping-card">
+      <div class="shipping-icon">🧳</div>
+      <div class="shipping-title">Travel Pillows</div>
+      <div class="shipping-price">$9.99 / $14.99</div>
+      <div class="shipping-detail">Single pillow $9.99. Two pillows $14.99. Shipped via USPS Flat Rate box.</div>
+    </div>
+  </div>
+
+  <p style="text-align:center; margin-top:2rem; font-size:0.82rem; color:var(--mid);">
+    Free shipping on jewelry orders over $50 ✦ Orders ship within 3–5 business days
+  </p>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="section-label">Get in Touch</p>
+  <h2 class="section-title">Ready to Order?</h2>
+  <p class="contact-sub">Email us with the item number and your preferred color or size. We'll send you a PayPal invoice within 24 hours.</p>
+
+  <div class="contact-grid">
+    <div class="contact-item">
+      <div class="contact-label">Email</div>
+      <a href="mailto:picswelove2024@gmail.com">picswelove2024@gmail.com</a>
+    </div>
+    <div class="contact-item">
+      <div class="contact-label">Phone / Text</div>
+      <a href="tel:7604856421">(760) 485-6421</a>
+    </div>
+    <div class="contact-item">
+      <div class="contact-label">Designer & Producer</div>
+      <a href="#">Elena</a>
+    </div>
+  </div>
+
+  <div class="paypal-note">
+    🔒 &nbsp; Secure payment via PayPal — no account required to pay by card
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 <span>Fun Travel</span> by Elena · Handmade in the USA · All Rights Reserved</p>
+</footer>
+
+</body>
+</html>
