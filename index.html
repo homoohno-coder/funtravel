@@ -66,31 +66,49 @@
 
   /* HERO */
   .hero {
-    min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    min-height: 80vh;
+    height: 80vh;
+    display: flex;
+    align-items: center;
     padding-top: 80px;
-    background: var(--warm-white);
+    background:
+      linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)),
+      url("images/Resized_20260531_102550.jpeg?v=2") center / cover no-repeat;
     position: relative;
     overflow: hidden;
   }
 
-  .hero::before {
+  .hero-video {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .hero::after {
     content: '';
     position: absolute;
-    top: -100px; right: -100px;
-    width: 600px; height: 600px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%);
+    inset: 0;
+    z-index: 1;
+    background: rgba(0,0,0,0.25);
     pointer-events: none;
   }
 
+  .hero.video-paused .hero-video,
+  .hero.video-failed .hero-video { display: none; }
+
   .hero-text {
+    position: relative;
+    z-index: 2;
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding: 4rem 3rem 4rem 5rem;
     animation: fadeUp 0.8s ease both;
+    max-width: 760px;
   }
 
   .hero-eyebrow {
@@ -98,7 +116,7 @@
     font-weight: 500;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--terra);
+    color: var(--gold-light);
     margin-bottom: 1.5rem;
   }
 
@@ -106,17 +124,16 @@
     font-family: 'Playfair Display', serif;
     font-size: clamp(2.8rem, 5vw, 4.2rem);
     line-height: 1.1;
-    color: var(--deep);
+    color: white;
     margin-bottom: 1.5rem;
   }
-  .hero-title em { font-style: italic; color: var(--terra); }
 
   .hero-sub {
-    font-size: 1.05rem;
+    font-size: clamp(1rem, 2vw, 1.3rem);
     font-weight: 300;
     line-height: 1.7;
-    color: var(--mid);
-    max-width: 420px;
+    color: rgba(255,255,255,0.88);
+    max-width: 520px;
     margin-bottom: 2.5rem;
   }
 
@@ -156,20 +173,29 @@
   }
   .btn-outline:hover { background: var(--terra); color: white; }
 
-  .hero-image { position: relative; overflow: hidden; animation: fadeIn 1s ease 0.3s both; }
-  .hero-image img { width: 100%; height: 100%; object-fit: cover; object-position: center; cursor: zoom-in; }
-
-  .hero-badge {
+  .hero-motion-toggle {
     position: absolute;
-    bottom: 2rem; left: 2rem;
-    background: var(--gold);
+    right: 1.5rem;
+    bottom: 1.5rem;
+    z-index: 3;
+    border: 1px solid rgba(255,255,255,0.45);
+    background: rgba(26,26,24,0.42);
     color: white;
-    padding: 0.6rem 1.2rem;
+    backdrop-filter: blur(8px);
+    padding: 0.55rem 0.85rem;
     font-size: 0.75rem;
     font-weight: 500;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     border-radius: 2px;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .hero-motion-toggle:hover { background: rgba(26,26,24,0.62); border-color: rgba(255,255,255,0.65); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-video { display: none; }
+    .hero-motion-toggle { display: none; }
   }
 
   /* MARQUEE */
@@ -638,9 +664,10 @@
     nav ul { gap: 0.8rem; }
     nav ul a { font-size: 0.72rem; letter-spacing: 0.06em; }
     .nav-logo { font-size: 1.1rem; }
-    .hero { grid-template-columns: 1fr; }
-    .hero-image { height: 50vw; }
+    .hero { min-height: 58vh; height: 58vh; }
     .hero-text { padding: 3rem 1.5rem; }
+    .hero-sub { margin-bottom: 1.6rem; }
+    .hero-motion-toggle { right: 1rem; bottom: 1rem; font-size: 0.68rem; }
     section { padding: 4rem 1.5rem; }
     .pillows-grid { grid-template-columns: 1fr; }
     #about { grid-template-columns: 1fr; gap: 2rem; }
@@ -690,21 +717,20 @@
 
 <!-- HERO -->
 <section class="hero">
+  <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="images/Resized_20260531_102550.jpeg?v=2" aria-hidden="true">
+    <source src="images/gemini_generated_video_5AF01A89.MP4" type="video/mp4">
+  </video>
   <div class="hero-text">
-    <p class="hero-eyebrow">Handmade in the USA · Ships Nationwide</p>
-    <h1 class="hero-title">Travel in <em>style,</em><br>wear with joy.</h1>
-    <p class="hero-sub">Handcrafted beaded jewelry and colorful travel pillows made with care. Affordable, unique, and built for the journey — not the price tag.</p>
+    <p class="hero-eyebrow">Handcrafted Jewelry &amp; Travel Accessories</p>
+    <h1 class="hero-title">Fun Travel</h1>
+    <p class="hero-sub">Handcrafted Jewelry &amp; Travel Accessories</p>
     <div class="hero-ctas">
-      <a href="#jewelry" class="btn-primary">Shop Jewelry</a>
-      <a href="#pillows" class="btn-outline">Shop Pillows</a>
-      <button onclick="openGallery()" class="btn-outline" style="border-color:var(--gold); color:var(--gold);" onmouseover="this.style.background='var(--gold)'; this.style.color='white'" onmouseout="this.style.background='transparent'; this.style.color='var(--gold)'">✦ View Gallery</button>
+      <a href="#jewelry" class="btn-primary">Shop Collection</a>
+      <a href="#bestsellers" class="btn-outline">View Featured Sets</a>
+      <a href="#contact" class="btn-outline">Contact</a>
     </div>
   </div>
-  <div class="hero-image" onclick="openLightbox('images/Resized_20260531_102550.jpeg?v=2','Multi-Color Choker Collection')">
-    <img src="images/Resized_20260531_102550.jpeg?v=2" alt="Fun Travel handmade jewelry" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-    <div class="product-img-placeholder" style="height:100%; display:none;">✦</div>
-    <div class="hero-badge">New Collection 2026</div>
-  </div>
+  <button class="hero-motion-toggle" type="button" aria-pressed="false">Pause Motion</button>
 </section>
 
 <!-- MARQUEE -->
@@ -1250,6 +1276,52 @@
   <p>© 2026 <span>Fun Travel</span> by Elena · Handmade in the USA · All Rights Reserved</p>
 </footer>
 
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var hero = document.querySelector('.hero');
+  var video = document.querySelector('.hero-video');
+  var toggle = document.querySelector('.hero-motion-toggle');
+  if (!hero || !video) return;
+
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduceMotion) {
+    video.pause();
+    hero.classList.add('video-paused');
+    return;
+  }
+
+  video.addEventListener('error', function() {
+    hero.classList.add('video-failed');
+    if (toggle) toggle.style.display = 'none';
+  });
+
+  var playAttempt = video.play();
+  if (playAttempt && typeof playAttempt.catch === 'function') {
+    playAttempt.catch(function() {
+      hero.classList.add('video-paused');
+      if (toggle) {
+        toggle.textContent = 'Play Motion';
+        toggle.setAttribute('aria-pressed', 'true');
+      }
+    });
+  }
+
+  if (!toggle) return;
+  toggle.addEventListener('click', function() {
+    if (video.paused) {
+      video.play();
+      hero.classList.remove('video-paused');
+      toggle.textContent = 'Pause Motion';
+      toggle.setAttribute('aria-pressed', 'false');
+    } else {
+      video.pause();
+      hero.classList.add('video-paused');
+      toggle.textContent = 'Play Motion';
+      toggle.setAttribute('aria-pressed', 'true');
+    }
+  });
+});
+</script>
 
 <!-- ───── LIGHTBOX ───── -->
 <div id="lightbox" style="display:none; position:fixed; inset:0; z-index:9999; background:#0a0a08;">
