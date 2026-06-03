@@ -955,6 +955,52 @@ footer a { color: var(--clay); }
   .hero-vid-title { font-size: clamp(3rem, 15vw, 5rem); }
 }
 
+
+/* ── PHILOSOPHY STRIP ── */
+@media (max-width: 600px) {
+  #about + section > div { grid-template-columns: 1fr !important; }
+}
+
+/* ── FAQ ── */
+.faq-item {
+  border-bottom: 1px solid var(--border);
+}
+.faq-q {
+  width: 100%;
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 1.25rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--dark);
+  cursor: pointer;
+  font-family: var(--sans);
+  gap: 1rem;
+}
+.faq-q:hover { color: var(--clay); }
+.faq-icon {
+  font-size: 1.2rem;
+  color: var(--clay);
+  flex-shrink: 0;
+  transition: transform 0.25s;
+  line-height: 1;
+}
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+  font-size: 0.82rem;
+  color: var(--mid);
+  line-height: 1.8;
+}
+.faq-item.open .faq-a { max-height: 200px; }
+.faq-a-inner { padding-bottom: 1.25rem; }
+
 </style>
 </head>
 <body>
@@ -970,6 +1016,7 @@ footer a { color: var(--clay); }
     <li><a href="#pillows">Pillows</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#shipping">Shipping</a></li>
+    <li><a href="#faq">FAQ</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <button class="nav-hamburger" onclick="toggleMenu()" aria-label="Menu">
@@ -984,6 +1031,7 @@ footer a { color: var(--clay); }
   <a href="#pillows" onclick="toggleMenu()">Pillows</a>
   <a href="#about" onclick="toggleMenu()">About</a>
   <a href="#shipping" onclick="toggleMenu()">Shipping</a>
+  <a href="#faq" onclick="toggleMenu()">FAQ</a>
   <a href="#contact" onclick="toggleMenu()">Contact</a>
 </div>
 
@@ -1040,34 +1088,48 @@ footer a { color: var(--clay); }
   <div class="about-inner">
     <div class="about-img-wrap fade-in">
       <div class="about-img-stack">
-        <img class="about-img-main" src="images/Resized_20260531_100501.jpeg" alt="Handmade fuchsia and black beaded necklace set by Elena Barmet">
-        <img class="about-img-accent" src="images/Resized_20260531_102540.jpeg" alt="Green glass bead choker by Elena Barmet">
+        <img class="about-img-main" src="images/Resized_20260531_100501.jpeg?v=2" alt="Fuchsia and black handmade beaded necklace set by Elena Barmet">
+        <img class="about-img-accent" src="images/Resized_20260531_102540.jpeg?v=2" alt="Green glass bead choker by Elena Barmet">
       </div>
     </div>
     <div class="about-text fade-in">
-      <p class="about-eyebrow">About the Maker</p>
-      <h2 class="about-title">44 years of<br><em>artisan craft</em></h2>
-      <p class="about-body">Elena Barmet has spent over four decades in the United States creating handmade beaded jewelry and travel pillows from her home in Palm Desert, California. Every piece is made by hand — no two are exactly alike.</p>
-      <p class="about-body">Her jewelry sets combine glass beads, African tube beads, and synthetic materials into wearable art that travels with you. Her pillows are made for comfort and color.</p>
+      <p class="about-eyebrow">The Maker</p>
+      <h2 class="about-title">Swiss roots,<br><em>American heart.</em></h2>
+      <p class="about-body">Born in Switzerland and proud of 44 years in the USA, Elena spent 24 years in real estate before following her true passion — travel and handcraft.</p>
+      <p class="about-body">Fun Travel was born from a simple belief: your travel accessories should bring you joy, not anxiety. Every pillow and piece of jewelry is made to be affordable, beautiful, and light enough that losing a suitcase won't break your heart.</p>
+      <blockquote style="border-left:2px solid var(--clay); padding-left:1.25rem; margin:1.5rem 0; font-family:var(--serif); font-size:1.05rem; font-style:italic; color:var(--mid); line-height:1.7;">"I will produce reasonably priced travel items that you will not regret buying if a suitcase is lost, stolen or misplaced."<cite style="display:block; font-size:0.72rem; font-style:normal; letter-spacing:0.08em; text-transform:uppercase; margin-top:0.5rem; color:var(--clay);">— Elena</cite></blockquote>
       <div class="about-stats">
-        <div class="about-stat">
-          <div class="about-stat-num">44</div>
-          <div class="about-stat-label">Years crafting</div>
-        </div>
-        <div class="about-stat">
-          <div class="about-stat-num">9+</div>
-          <div class="about-stat-label">Jewelry styles</div>
-        </div>
-        <div class="about-stat">
-          <div class="about-stat-num">100%</div>
-          <div class="about-stat-label">Handmade</div>
-        </div>
+        <div class="about-stat"><div class="about-stat-num">44</div><div class="about-stat-label">Years in the USA</div></div>
+        <div class="about-stat"><div class="about-stat-num">24</div><div class="about-stat-label">Years in real estate</div></div>
+        <div class="about-stat"><div class="about-stat-num">9+</div><div class="about-stat-label">Jewelry styles</div></div>
       </div>
-      <a href="#contact" class="btn-primary">Get in Touch</a>
+      <a href="#jewelry" class="btn-primary">Browse the Collection</a>
     </div>
   </div>
 </section>
 
+<!-- PHILOSOPHY STRIP -->
+<section style="background:var(--sand); padding:4rem 2rem;">
+  <div style="max-width:960px; margin:0 auto; display:grid; grid-template-columns:repeat(3,1fr); gap:2.5rem; text-align:center;">
+    <div class="fade-in">
+      <div style="font-size:1.5rem; margin-bottom:0.75rem;">✦</div>
+      <div style="font-family:var(--serif); font-size:1.1rem; color:var(--dark); margin-bottom:0.4rem;">Affordable</div>
+      <div style="font-size:0.8rem; color:var(--mid); line-height:1.7;">Priced so that if your luggage is ever lost, you won't lose sleep over your accessories.</div>
+    </div>
+    <div class="fade-in">
+      <div style="font-size:1.5rem; margin-bottom:0.75rem;">◈</div>
+      <div style="font-family:var(--serif); font-size:1.1rem; color:var(--dark); margin-bottom:0.4rem;">Handmade</div>
+      <div style="font-size:0.8rem; color:var(--mid); line-height:1.7;">Every piece is hand-strung, hand-sewn, and made with care by Elena herself.</div>
+    </div>
+    <div class="fade-in">
+      <div style="font-size:1.5rem; margin-bottom:0.75rem;">◇</div>
+      <div style="font-family:var(--serif); font-size:1.1rem; color:var(--dark); margin-bottom:0.4rem;">Unique</div>
+      <div style="font-size:0.8rem; color:var(--mid); line-height:1.7;">No two pieces are exactly alike. Your jewelry is yours and yours alone.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SHIPPING & POLICY -->
 <!-- SHIPPING & POLICY -->
 <section id="shipping">
   <div class="shipping-inner">
@@ -1079,14 +1141,14 @@ footer a { color: var(--clay); }
     <div class="policy-grid">
       <div class="policy-card fade-in">
         <div class="policy-icon">📦</div>
-        <div class="policy-title">Shipping</div>
+        <div class="policy-title">Shipping Rates</div>
         <div class="policy-text">
-          Single jewelry item: $5.99<br>
-          Full jewelry set: $7.99<br>
-          Single pillow: $9.99<br>
-          Two pillows: $14.99<br><br>
-          <strong>Free shipping on jewelry orders $50+</strong><br><br>
-          Ships within 2–4 business days via USPS. Pillows ship within 3–5 business days.
+          Single jewelry item: <strong>$5.99</strong><br>
+          Full jewelry set: <strong>$7.99</strong><br>
+          Single pillow: <strong>$9.99</strong><br>
+          Two pillows: <strong>$14.99</strong><br><br>
+          <strong style="color:var(--clay);">Free shipping on jewelry orders $50+</strong><br><br>
+          Ships within 2–4 business days via USPS. Pillows ship within 3–5 business days. USA only.
         </div>
       </div>
       <div class="policy-card fade-in">
@@ -1094,9 +1156,9 @@ footer a { color: var(--clay); }
         <div class="policy-title">Returns</div>
         <div class="policy-text">
           15-day return window from date of receipt.<br><br>
-          15% restocking fee applies. Buyer is responsible for return shipping using a tracked method.<br><br>
-          Contact us before returning — an RMA number is required.<br><br>
-          If the error is ours, we cover everything.
+          15% restocking fee applies to all returns. Buyer is responsible for return shipping using a tracked method.<br><br>
+          <strong>Contact Elena before returning</strong> — an RMA number is required at picswelove2024@gmail.com<br><br>
+          If the error is ours, we cover everything and issue a full refund.
         </div>
       </div>
       <div class="policy-card fade-in">
@@ -1104,11 +1166,23 @@ footer a { color: var(--clay); }
         <div class="policy-title">Custom Orders</div>
         <div class="policy-text">
           Elena accepts custom orders for special color combinations, lengths, and gift sets.<br><br>
-          Contact us with your idea and we will work with you to create something unique.<br><br>
-          Allow 1–2 weeks for custom pieces.
+          Contact with your idea and she'll work with you to create something unique.<br><br>
+          Allow 1–2 weeks for custom pieces. Email: picswelove2024@gmail.com
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" style="background:var(--warm-white); padding:5rem 2rem;">
+  <div style="max-width:720px; margin:0 auto;">
+    <div class="section-header fade-in" style="padding-top:0; text-align:left;">
+      <p class="section-eyebrow">Questions</p>
+      <h2 class="section-title">Frequently <em>Asked</em></h2>
+      <div class="section-rule" style="margin-left:0;"></div>
+    </div>
+    <div id="faqList" style="margin-top:2rem;"></div>
   </div>
 </section>
 
@@ -1497,9 +1571,44 @@ document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') closeModalDirect();
 });
 
+
+// ── FAQ ──
+var faqs = [
+  {q: "Can I request a custom color or size?", a: "Yes! Elena loves custom work. Email her at picswelove2024@gmail.com with your request and she'll do her best to accommodate."},
+  {q: "How do I choose a pillow color?", a: "Select your color using the color swatches on the product card, then click Buy Now. Your selected color is sent directly with the PayPal order."},
+  {q: "Do you ship internationally?", a: "At this time, Fun Travel ships within the USA only. We hope to expand in the future."},
+  {q: "How do I pay?", a: "All purchases go through PayPal. You do not need a PayPal account — you can pay with any major credit or debit card as a guest."},
+  {q: "Are the pieces really handmade?", a: "Yes, 100%. Every piece of jewelry is hand-strung by Elena, and every pillow is hand-sewn. No two pieces are exactly alike."},
+  {q: "Can I buy just the necklace or just the earrings?", a: "Absolutely. All sets can be purchased as a complete set or as individual pieces — necklace, bracelet, or earrings separately. Select what you want in the buy panel."},
+  {q: "How do I care for the pillows?", a: "Machine wash cold, tumble dry on low heat. Do not use high heat as it may affect the fill. The pillows are designed to be travel-durable and easy to maintain."},
+  {q: "What is the return window?", a: "Returns are accepted within 15 days of delivery. Items must be unworn and in original condition. A 15% restocking fee applies. Contact Elena for an RMA number before shipping anything back."}
+];
+
+function renderFaq() {
+  var list = document.getElementById('faqList');
+  if (!list) return;
+  list.innerHTML = faqs.map(function(f, i) {
+    return '<div class="faq-item">'
+      + '<button class="faq-q" onclick="toggleFaq(' + i + ')" aria-expanded="false" id="faq-btn-' + i + '">'
+      + '<span>' + f.q + '</span>'
+      + '<span class="faq-icon">+</span>'
+      + '</button>'
+      + '<div class="faq-a" id="faq-a-' + i + '"><div class="faq-a-inner">' + f.a + '</div></div>'
+      + '</div>';
+  }).join('');
+}
+
+function toggleFaq(idx) {
+  var item = document.querySelectorAll('.faq-item')[idx];
+  var isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(function(el) { el.classList.remove('open'); });
+  if (!isOpen) item.classList.add('open');
+}
+
 // ── INIT ──
 renderJewelry();
 renderPillows();
+renderFaq();
 observeFadeIns();
 </script>
 </body>
