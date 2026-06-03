@@ -1,0 +1,1442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Fun Travel by Elena Barmet — Handmade beaded jewelry and travel pillows crafted in Palm Desert, California. Shop unique artisan pieces.">
+<meta property="og:title" content="Fun Travel by Elena Barmet">
+<meta property="og:description" content="Handmade beaded jewelry and travel pillows crafted in Palm Desert, California.">
+<meta property="og:image" content="images/Resized_20260531_100438.jpeg">
+<meta property="og:type" content="website">
+<title>Fun Travel — Handmade Jewelry & Travel Pillows by Elena Barmet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ── RESET & BASE ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: 'Jost', sans-serif;
+  background: #faf8f5;
+  color: #2c2416;
+  font-weight: 300;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; }
+
+/* ── CSS VARIABLES ── */
+:root {
+  --cream: #faf8f5;
+  --warm-white: #f5f1eb;
+  --sand: #e8dfd0;
+  --clay: #c4956a;
+  --terracotta: #a0623a;
+  --dark: #2c2416;
+  --mid: #7a6b58;
+  --light-text: #b0a090;
+  --border: rgba(44,36,22,0.1);
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'Jost', sans-serif;
+}
+
+/* ── ANNOUNCEMENT BAR ── */
+.announce-bar {
+  background: var(--clay);
+  color: white;
+  text-align: center;
+  padding: 0.55rem 1rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+/* ── NAV ── */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--cream);
+  border-bottom: 1px solid var(--border);
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+.nav-logo {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: var(--dark);
+  line-height: 1;
+}
+.nav-logo span { font-style: italic; color: var(--clay); }
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mid);
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--dark); }
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+.nav-hamburger span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: var(--dark);
+  transition: all 0.3s;
+}
+.mobile-menu {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: var(--cream);
+  z-index: 200;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-family: var(--serif);
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--dark);
+  letter-spacing: 0.05em;
+}
+.mobile-menu-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--mid);
+  cursor: pointer;
+}
+
+/* ── HERO ── */
+.hero {
+  min-height: 92vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  overflow: hidden;
+}
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 6rem 5rem 6rem 6rem;
+  background: var(--cream);
+  position: relative;
+}
+.hero-eyebrow {
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin-bottom: 1.5rem;
+}
+.hero-title {
+  font-family: var(--serif);
+  font-size: clamp(3rem, 5vw, 5rem);
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--dark);
+  margin-bottom: 1.5rem;
+}
+.hero-title em { font-style: italic; color: var(--clay); }
+.hero-sub {
+  font-size: 0.95rem;
+  color: var(--mid);
+  line-height: 1.8;
+  max-width: 380px;
+  margin-bottom: 3rem;
+}
+.hero-cta-group { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--dark);
+  color: white;
+  padding: 0.85rem 2rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: none;
+  transition: background 0.25s;
+}
+.btn-primary:hover { background: var(--terracotta); }
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: var(--dark);
+  padding: 0.85rem 2rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: 1px solid var(--dark);
+  transition: all 0.25s;
+}
+.btn-outline:hover { background: var(--dark); color: white; }
+.hero-image-wrap {
+  position: relative;
+  overflow: hidden;
+  background: var(--sand);
+}
+.hero-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 8s ease;
+}
+.hero-image-wrap:hover img { transform: scale(1.04); }
+.hero-image-caption {
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+  background: rgba(250,248,245,0.9);
+  padding: 0.6rem 1rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--mid);
+}
+.hero-scroll-hint {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.62rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--light-text);
+}
+.scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--clay), transparent);
+  animation: scrollDown 2s ease-in-out infinite;
+}
+@keyframes scrollDown {
+  0% { transform: scaleY(0); transform-origin: top; }
+  50% { transform: scaleY(1); transform-origin: top; }
+  51% { transform: scaleY(1); transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+
+/* ── SECTION HEADERS ── */
+.section-header {
+  text-align: center;
+  padding: 5rem 2rem 3.5rem;
+}
+.section-eyebrow {
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin-bottom: 0.8rem;
+}
+.section-title {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 300;
+  color: var(--dark);
+  line-height: 1.2;
+}
+.section-title em { font-style: italic; color: var(--clay); }
+.section-rule {
+  width: 40px;
+  height: 1px;
+  background: var(--clay);
+  margin: 1.5rem auto 0;
+}
+
+/* ── MARQUEE STRIP ── */
+.marquee-strip {
+  background: var(--dark);
+  color: rgba(255,255,255,0.6);
+  padding: 0.9rem 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.marquee-inner {
+  display: inline-flex;
+  gap: 3rem;
+  animation: marquee 20s linear infinite;
+  font-size: 0.68rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+.marquee-inner span { color: var(--clay); }
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ── JEWELRY GRID ── */
+#jewelry { padding: 0 2rem 6rem; }
+.jewelry-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.jewelry-card {
+  position: relative;
+  background: var(--warm-white);
+  overflow: hidden;
+  cursor: pointer;
+}
+.jewelry-card:nth-child(4n+1) { grid-column: span 2; }
+.jewelry-card-img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 0.6s ease;
+}
+.jewelry-card:nth-child(4n+1) .jewelry-card-img { aspect-ratio: 16/9; }
+.jewelry-card:hover .jewelry-card-img { transform: scale(1.04); }
+.jewelry-card-info {
+  padding: 1.25rem 1.5rem 1.5rem;
+  background: var(--warm-white);
+}
+.jewelry-card-name {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--dark);
+  margin-bottom: 0.3rem;
+  line-height: 1.3;
+}
+.jewelry-card-price {
+  font-size: 0.78rem;
+  color: var(--mid);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.8rem;
+}
+.jewelry-card-price strong { color: var(--dark); font-weight: 500; }
+.jewelry-card-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.btn-shop-sm {
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  background: var(--dark);
+  color: white;
+  border: none;
+  transition: background 0.2s;
+}
+.btn-shop-sm:hover { background: var(--terracotta); }
+.btn-detail-sm {
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  background: transparent;
+  color: var(--dark);
+  border: 1px solid var(--border);
+  transition: all 0.2s;
+}
+.btn-detail-sm:hover { border-color: var(--dark); }
+
+/* ── PILLOWS ── */
+#pillows { background: var(--warm-white); padding: 0 2rem 6rem; }
+.pillows-layout {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
+.pillow-feature {
+  position: relative;
+  overflow: hidden;
+  background: var(--sand);
+}
+.pillow-feature-img {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.6s ease;
+}
+.pillow-feature:hover .pillow-feature-img { transform: scale(1.03); }
+.pillow-feature-info {
+  padding: 2rem;
+  background: white;
+}
+.pillow-feature-name {
+  font-family: var(--serif);
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--dark);
+  margin-bottom: 0.4rem;
+}
+.pillow-feature-price {
+  font-size: 0.8rem;
+  color: var(--mid);
+  margin-bottom: 0.6rem;
+  letter-spacing: 0.05em;
+}
+.pillow-feature-price strong { color: var(--dark); }
+.pillow-feature-details {
+  font-size: 0.8rem;
+  color: var(--mid);
+  margin-bottom: 1rem;
+  line-height: 1.7;
+}
+.pillow-colors-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-bottom: 0.5rem;
+}
+.pillow-swatches {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.25rem;
+}
+.swatch {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2px solid rgba(44,36,22,0.15);
+  cursor: pointer;
+  transition: all 0.2s;
+  padding: 0;
+}
+.swatch.selected, .swatch:hover {
+  border: 2px solid var(--dark);
+  transform: scale(1.15);
+}
+.selected-color-name {
+  font-size: 0.72rem;
+  color: var(--clay);
+  min-height: 1.2em;
+  margin-bottom: 0.75rem;
+}
+.pillow-buy-btn {
+  width: 100%;
+  padding: 0.9rem;
+  background: var(--dark);
+  color: white;
+  border: none;
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  transition: background 0.2s;
+}
+.pillow-buy-btn:hover { background: var(--terracotta); }
+
+/* ── PRODUCT MODAL ── */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(44,36,22,0.6);
+  z-index: 300;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  backdrop-filter: blur(4px);
+}
+.modal-overlay.open { display: flex; }
+.modal {
+  background: var(--cream);
+  max-width: 860px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+}
+.modal-img-wrap {
+  position: relative;
+  background: var(--sand);
+  overflow: hidden;
+}
+.modal-img {
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+  object-fit: cover;
+  object-position: center top;
+}
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 36px;
+  height: 36px;
+  background: rgba(250,248,245,0.9);
+  border: none;
+  font-size: 1.1rem;
+  color: var(--dark);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+.modal-body {
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  overflow-y: auto;
+}
+.modal-eyebrow {
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin-bottom: 0.5rem;
+}
+.modal-title {
+  font-family: var(--serif);
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: var(--dark);
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+.modal-rule { width: 30px; height: 1px; background: var(--clay); margin: 0.8rem 0 1rem; }
+.modal-option-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-bottom: 0.4rem;
+  margin-top: 0.8rem;
+}
+.modal-pills { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.5rem; }
+.modal-pill {
+  padding: 0.4rem 0.85rem;
+  font-size: 0.75rem;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--dark);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.modal-pill.active, .modal-pill:hover {
+  background: var(--dark);
+  color: white;
+  border-color: var(--dark);
+}
+.modal-qty-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 0.8rem 0;
+}
+.qty-ctrl {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--border);
+}
+.qty-btn {
+  width: 34px;
+  height: 34px;
+  background: var(--warm-white);
+  border: none;
+  font-size: 1rem;
+  color: var(--dark);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.qty-btn:hover { background: var(--sand); }
+.qty-num {
+  min-width: 36px;
+  text-align: center;
+  font-size: 0.85rem;
+  border-left: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  line-height: 34px;
+}
+.modal-summary {
+  background: var(--warm-white);
+  padding: 0.75rem 1rem;
+  margin: 0.5rem 0;
+  font-size: 0.8rem;
+}
+.modal-sum-row {
+  display: flex;
+  justify-content: space-between;
+  color: var(--mid);
+  margin-bottom: 0.25rem;
+}
+.modal-sum-row.total {
+  color: var(--dark);
+  font-weight: 500;
+  border-top: 1px solid var(--border);
+  padding-top: 0.4rem;
+  margin-top: 0.3rem;
+  margin-bottom: 0;
+}
+.modal-buy-btn {
+  width: 100%;
+  padding: 1rem;
+  background: var(--dark);
+  color: white;
+  border: none;
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-top: 0.75rem;
+  transition: background 0.2s;
+}
+.modal-buy-btn:hover { background: var(--terracotta); }
+.modal-secure {
+  text-align: center;
+  font-size: 0.65rem;
+  color: var(--light-text);
+  margin-top: 0.4rem;
+  letter-spacing: 0.05em;
+}
+.modal-details {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.78rem;
+  color: var(--mid);
+  line-height: 1.8;
+}
+.modal-details strong { color: var(--dark); font-weight: 500; }
+
+/* ── ABOUT ── */
+#about {
+  padding: 7rem 2rem;
+  background: var(--cream);
+}
+.about-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 6rem;
+  align-items: center;
+}
+.about-img-wrap {
+  position: relative;
+}
+.about-img-stack {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3/4;
+}
+.about-img-main {
+  width: 85%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  object-position: center top;
+}
+.about-img-accent {
+  position: absolute;
+  bottom: -2rem;
+  right: 0;
+  width: 55%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  object-position: center top;
+  border: 6px solid var(--cream);
+}
+.about-text {}
+.about-eyebrow {
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin-bottom: 1rem;
+}
+.about-title {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 300;
+  line-height: 1.2;
+  color: var(--dark);
+  margin-bottom: 1.5rem;
+}
+.about-title em { font-style: italic; color: var(--clay); }
+.about-body {
+  font-size: 0.9rem;
+  color: var(--mid);
+  line-height: 1.9;
+  margin-bottom: 1.5rem;
+}
+.about-stats {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+.about-stat {}
+.about-stat-num {
+  font-family: var(--serif);
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--clay);
+  line-height: 1;
+}
+.about-stat-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-top: 0.2rem;
+}
+
+/* ── SHIPPING & POLICY ── */
+#shipping {
+  background: var(--warm-white);
+  padding: 5rem 2rem;
+}
+.shipping-inner {
+  max-width: 960px;
+  margin: 0 auto;
+}
+.policy-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
+}
+.policy-card {
+  padding: 2rem;
+  background: var(--cream);
+  border-top: 2px solid var(--clay);
+}
+.policy-icon { font-size: 1.5rem; margin-bottom: 0.8rem; }
+.policy-title {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  color: var(--dark);
+  margin-bottom: 0.6rem;
+}
+.policy-text {
+  font-size: 0.8rem;
+  color: var(--mid);
+  line-height: 1.8;
+}
+
+/* ── CONTACT ── */
+#contact {
+  padding: 6rem 2rem;
+  background: var(--dark);
+  color: white;
+}
+.contact-inner {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+.contact-eyebrow {
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin-bottom: 1rem;
+}
+.contact-title {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 300;
+  color: white;
+  margin-bottom: 1rem;
+}
+.contact-title em { font-style: italic; color: var(--clay); }
+.contact-sub {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.8;
+  margin-bottom: 2.5rem;
+}
+.contact-links {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.contact-link {
+  padding: 0.85rem 2rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: 1px solid rgba(255,255,255,0.3);
+  color: white;
+  transition: all 0.2s;
+}
+.contact-link:hover {
+  background: var(--clay);
+  border-color: var(--clay);
+}
+.contact-link.primary {
+  background: var(--clay);
+  border-color: var(--clay);
+}
+.contact-link.primary:hover { background: var(--terracotta); border-color: var(--terracotta); }
+
+/* ── FOOTER ── */
+footer {
+  background: #1a150e;
+  color: rgba(255,255,255,0.4);
+  padding: 2.5rem 2rem;
+  text-align: center;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  line-height: 1.8;
+}
+footer a { color: var(--clay); }
+
+/* ── BACK TO TOP ── */
+.back-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 1.5rem;
+  width: 42px;
+  height: 42px;
+  background: var(--dark);
+  color: white;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 50;
+}
+.back-top.visible { opacity: 1; }
+.back-top:hover { background: var(--terracotta); }
+
+/* ── FADE IN ANIMATION ── */
+.fade-in {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-text { padding: 4rem 2rem; }
+  .hero-image-wrap { height: 55vw; }
+  .jewelry-grid { grid-template-columns: 1fr 1fr; }
+  .jewelry-card:nth-child(4n+1) { grid-column: span 2; }
+  .pillows-layout { grid-template-columns: 1fr; gap: 2rem; }
+  .about-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .about-img-stack { max-width: 420px; }
+  .policy-grid { grid-template-columns: 1fr; }
+  .modal { grid-template-columns: 1fr; }
+  .modal-img-wrap { display: none; }
+  nav { padding: 0 1.25rem; }
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+}
+@media (max-width: 520px) {
+  .jewelry-grid { grid-template-columns: 1fr; }
+  .jewelry-card:nth-child(4n+1) { grid-column: span 1; }
+  .hero-text { padding: 3rem 1.5rem; }
+  .section-header { padding: 3.5rem 1.5rem 2.5rem; }
+  #jewelry, #pillows { padding-left: 1rem; padding-right: 1rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ANNOUNCE BAR -->
+<div class="announce-bar">Free shipping on jewelry orders over $50 &nbsp;·&nbsp; Handmade in Palm Desert, CA</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Fun <span>Travel</span></a>
+  <ul class="nav-links">
+    <li><a href="#jewelry">Jewelry</a></li>
+    <li><a href="#pillows">Pillows</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#shipping">Shipping</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nav-hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu-close" onclick="toggleMenu()">✕</button>
+  <a href="#jewelry" onclick="toggleMenu()">Jewelry</a>
+  <a href="#pillows" onclick="toggleMenu()">Pillows</a>
+  <a href="#about" onclick="toggleMenu()">About</a>
+  <a href="#shipping" onclick="toggleMenu()">Shipping</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <p class="hero-eyebrow">Handmade in Palm Desert, California</p>
+    <h1 class="hero-title">Wearable art<br>for the <em>curious</em><br>traveler</h1>
+    <p class="hero-sub">Beaded jewelry and travel pillows crafted by hand — each piece unique, made with decades of artisan care by Elena Barmet.</p>
+    <div class="hero-cta-group">
+      <a href="#jewelry" class="btn-primary">Shop Jewelry</a>
+      <a href="#pillows" class="btn-outline">Travel Pillows</a>
+    </div>
+    <div class="hero-scroll-hint">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </div>
+  <div class="hero-image-wrap">
+    <img src="images/Resized_20260531_100438.jpeg" alt="Kelly Green and Black handmade beaded necklace set by Elena Barmet">
+    <div class="hero-image-caption">Kelly Green & Black Set — $55</div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-strip" aria-hidden="true">
+  <div class="marquee-inner">
+    <span>Handmade</span> · <span>✦</span> · <span>Beaded Jewelry</span> · <span>✦</span> · <span>Travel Pillows</span> · <span>✦</span> · <span>Palm Desert CA</span> · <span>✦</span> · <span>Ships Nationwide</span> · <span>✦</span> · <span>PayPal Secure</span> · <span>✦</span> · <span>15-Day Returns</span> · <span>✦</span> · <span>Handmade</span> · <span>✦</span> · <span>Beaded Jewelry</span> · <span>✦</span> · <span>Travel Pillows</span> · <span>✦</span> · <span>Palm Desert CA</span> · <span>✦</span> · <span>Ships Nationwide</span> · <span>✦</span> · <span>PayPal Secure</span> · <span>✦</span> · <span>15-Day Returns</span> · <span>✦</span>
+  </div>
+</div>
+
+<!-- JEWELRY SECTION -->
+<section id="jewelry">
+  <div class="section-header fade-in">
+    <p class="section-eyebrow">Handmade Collection</p>
+    <h2 class="section-title">Beaded <em>Jewelry</em></h2>
+    <div class="section-rule"></div>
+  </div>
+  <div class="jewelry-grid" id="jewelryGrid"></div>
+</section>
+
+<!-- PILLOWS SECTION -->
+<section id="pillows">
+  <div class="section-header fade-in">
+    <p class="section-eyebrow">Travel Essentials</p>
+    <h2 class="section-title">Travel <em>Pillows</em></h2>
+    <div class="section-rule"></div>
+  </div>
+  <div class="pillows-layout" id="pillowsLayout"></div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-inner">
+    <div class="about-img-wrap fade-in">
+      <div class="about-img-stack">
+        <img class="about-img-main" src="images/Resized_20260531_100501.jpeg" alt="Handmade fuchsia and black beaded necklace set by Elena Barmet">
+        <img class="about-img-accent" src="images/Resized_20260531_102540.jpeg" alt="Green glass bead choker by Elena Barmet">
+      </div>
+    </div>
+    <div class="about-text fade-in">
+      <p class="about-eyebrow">About the Maker</p>
+      <h2 class="about-title">44 years of<br><em>artisan craft</em></h2>
+      <p class="about-body">Elena Barmet has spent over four decades in the United States creating handmade beaded jewelry and travel pillows from her home in Palm Desert, California. Every piece is made by hand — no two are exactly alike.</p>
+      <p class="about-body">Her jewelry sets combine glass beads, African tube beads, and synthetic materials into wearable art that travels with you. Her pillows are made for comfort and color.</p>
+      <div class="about-stats">
+        <div class="about-stat">
+          <div class="about-stat-num">44</div>
+          <div class="about-stat-label">Years crafting</div>
+        </div>
+        <div class="about-stat">
+          <div class="about-stat-num">9+</div>
+          <div class="about-stat-label">Jewelry styles</div>
+        </div>
+        <div class="about-stat">
+          <div class="about-stat-num">100%</div>
+          <div class="about-stat-label">Handmade</div>
+        </div>
+      </div>
+      <a href="#contact" class="btn-primary">Get in Touch</a>
+    </div>
+  </div>
+</section>
+
+<!-- SHIPPING & POLICY -->
+<section id="shipping">
+  <div class="shipping-inner">
+    <div class="section-header fade-in" style="padding-top:0; text-align:left;">
+      <p class="section-eyebrow">Shipping & Returns</p>
+      <h2 class="section-title">Our <em>Promise</em></h2>
+      <div class="section-rule" style="margin-left:0;"></div>
+    </div>
+    <div class="policy-grid">
+      <div class="policy-card fade-in">
+        <div class="policy-icon">📦</div>
+        <div class="policy-title">Shipping</div>
+        <div class="policy-text">
+          Single jewelry item: $5.99<br>
+          Full jewelry set: $7.99<br>
+          Single pillow: $9.99<br>
+          Two pillows: $14.99<br><br>
+          <strong>Free shipping on jewelry orders $50+</strong><br><br>
+          Ships within 2–4 business days via USPS. Pillows ship within 3–5 business days.
+        </div>
+      </div>
+      <div class="policy-card fade-in">
+        <div class="policy-icon">↩</div>
+        <div class="policy-title">Returns</div>
+        <div class="policy-text">
+          15-day return window from date of receipt.<br><br>
+          15% restocking fee applies. Buyer is responsible for return shipping using a tracked method.<br><br>
+          Contact us before returning — an RMA number is required.<br><br>
+          If the error is ours, we cover everything.
+        </div>
+      </div>
+      <div class="policy-card fade-in">
+        <div class="policy-icon">✦</div>
+        <div class="policy-title">Custom Orders</div>
+        <div class="policy-text">
+          Elena accepts custom orders for special color combinations, lengths, and gift sets.<br><br>
+          Contact us with your idea and we will work with you to create something unique.<br><br>
+          Allow 1–2 weeks for custom pieces.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner fade-in">
+    <p class="contact-eyebrow">Get in Touch</p>
+    <h2 class="contact-title">Custom orders &<br><em>questions welcome</em></h2>
+    <p class="contact-sub">Have a question about a piece, need a custom order, or want to know what colors are available? Elena responds personally to every message.</p>
+    <div class="contact-links">
+      <a href="mailto:picswelove2024@gmail.com" class="contact-link primary">Email Elena</a>
+      <a href="tel:7604856421" class="contact-link">Call 760-485-6421</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong style="color:rgba(255,255,255,0.7); font-family:'Cormorant Garamond',serif; font-size:1rem; font-weight:400;">Fun Travel</strong> by Elena Barmet &nbsp;·&nbsp; Palm Desert, California</p>
+  <p style="margin-top:0.4rem;">Handmade beaded jewelry & travel pillows &nbsp;·&nbsp; <a href="mailto:picswelove2024@gmail.com">picswelove2024@gmail.com</a></p>
+  <p style="margin-top:0.4rem;">© 2025 Fun Travel by Elena Barmet. All rights reserved.</p>
+</footer>
+
+<!-- BACK TO TOP -->
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+
+<!-- PRODUCT MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal" id="modal">
+    <div class="modal-img-wrap">
+      <img class="modal-img" id="modalImg" src="" alt="">
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+    <button class="modal-close" onclick="closeModalDirect()" aria-label="Close">✕</button>
+  </div>
+</div>
+
+<script>
+// ── PRODUCT DATA ──
+const jewelry = [
+  {
+    id: 'j1',
+    name: 'Kelly Green & Black Beads with African Tube Beads',
+    img: 'images/Resized_20260531_100438.jpeg',
+    alt: 'Kelly Green and Black beaded necklace set with African tube beads',
+    type: 'set',
+    details: 'Glass beads, African tube beads · Necklace 15.5 in. incl. clasp',
+    pieces: [
+      {l:'Full Set', p:55, s:7.99},
+      {l:'Necklace (15.5 in.)', p:29, s:5.99},
+      {l:'Bracelet (8 in.)', p:16, s:5.99},
+      {l:'Earrings', p:15, s:5.99}
+    ]
+  },
+  {
+    id: 'j2',
+    name: 'Wood & Orange Synthetic Beads',
+    img: 'images/Resized_20260531_100359.jpeg',
+    alt: 'Wood and orange synthetic beaded necklace set',
+    type: 'set',
+    details: 'Wood beads, orange synthetic beads · Necklace 16 in. incl. clasp',
+    pieces: [
+      {l:'Full Set', p:55, s:7.99},
+      {l:'Necklace (16 in.)', p:29, s:5.99},
+      {l:'Bracelet (8 in.)', p:16, s:5.99},
+      {l:'Earrings', p:15, s:5.99}
+    ]
+  },
+  {
+    id: 'j3',
+    name: 'Fuchsia & Black Beads with African Tube Beads',
+    img: 'images/Resized_20260531_100501.jpeg',
+    alt: 'Fuchsia and black beaded necklace set with African tube beads',
+    type: 'set',
+    details: 'Glass beads, African tube beads · Necklace 16 in. incl. clasp',
+    pieces: [
+      {l:'Full Set', p:55, s:7.99},
+      {l:'Necklace (16 in.)', p:29, s:5.99},
+      {l:'Bracelet (8 in.)', p:16, s:5.99},
+      {l:'Earrings', p:15, s:5.99}
+    ]
+  },
+  {
+    id: 'j4',
+    name: 'Kelly Green Glass & Orange Synthetic Beads with African Tube Beads',
+    img: 'images/Resized_20260531_100506.jpeg',
+    alt: 'Kelly green glass and orange synthetic beaded necklace set',
+    type: 'set',
+    details: 'Kelly green glass, orange synthetic, African tube beads · Necklace 16 in.',
+    pieces: [
+      {l:'Full Set', p:55, s:7.99},
+      {l:'Necklace (16 in.)', p:29, s:5.99},
+      {l:'Bracelet (8 in.)', p:16, s:5.99},
+      {l:'Earrings', p:15, s:5.99}
+    ]
+  },
+  {
+    id: 'j5',
+    name: 'Fun Bead Mix — Glass & Synthetic',
+    img: 'images/Resized_20260531_102515.jpeg',
+    alt: 'Fun bead mix necklace set with glass and synthetic beads',
+    type: 'set',
+    details: 'Mixed glass & synthetic beads · Necklace 16 in. incl. clasp',
+    pieces: [
+      {l:'Full Set', p:55, s:7.99},
+      {l:'Necklace (16 in.)', p:29, s:5.99},
+      {l:'Bracelet (8 in.)', p:16, s:5.99},
+      {l:'Earrings', p:15, s:5.99}
+    ]
+  },
+  {
+    id: 'j6',
+    name: 'Glass Bead Chokers — Green',
+    img: 'images/Resized_20260531_102540.jpeg',
+    alt: 'Green glass bead choker necklace',
+    type: 'choker',
+    details: 'Green glass beads · Specify preferred length in order notes',
+    pieces: [
+      {l:'15–16 in.', p:16, s:5.99},
+      {l:'17–21 in.', p:19, s:5.99}
+    ]
+  },
+  {
+    id: 'j7',
+    name: 'Multi-Color Glass Bead Chokers',
+    img: 'images/Resized_20260531_102550.jpeg',
+    alt: 'Multi-color glass bead choker necklace',
+    type: 'choker',
+    details: 'Multi-color glass beads · Specify preferred length in order notes',
+    pieces: [
+      {l:'15–16 in.', p:16, s:5.99},
+      {l:'17–21 in.', p:19, s:5.99}
+    ]
+  },
+  {
+    id: 'j8',
+    name: 'Glass Seed Beads — Any Color',
+    img: 'images/Resized_20260528_081218.jpeg',
+    alt: 'Glass seed bead necklace in assorted colors',
+    type: 'seed',
+    details: 'Glass seed beads · Many colors available — specify color in order notes',
+    pieces: [
+      {l:'15–18 in.', p:15, s:5.99}
+    ]
+  },
+  {
+    id: 'j9',
+    name: 'Glass Seed Bead Mix with 4mm Glass Beads',
+    img: 'images/Resized_20260529_091718.jpeg',
+    alt: 'Glass seed bead mix necklace with 4mm glass beads',
+    type: 'seed',
+    details: 'Glass seed beads, 4mm glass beads',
+    pieces: [
+      {l:'15–17 in.', p:17, s:5.99},
+      {l:'18–21 in.', p:19.50, s:5.99}
+    ]
+  }
+];
+
+const pillows = [
+  {
+    id: 'p1',
+    name: 'Color Splash Neck Pillow',
+    img: 'images/Resized_20260301_070435.jpeg',
+    alt: 'Color splash travel neck pillow in multiple colors',
+    price: 24,
+    ship: 9.99,
+    size: 'Approx. 12×12 in.',
+    details: 'Soft travel neck pillow available in your choice of color. Perfect for long trips.',
+    colors: [
+      {l:'Lime Green', c:'#b5d44a'},
+      {l:'Orange',     c:'#f07030'},
+      {l:'Red',        c:'#c0302a'},
+      {l:'Yellow',     c:'#f0c030'},
+      {l:'Navy',       c:'#1a2a5a'}
+    ]
+  },
+  {
+    id: 'p2',
+    name: 'Polka Dot Travel Pillow',
+    img: 'images/Resized_20260301_063640_1_.jpeg',
+    alt: 'Polka dot travel pillow in multiple colors',
+    price: 24,
+    ship: 9.99,
+    size: 'Approx. 12×16 in.',
+    details: 'Cheerful polka dot travel pillow in bold color combinations. Great for road trips, flights, and home use.',
+    colors: [
+      {l:'Fuchsia',   c:'#c0306a'},
+      {l:'Turquoise', c:'#30a8a0'},
+      {l:'White',     c:'#e8e8e8'},
+      {l:'Orange',    c:'#e86820'},
+      {l:'Navy',      c:'#1a2a5a'}
+    ]
+  }
+];
+
+// ── STATE ──
+const state = { qty: 1, selectedPiece: 0, selectedColor: 0, currentProduct: null };
+
+function fmt(n) { return '$' + parseFloat(n).toFixed(2); }
+
+function paypalUrl(name, price, ship, qty) {
+  var total = (price * qty + (price * qty >= 50 && !name.toLowerCase().includes('pillow') ? 0 : ship)).toFixed(2);
+  return 'https://www.paypal.com/cgi-bin/webscr'
+    + '?cmd=_xclick'
+    + '&business=picswelove2024%40gmail.com'
+    + '&item_name=' + encodeURIComponent(name + (qty > 1 ? ' x'+qty : ''))
+    + '&amount=' + encodeURIComponent(total)
+    + '&currency_code=USD'
+    + '&shipping=0'
+    + '&no_shipping=2'
+    + '&return=' + encodeURIComponent(location.href)
+    + '&cancel_return=' + encodeURIComponent(location.href);
+}
+
+// ── RENDER JEWELRY GRID ──
+function renderJewelry() {
+  var grid = document.getElementById('jewelryGrid');
+  grid.innerHTML = jewelry.map(function(p) {
+    var minPrice = Math.min.apply(null, p.pieces.map(function(x){return x.p;}));
+    var maxPrice = Math.max.apply(null, p.pieces.map(function(x){return x.p;}));
+    var priceStr = minPrice === maxPrice ? fmt(minPrice) : fmt(minPrice) + ' – ' + fmt(maxPrice);
+    return '<div class="jewelry-card fade-in" data-id="'+p.id+'">'
+      + '<div style="overflow:hidden;">'
+      + '<img class="jewelry-card-img" src="'+p.img+'" alt="'+p.alt+'" loading="lazy">'
+      + '</div>'
+      + '<div class="jewelry-card-info">'
+      + '<div class="jewelry-card-name">'+p.name+'</div>'
+      + '<div class="jewelry-card-price">From <strong>'+priceStr+'</strong> · '+
+        (p.type==='set'?'Necklace · Bracelet · Earrings':p.type==='choker'?'Choker':'Necklace')+'</div>'
+      + '<div class="jewelry-card-actions">'
+      + '<button class="btn-shop-sm" onclick="openModal(\''+p.id+'\')">View & Buy</button>'
+      + '</div>'
+      + '</div>'
+      + '</div>';
+  }).join('');
+  observeFadeIns();
+}
+
+// ── RENDER PILLOWS ──
+function renderPillows() {
+  var layout = document.getElementById('pillowsLayout');
+  layout.innerHTML = pillows.map(function(p) {
+    var swatches = p.colors.map(function(c, i) {
+      return '<button class="swatch'+(i===0?' selected':'')+'" style="background:'+c.c+';" '
+        +'data-pid="'+p.id+'" data-idx="'+i+'" data-label="'+c.l+'" '
+        +'onclick="selectColor(this,\''+p.id+'\')" aria-label="'+c.l+'"></button>';
+    }).join('');
+    return '<div class="pillow-feature fade-in">'
+      + '<img class="pillow-feature-img" src="'+p.img+'" alt="'+p.alt+'" loading="lazy">'
+      + '<div class="pillow-feature-info">'
+      + '<div class="pillow-feature-name">'+p.name+'</div>'
+      + '<div class="pillow-feature-price"><strong>'+fmt(p.price)+'</strong> + '+fmt(p.ship)+' shipping</div>'
+      + '<div class="pillow-feature-details">'+p.details+'<br>Size: '+p.size+'</div>'
+      + '<div class="pillow-colors-label">Choose Color</div>'
+      + '<div class="pillow-swatches">'+swatches+'</div>'
+      + '<div class="selected-color-name" id="colorName-'+p.id+'">'+p.colors[0].l+'</div>'
+      + '<button class="pillow-buy-btn" id="pillowBtn-'+p.id+'" onclick="buyPillow(\''+p.id+'\')">Buy Now via PayPal</button>'
+      + '</div>'
+      + '</div>';
+  }).join('');
+  observeFadeIns();
+}
+
+function selectColor(btn, pid) {
+  var all = document.querySelectorAll('[data-pid="'+pid+'"]');
+  all.forEach(function(b){ b.classList.remove('selected'); });
+  btn.classList.add('selected');
+  var lbl = document.getElementById('colorName-'+pid);
+  if (lbl) lbl.textContent = btn.dataset.label;
+}
+
+function buyPillow(pid) {
+  var p = pillows.find(function(x){return x.id===pid;});
+  if (!p) return;
+  var sel = document.querySelector('[data-pid="'+pid+'"].selected');
+  var colorName = sel ? sel.dataset.label : p.colors[0].l;
+  var name = p.name + ' — ' + colorName;
+  window.open(paypalUrl(name, p.price, p.ship, 1), '_blank');
+}
+
+// ── MODAL ──
+var modalQty = 1, modalPieceIdx = 0;
+
+function openModal(id) {
+  var p = jewelry.find(function(x){return x.id===id;});
+  if (!p) return;
+  state.currentProduct = p;
+  modalQty = 1;
+  modalPieceIdx = 0;
+
+  document.getElementById('modalImg').src = p.img;
+  document.getElementById('modalImg').alt = p.alt;
+
+  renderModalBody(p);
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function renderModalBody(p) {
+  var pieces = p.pieces;
+  var piece = pieces[modalPieceIdx];
+  var isPillow = false;
+  var effectiveShip = (piece.p * modalQty >= 50 && !isPillow) ? 0 : piece.s;
+  var total = piece.p * modalQty + effectiveShip;
+
+  var pillsHtml = pieces.map(function(pc, i) {
+    return '<button class="modal-pill'+(i===modalPieceIdx?' active':'')+'" onclick="selectPiece('+i+')">'+pc.l+'</button>';
+  }).join('');
+
+  var optLabel = p.type === 'set' ? 'Choose Piece' : 'Choose Length';
+
+  document.getElementById('modalBody').innerHTML =
+    '<p class="modal-eyebrow">'+
+      (p.type==='set'?'Jewelry Set':p.type==='choker'?'Choker':'Necklace')+
+    '</p>'
+    + '<h2 class="modal-title">'+p.name+'</h2>'
+    + '<div class="modal-rule"></div>'
+    + '<p class="modal-option-label">'+optLabel+'</p>'
+    + '<div class="modal-pills" id="modalPills">'+pillsHtml+'</div>'
+    + '<p class="modal-option-label">Quantity</p>'
+    + '<div class="modal-qty-row">'
+    + '<div class="qty-ctrl">'
+    + '<button class="qty-btn" onclick="changeQty(-1)">−</button>'
+    + '<span class="qty-num" id="modalQtyNum">'+modalQty+'</span>'
+    + '<button class="qty-btn" onclick="changeQty(1)">+</button>'
+    + '</div>'
+    + '</div>'
+    + '<div class="modal-summary">'
+    + '<div class="modal-sum-row"><span id="mItemLbl">Item</span><span id="mItemPrice">'+fmt(piece.p * modalQty)+'</span></div>'
+    + '<div class="modal-sum-row"><span>Shipping</span><span id="mShipPrice">'+(effectiveShip===0?'FREE':fmt(effectiveShip))+'</span></div>'
+    + '<div class="modal-sum-row total"><span>Total</span><span id="mTotal">'+fmt(total)+'</span></div>'
+    + '</div>'
+    + '<button class="modal-buy-btn" id="modalBuyBtn" onclick="buyNow()">Buy Now via PayPal</button>'
+    + '<p class="modal-secure">🔒 Secure checkout · PayPal</p>'
+    + '<div class="modal-details"><strong>Details:</strong> '+p.details+'</div>';
+}
+
+function selectPiece(idx) {
+  modalPieceIdx = idx;
+  renderModalBody(state.currentProduct);
+}
+
+function changeQty(delta) {
+  modalQty = Math.max(1, Math.min(10, modalQty + delta));
+  if (state.currentProduct) renderModalBody(state.currentProduct);
+}
+
+function buyNow() {
+  var p = state.currentProduct;
+  if (!p) return;
+  var piece = p.pieces[modalPieceIdx];
+  var effectiveShip = (piece.p * modalQty >= 50) ? 0 : piece.s;
+  var total = (piece.p * modalQty + effectiveShip).toFixed(2);
+  var name = p.name + (p.pieces.length > 1 ? ' — ' + piece.l : '') + (modalQty > 1 ? ' x'+modalQty : '');
+  window.open(paypalUrl(name, piece.p, piece.s, modalQty), '_blank');
+}
+
+function closeModal(e) {
+  if (e.target === document.getElementById('modalOverlay')) closeModalDirect();
+}
+function closeModalDirect() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// ── NAV ──
+function toggleMenu() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+
+// ── BACK TO TOP ──
+window.addEventListener('scroll', function() {
+  var btn = document.getElementById('backTop');
+  btn.classList.toggle('visible', window.scrollY > 400);
+});
+
+// ── FADE IN ON SCROLL ──
+function observeFadeIns() {
+  var els = document.querySelectorAll('.fade-in:not(.observed)');
+  if (!window.IntersectionObserver) {
+    els.forEach(function(el){ el.classList.add('visible'); });
+    return;
+  }
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  els.forEach(function(el) { el.classList.add('observed'); obs.observe(el); });
+}
+
+// ── KEYBOARD ESC ──
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeModalDirect();
+});
+
+// ── INIT ──
+renderJewelry();
+renderPillows();
+observeFadeIns();
+</script>
+</body>
+</html>
