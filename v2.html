@@ -879,6 +879,82 @@ footer a { color: var(--clay); }
   .section-header { padding: 3.5rem 1.5rem 2.5rem; }
   #jewelry, #pillows { padding-left: 1rem; padding-right: 1rem; }
 }
+
+/* ── VIDEO HERO ── */
+.hero-video {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 560px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-vid {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.hero-vid-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(20,14,8,0.35) 0%,
+    rgba(20,14,8,0.55) 50%,
+    rgba(20,14,8,0.75) 100%
+  );
+}
+.hero-vid-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 2rem;
+  max-width: 700px;
+}
+.hero-vid-title {
+  font-family: var(--serif);
+  font-size: clamp(4rem, 10vw, 8rem);
+  font-weight: 300;
+  color: white;
+  line-height: 1;
+  margin: 0.5rem 0 1rem;
+  letter-spacing: 0.02em;
+}
+.hero-vid-title em {
+  font-style: italic;
+  color: var(--clay);
+}
+.hero-vid-sub {
+  font-size: clamp(0.85rem, 2vw, 1rem);
+  color: rgba(255,255,255,0.75);
+  line-height: 1.8;
+  margin-bottom: 2.5rem;
+  letter-spacing: 0.05em;
+}
+.hero-vid-scroll {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.62rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+@media (max-width: 600px) {
+  .hero-video { height: 100svh; }
+  .hero-vid-title { font-size: clamp(3rem, 15vw, 5rem); }
+}
+
 </style>
 </head>
 <body>
@@ -911,24 +987,24 @@ footer a { color: var(--clay); }
   <a href="#contact" onclick="toggleMenu()">Contact</a>
 </div>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-text">
-    <p class="hero-eyebrow">Handmade in Palm Desert, California</p>
-    <h1 class="hero-title">Wearable art<br>for the <em>curious</em><br>traveler</h1>
-    <p class="hero-sub">Beaded jewelry and travel pillows crafted by hand — each piece unique, made with decades of artisan care by Elena Barmet.</p>
-    <div class="hero-cta-group">
+<!-- HERO VIDEO -->
+<section class="hero-video">
+  <video class="hero-vid" autoplay muted loop playsinline poster="images/Resized_20260531_100438.jpeg">
+    <source src="images/gemini_generated_video_5AF01A89.MP4" type="video/mp4">
+  </video>
+  <div class="hero-vid-overlay"></div>
+  <div class="hero-vid-content">
+    <p class="hero-eyebrow" style="color:rgba(255,255,255,0.75);">Handmade in Palm Desert, California</p>
+    <h1 class="hero-vid-title">Fun <em>Travel</em></h1>
+    <p class="hero-vid-sub">Handmade beaded jewelry & travel pillows<br>by Elena Barmet</p>
+    <div class="hero-cta-group" style="justify-content:center;">
       <a href="#jewelry" class="btn-primary">Shop Jewelry</a>
-      <a href="#pillows" class="btn-outline">Travel Pillows</a>
-    </div>
-    <div class="hero-scroll-hint">
-      <div class="scroll-line"></div>
-      <span>Scroll</span>
+      <a href="#pillows" class="btn-outline" style="border-color:rgba(255,255,255,0.5);color:white;" onmouseover="this.style.background='white';this.style.color='#2c2416'" onmouseout="this.style.background='transparent';this.style.color='white'">Travel Pillows</a>
     </div>
   </div>
-  <div class="hero-image-wrap">
-    <img src="images/Resized_20260531_100438.jpeg" alt="Kelly Green and Black handmade beaded necklace set by Elena Barmet">
-    <div class="hero-image-caption">Kelly Green & Black Set — $55</div>
+  <div class="hero-vid-scroll">
+    <div class="scroll-line" style="background:linear-gradient(to bottom,white,transparent);"></div>
+    <span style="color:rgba(255,255,255,0.5);">Scroll</span>
   </div>
 </section>
 
