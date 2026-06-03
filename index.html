@@ -29,30 +29,7 @@
   }
 
   /* NAV */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.2rem 3rem;
-    background: rgba(250, 247, 242, 0.92);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(201,113,74,0.15);
-  }
-
-  .nav-logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--terra);
-    letter-spacing: 0.02em;
-    white-space: nowrap;
-  }
   .nav-logo span { color: var(--gold); }
-
-  nav ul { list-style: none; display: flex; gap: 2.5rem; }
   nav ul a {
     text-decoration: none;
     font-size: 0.85rem;
@@ -660,10 +637,7 @@
 
   /* RESPONSIVE */
   @media (max-width: 768px) {
-    nav { padding: 0.8rem 1rem; }
-    nav ul { gap: 0.8rem; }
     nav ul a { font-size: 0.72rem; letter-spacing: 0.06em; }
-    .nav-logo { font-size: 1.1rem; }
     .hero { min-height: 58vh; height: 58vh; }
     .hero-text { padding: 3rem 1.5rem; }
     .hero-sub { margin-bottom: 1.6rem; }
@@ -688,6 +662,20 @@
     }
   }
 
+
+/* ── NAV (clean 4-item) ── */
+nav { position:sticky; top:0; z-index:200; background:var(--cream); border-bottom:1px solid rgba(0,0,0,0.08); display:flex; align-items:center; justify-content:space-between; padding:0 2rem; height:60px; }
+.nav-logo { font-family:'Playfair Display',serif; font-size:1.3rem; font-weight:600; color:var(--dark); }
+.nav-logo span { color:var(--terra); }
+.nav-links-main { display:flex; gap:2rem; list-style:none; margin:0; padding:0; }
+.nav-links-main a { font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--mid); text-decoration:none; transition:color 0.2s; }
+.nav-links-main a:hover { color:var(--dark); }
+.nav-hamburger { display:none; flex-direction:column; gap:5px; background:none; border:none; padding:4px; cursor:pointer; }
+.nav-hamburger span { display:block; width:22px; height:1.5px; background:var(--dark); }
+.mobile-nav { display:none; flex-direction:column; position:fixed; top:60px; left:0; right:0; background:var(--cream); border-bottom:1px solid rgba(0,0,0,0.1); z-index:199; padding:0.5rem 1.5rem 1rem; }
+.mobile-nav.open { display:flex; }
+.mobile-nav a { font-size:0.8rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--dark); text-decoration:none; padding:0.75rem 0; border-bottom:1px solid rgba(0,0,0,0.06); }
+@media (max-width:680px) { .nav-links-main { display:none; } .nav-hamburger { display:flex; } nav { padding:0 1.25rem; } }
 </style>
 </head>
 <body>
@@ -704,16 +692,22 @@
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo" style="text-decoration:none;">Fun <span>Travel</span></a>
-  <ul>
-    <li><a href="#bestsellers">Favorites</a></li>
-    <li><a href="#jewelry">Jewelry</a></li>
-    <li><a href="#pillows">Pillows</a></li>
+  <ul class="nav-links-main">
+    <li><a href="#jewelry">Shop</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#shipping">Shipping</a></li>
-    <li><a href="#policy">Policy</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
+  <button class="nav-hamburger" id="navHam" onclick="toggleMobileNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="mobile-nav" id="mobileNav">
+  <a href="#jewelry" onclick="closeMobileNav()">Shop</a>
+  <a href="#about" onclick="closeMobileNav()">About</a>
+  <a href="#shipping" onclick="closeMobileNav()">Shipping</a>
+  <a href="#contact" onclick="closeMobileNav()">Contact</a>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -1936,6 +1930,13 @@ function sortProducts(val) {
     return 0;
   });
   cards.forEach(c => grid.appendChild(c));
+}
+
+function toggleMobileNav() {
+  document.getElementById('mobileNav').classList.toggle('open');
+}
+function closeMobileNav() {
+  document.getElementById('mobileNav').classList.remove('open');
 }
 </script>
 </body>
